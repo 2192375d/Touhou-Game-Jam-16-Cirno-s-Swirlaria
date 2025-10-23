@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bwlta6mv2bg45" path="res://scenes/cirno.tscn" id="1_6e84v"]
 [ext_resource type="Texture2D" uid="uid://b2xtxyvb6ngh7" path="res://assets/tileset.png" id="2_4dvvg"]
-[ext_resource type="Resource" uid="uid://cat2vbqeqt5oo" path="res://inventory/player-inventory.tres" id="2_4vge2"]
+[ext_resource type="Resource" uid="uid://crnrqykb06qvm" path="res://inventory/Inventory.tres" id="2_4vge2"]
 [ext_resource type="Texture2D" uid="uid://nn0lhhorwjbk" path="res://assets/tileset2.png" id="3_rnjyy"]
 [ext_resource type="Texture2D" uid="uid://b873vlmfq4ou0" path="res://assets/tileset3.png" id="4_hh0fu"]
 [ext_resource type="PackedScene" uid="uid://2745gj6i4xmq" path="res://scenes/tv.tscn" id="5_04qyp"]
