@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlrgcegmr2sgj"]
+
+[ext_resource type="Texture2D" uid="uid://btqt3rtc5p0xk" path="res://assets/inventory-slot.png" id="1_vra1j"]
+
+[node name="inventory-slot-ui" type="Panel"]
+anchors_preset = -1
+anchor_right = 0.021000002
+anchor_bottom = 0.037
+offset_right = -0.3200035
+offset_bottom = 0.040000916
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_vra1j")

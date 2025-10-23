@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://bktuhkd126rxu"]
+
+[ext_resource type="Texture2D" uid="uid://ci4s3fxgapdw" path="res://assets/item-box.png" id="1_f4rmy"]
+[ext_resource type="Texture2D" uid="uid://bxaqs7y3th70q" path="res://assets/item-box-sprite-sheet.png" id="2_k1ebu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx1be"]
+atlas = ExtResource("1_f4rmy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1ebu"]
+atlas = ExtResource("2_k1ebu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b12ed"]
+atlas = ExtResource("2_k1ebu")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14dbm"]
+atlas = ExtResource("2_k1ebu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7c1u"]
+atlas = ExtResource("2_k1ebu")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3ipr"]
+atlas = ExtResource("2_k1ebu")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jx1be"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx1be")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1ebu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b12ed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14dbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7c1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3ipr")
+}],
+"loop": false,
+"name": &"open",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vfwmu"]
+size = Vector2(16, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f4rmy"]
+radius = 16.0
+height = 32.0
+
+[node name="item-box-chocolate" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jx1be")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vfwmu")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_f4rmy")
+debug_color = Color(0.99197274, 0, 0.26462436, 0.41960785)

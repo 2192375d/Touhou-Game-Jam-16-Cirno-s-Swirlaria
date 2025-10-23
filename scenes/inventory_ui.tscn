@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://q8q6sdj65suu"]
+
+[ext_resource type="Texture2D" uid="uid://c6qxdo4h4qto5" path="res://assets/inventory.png" id="1_tahbm"]
+[ext_resource type="PackedScene" uid="uid://dlrgcegmr2sgj" path="res://scenes/inventory_slot_ui.tscn" id="2_ylkvr"]
+
+[node name="inventory-ui" type="Control"]
+layout_mode = 3
+anchor_right = 0.029000001
+anchor_bottom = 0.119
+offset_right = -55.68
+offset_bottom = -128.52
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+offset_right = 120.0
+offset_bottom = 256.0
+texture = ExtResource("1_tahbm")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.625
+anchor_bottom = 1.0
+
+[node name="inventory-slot-ui" parent="NinePatchRect/VBoxContainer" instance=ExtResource("2_ylkvr")]
+layout_mode = 2
+
+[node name="inventory-slot-ui2" parent="NinePatchRect/VBoxContainer" instance=ExtResource("2_ylkvr")]
+layout_mode = 2
+
+[node name="inventory-slot-ui3" parent="NinePatchRect/VBoxContainer" instance=ExtResource("2_ylkvr")]
+layout_mode = 2
