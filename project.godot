@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="cirno-project"
-run/main_scene="uid://cnpiteiv7r2qw"
+run/main_scene="uid://b468oxcelg53b"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
