@@ -1,7 +1,8 @@
-class_name Order extends Node
+class_name Order extends Resource
 
-enum Base {Vanilla, Chocolate, Strawberry}
-enum Ingredient {Sprinkles, Cherry}
+@export var base : Array[String]
+@export var ingredients : Array[String]
 
-@export var base : Base
-@export var ingredients : Array[Ingredient]
+func _init(p_base : Array[String], p_ingredients : Array[String]):
+	base = p_base
+	ingredients = p_ingredients
