@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b468oxcelg53b"]
+[gd_scene load_steps=11 format=3 uid="uid://b468oxcelg53b"]
 
 [ext_resource type="Script" uid="uid://coqyk8dykhr6g" path="res://scripts/game_tablemenu.gd" id="1_mi270"]
 [ext_resource type="Texture2D" uid="uid://bj064owr3b45d" path="res://assets/cirno-game.png" id="2_a75m5"]
-[ext_resource type="Script" uid="uid://0nom2r2weapd" path="res://scenes/cream_raw.gd" id="3_a75m5"]
+[ext_resource type="Script" uid="uid://0nom2r2weapd" path="res://scripts/cream_raw.gd" id="3_a75m5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hf3yf"]
 texture = ExtResource("2_a75m5")
@@ -696,13 +696,15 @@ shader_parameter/collision_bounce = 0.2
 [sub_resource type="CircleShape2D" id="CircleShape2D_a75m5"]
 radius = 20.024984
 
+[sub_resource type="Theme" id="Theme_a75m5"]
+
 [node name="GameTablemenu" type="Node2D"]
 script = ExtResource("1_mi270")
 
 [node name="Nozzle" type="Button" parent="."]
-offset_left = 856.00006
+offset_left = 660.00006
 offset_top = 131.99998
-offset_right = 1020.0
+offset_right = 824.0
 offset_bottom = 318.0
 
 [node name="TileMap" type="TileMapLayer" parent="Nozzle"]
@@ -713,15 +715,15 @@ tile_set = SubResource("TileSet_twdh5")
 [node name="background" type="Sprite2D" parent="."]
 modulate = Color(0.72156864, 0.98039216, 0.99607843, 1)
 z_index = -2
-position = Vector2(95, 136)
-scale = Vector2(1721, 719)
+position = Vector2(96.00003, 136.00002)
+scale = Vector2(1312, 719)
 texture = SubResource("CanvasTexture_xfssl")
 centered = false
 
 [node name="ConeDispenser" type="Button" parent="."]
-offset_left = 275.0
+offset_left = 277.0
 offset_top = 699.0
-offset_right = 407.0
+offset_right = 409.0
 offset_bottom = 835.0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="ConeDispenser"]
@@ -732,10 +734,10 @@ tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 1, 0, 30, 0, 27, 0, 0,
 tile_set = SubResource("TileSet_twdh5")
 
 [node name="Chocolate" type="Button" parent="."]
-offset_left = 1167.0
-offset_top = 182.0
-offset_right = 1186.0
-offset_bottom = 200.0
+offset_left = 971.0
+offset_top = 182.00002
+offset_right = 990.0
+offset_bottom = 200.00002
 scale = Vector2(6, 6)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Chocolate"]
@@ -744,10 +746,10 @@ tile_map_data = PackedByteArray(0, 0, 1, 0, 0, 0, 1, 0, 15, 0, 19, 0, 0, 0)
 tile_set = SubResource("TileSet_twdh5")
 
 [node name="Vanilla" type="Button" parent="."]
-offset_left = 1309.0
-offset_top = 182.0
-offset_right = 1328.0
-offset_bottom = 200.0
+offset_left = 1113.0
+offset_top = 182.00002
+offset_right = 1132.0
+offset_bottom = 200.00002
 scale = Vector2(6, 6)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Vanilla"]
@@ -757,9 +759,9 @@ tile_set = SubResource("TileSet_twdh5")
 
 [node name="Cherry" type="Button" parent="."]
 top_level = true
-offset_left = 1642.0
+offset_left = 1237.0
 offset_top = 739.0
-offset_right = 1661.0
+offset_right = 1256.0
 offset_bottom = 757.0
 scale = Vector2(6, 6)
 
@@ -769,9 +771,9 @@ tile_map_data = PackedByteArray(0, 0, 1, 0, 0, 0, 1, 0, 21, 0, 21, 0, 0, 0)
 tile_set = SubResource("TileSet_twdh5")
 
 [node name="Sprinkles" type="Button" parent="."]
-offset_left = 1504.0
+offset_left = 1099.0
 offset_top = 734.0
-offset_right = 1523.0
+offset_right = 1118.0
 offset_bottom = 753.6667
 scale = Vector2(6, 6)
 
@@ -781,10 +783,10 @@ tile_map_data = PackedByteArray(0, 0, 1, 0, 0, 0, 1, 0, 23, 0, 21, 0, 0, 0)
 tile_set = SubResource("TileSet_twdh5")
 
 [node name="Strawberry" type="Button" parent="."]
-offset_left = 1447.0
-offset_top = 184.0
-offset_right = 1466.0
-offset_bottom = 202.0
+offset_left = 1251.0
+offset_top = 184.00002
+offset_right = 1270.0
+offset_bottom = 202.00002
 scale = Vector2(6, 6)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Strawberry"]
@@ -808,7 +810,7 @@ autostart = true
 
 [node name="ConeSprite" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(834, 573)
+position = Vector2(642, 573)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="ConeSprite"]
 collision_layer = 3
@@ -855,6 +857,7 @@ position = Vector2(58, 68)
 shape = SubResource("CircleShape2D_a75m5")
 
 [node name="SprinklesRaw" type="RigidBody2D" parent="."]
+visible = false
 position = Vector2(-2, 0)
 collision_layer = 2
 collision_mask = 2
@@ -871,12 +874,51 @@ position = Vector2(58, 68)
 shape = SubResource("CircleShape2D_a75m5")
 
 [node name="ClearEntities" type="Button" parent="."]
-offset_left = 117.0
+offset_left = 119.0
 offset_top = 703.0
-offset_right = 245.0
+offset_right = 247.0
 offset_bottom = 836.0
 text = "Clear Entities
 "
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1425.0
+offset_top = 136.0
+offset_right = 1794.0
+offset_bottom = 136.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_top = -4.0
+offset_right = 369.0
+offset_bottom = 719.0
+
+[node name="Order" type="VBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="OrderNumberPanel" type="PanelContainer" parent="Control/VBoxContainer/Order"]
+layout_mode = 2
+
+[node name="OrderNumber" type="RichTextLabel" parent="Control/VBoxContainer/Order/OrderNumberPanel"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "Order #1"
+fit_content = true
+
+[node name="OrderDetails" type="RichTextLabel" parent="Control/VBoxContainer/Order"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "Base: Vanilla
+Toppings: [Sprinkles, Cherry]"
+fit_content = true
+
+[node name="Button" type="Button" parent="Control/VBoxContainer/Order"]
+layout_mode = 2
+theme = SubResource("Theme_a75m5")
+theme_override_font_sizes/font_size = 20
+text = "Submit Order"
 
 [connection signal="button_down" from="Nozzle" to="." method="_on_nozzle_button_down"]
 [connection signal="button_up" from="Nozzle" to="." method="_on_nozzle_button_up"]
