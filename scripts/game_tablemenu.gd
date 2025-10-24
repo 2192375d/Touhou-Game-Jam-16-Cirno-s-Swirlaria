@@ -1,12 +1,20 @@
 extends Node2D
 
 @onready var conesprite = get_node("ConeSprite")
-
 @onready var sprinklesspriteraw = get_node("SprinklesRaw")
 @onready var cherryspriteraw = get_node("CherryRaw")
-
 @onready var creamraw = get_node("CreamRaw")
 @onready var nozzlebutton = get_node("Nozzle")
+@onready var vboxcontainer = get_node("Control/VBoxContainer")
+@onready var ordertemplate = get_node("Control/VBoxContainer/Order")
+@onready var flavortext = get_node("Control/CurrentFlavor/Flavor")
+
+var orders : Dictionary[int, Order] = {
+	1 : Order.new(["Chocolate", "Vanilla"], ["Cherry"]),
+	2 : Order.new(["Chocolate"], ["Cherry", "Sprinkles"]),
+	3 : Order.new(["Strawberry"], ["Sprinkles"])
+	}
+@export var inventory : Dictionary[String, int]
 
 var globalCone : Sprite2D = null
 var mousepos : Vector2
@@ -14,13 +22,38 @@ var currentTopping : RigidBody2D = null
 var clickingNozzle : bool
 var creamqueue : Array[RigidBody2D] = []
 var toppingqueue : Array[RigidBody2D] = []
+var currentcomposition : Dictionary[String, int]
+var currentFlavor : String
+
+func displayOrders():
+	var numorder = 1
+	print("Displaying orders")
+	print(orders)
+	for key in orders:
+		var order = orders[key]
+		var newordercomponent : VBoxContainer = ordertemplate.duplicate()
+		newordercomponent.visible = true
+		newordercomponent.get_node("OrderNumberPanel").get_node("OrderNumber").text = "Order Number " + str(numorder)
+		numorder+=1
+		newordercomponent.get_node("OrderDetails").text = "Bases : " + str(order.base) + '\nToppings : ' + str(order.ingredients)
+		newordercomponent.ordernumber = key
+		print(newordercomponent)
+		vboxcontainer.add_child(newordercomponent)
+
 
 func _ready():
 	conesprite.get_node("StaticBody2D").get_node("CollisionPolygon2D").disabled = true
 	creamraw.get_node("CollisionPolygon2D").disabled = true
-	cherryspriteraw.get_node("CollisionPolygon2D").disabled = true
+	cherryspriteraw.get_node("CollisionShape2D").disabled = true
+	sprinklesspriteraw.get_node("CollisionShape2D").disabled = true
+	displayOrders()
 	print("Hello World")
 
+func _on_order_orderfufilled(ordernumber : int) -> void:
+	print(orders)
+	orders.erase(ordernumber)
+	# cash out
+	
 func _input(event):
 	if event.is_action_pressed("mousedown"):
 		pass
@@ -30,7 +63,7 @@ func _input(event):
 			currentTopping.freeze = false;
 			currentTopping.linear_velocity = Vector2(0,0)
 			currentTopping.angular_velocity = 0
-			currentTopping.get_node("CollisionPolygon2D").disabled = false
+			currentTopping.get_node("CollisionShape2D").disabled = false
 			currentTopping = null;
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,14 +91,14 @@ func _on_cone_button_down() -> void:
 func _on_nozzle_button_down() -> void:
 	clickingNozzle = true
 func _on_nozzle_button_up() -> void:
-	clickingNozzle = false	
+	clickingNozzle = false
 	
 func _on_sprinkles_button_down() -> void:
 	currentTopping = sprinklesspriteraw.duplicate()
 	toppingqueue.append(currentTopping)
 	currentTopping.visible = true
 	currentTopping.freeze = true
-	currentTopping.get_node("CollisionPolygon2D").disabled = true
+	currentTopping.get_node("CollisionShape2D").disabled = true
 	add_child(currentTopping)
 	
 func _on_cherry_button_down() -> void:
@@ -73,7 +106,7 @@ func _on_cherry_button_down() -> void:
 	toppingqueue.append(currentTopping)
 	currentTopping.visible = true
 	currentTopping.freeze = true
-	currentTopping.get_node("CollisionPolygon2D").disabled = true
+	currentTopping.get_node("CollisionShape2D").disabled = true
 	add_child(currentTopping)
 	
 func _on_timer_timeout() -> void:
@@ -86,15 +119,29 @@ func _on_timer_timeout() -> void:
 		newcream.gravity_scale = 1.0
 		add_child(newcream)
 	
+func set_flavor(flavor : String):
+	var targetcolor : Color
+	match flavor:
+		"Chocolate":
+			targetcolor = Color(0.778, 0.5, 0.351, 1.0)
+		"Vanilla":
+			targetcolor = Color(1.0, 1.0, 1.0, 1.0)
+		"Strawberry":
+			targetcolor = Color(0.977, 0.63, 0.761, 1.0)
+	creamraw.get_node("Polygon2D").color = targetcolor
+	flavortext.add_theme_color_override("default_color", targetcolor)
+	currentFlavor = flavor
+	flavortext.text = flavor
+	
 func _on_chocolate_pressed() -> void:
-	creamraw.get_node("Polygon2D").color = Color(0.778, 0.5, 0.351, 1.0)
-
+	set_flavor("Chocolate")
+	
 func _on_vanilla_pressed() -> void:
-	creamraw.get_node("Polygon2D").color = Color(1.0, 1.0, 1.0, 1.0)
+	set_flavor("Vanilla")
 
 func _on_strawberry_pressed() -> void:
-	creamraw.get_node("Polygon2D").color = Color(0.977, 0.63, 0.761, 1.0)
-
+	set_flavor("Strawberry")
+	
 func _on_clear_entities_pressed() -> void:
 	for creamitem in creamqueue:
 		if (is_instance_valid(creamitem)):

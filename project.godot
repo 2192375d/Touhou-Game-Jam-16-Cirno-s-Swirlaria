@@ -22,6 +22,10 @@ window/size/viewport_height=1080
 window/size/mode=2
 window/size/resizable=false
 
+[editor_plugins]
+
+enabled=PackedStringArray()
+
 [input]
 
 mousedown={
