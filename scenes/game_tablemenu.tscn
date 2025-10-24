@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://coqyk8dykhr6g" path="res://scripts/game_tablemenu.gd" id="1_mi270"]
 [ext_resource type="Texture2D" uid="uid://bj064owr3b45d" path="res://assets/cirno-game.png" id="2_a75m5"]
 [ext_resource type="Script" uid="uid://0nom2r2weapd" path="res://scripts/cream_raw.gd" id="3_a75m5"]
+[ext_resource type="Texture2D" uid="uid://32n2a0ujd5hy" path="res://assets/tablebg.png" id="3_xfssl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hf3yf"]
 texture = ExtResource("2_a75m5")
@@ -278,8 +279,6 @@ texture = ExtResource("2_a75m5")
 
 [sub_resource type="TileSet" id="TileSet_twdh5"]
 sources/1 = SubResource("TileSetAtlasSource_hf3yf")
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_xfssl"]
 
 [sub_resource type="Shader" id="Shader_mi270"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.5.stable's ParticleProcessMaterial.
@@ -713,13 +712,11 @@ scale = Vector2(10, 10)
 tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 29, 0, 27, 0, 0, 0, 0, 0, 255, 255, 1, 0, 29, 0, 26, 0, 0, 0)
 tile_set = SubResource("TileSet_twdh5")
 
-[node name="background" type="Sprite2D" parent="."]
-modulate = Color(0.72156864, 0.98039216, 0.99607843, 1)
-z_index = -2
-position = Vector2(96.00003, 136.00002)
-scale = Vector2(1312, 719)
-texture = SubResource("CanvasTexture_xfssl")
-centered = false
+[node name="Tablebg" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(753, 496.5)
+scale = Vector2(1, 1.0308642)
+texture = ExtResource("3_xfssl")
 
 [node name="ConeDispenser" type="Button" parent="."]
 offset_left = 277.0

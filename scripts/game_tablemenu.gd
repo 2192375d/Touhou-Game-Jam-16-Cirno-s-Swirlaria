@@ -8,6 +8,9 @@ extends Node2D
 @onready var creamraw = get_node("CreamRaw")
 @onready var nozzlebutton = get_node("Nozzle")
 
+@export var orders = []
+
+
 var globalCone : Sprite2D = null
 var mousepos : Vector2
 var currentTopping : RigidBody2D = null
