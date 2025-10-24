@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 @export var movement_component: MovementComponent
 @export var animation_component: AnimationComponent
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://q8q6sdj65suu"]
 
 [ext_resource type="Texture2D" uid="uid://c6qxdo4h4qto5" path="res://assets/inventory.png" id="1_tahbm"]
-[ext_resource type="PackedScene" uid="uid://dlrgcegmr2sgj" path="res://scenes/inventory_slot_ui.tscn" id="2_ylkvr"]
+[ext_resource type="PackedScene" uid="uid://dlrgcegmr2sgj" path="res://scenes/overworld/inventory_slot_ui.tscn" id="2_ylkvr"]
 
 [node name="inventory-ui" type="Control"]
 layout_mode = 3
