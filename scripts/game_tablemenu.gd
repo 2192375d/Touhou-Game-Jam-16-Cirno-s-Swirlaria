@@ -260,3 +260,7 @@ func clear_entities() -> void:
 	
 func _on_clear_entities_pressed() -> void:
 	reset_state()
+
+func _on_return_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/overworld/game_overworld.tscn")
+	
