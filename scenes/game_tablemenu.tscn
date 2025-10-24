@@ -949,7 +949,6 @@ layout_mode = 2
 
 [node name="CheckBox" type="CheckBox" parent="Control/VBoxContainer/Order/HBoxContainer"]
 layout_mode = 2
-toggle_mode = false
 
 [node name="Ingredient" type="RichTextLabel" parent="Control/VBoxContainer/Order/HBoxContainer"]
 layout_mode = 2
@@ -1089,7 +1088,6 @@ tile_set = SubResource("TileSet_twdh5")
 position = Vector2(41, 52)
 shape = SubResource("CircleShape2D_a75m5")
 
-[connection signal="send_ingredients" from="." to="Control/VBoxContainer/Order" method="_on_game_tablemenu_send_ingredients"]
 [connection signal="button_down" from="Nozzle" to="." method="_on_nozzle_button_down"]
 [connection signal="button_up" from="Nozzle" to="." method="_on_nozzle_button_up"]
 [connection signal="button_down" from="ConeDispenser" to="." method="_on_cone_button_down"]
