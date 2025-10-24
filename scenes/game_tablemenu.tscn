@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b468oxcelg53b"]
+[gd_scene load_steps=9 format=3 uid="uid://b468oxcelg53b"]
 
 [ext_resource type="Script" uid="uid://coqyk8dykhr6g" path="res://scripts/game_tablemenu.gd" id="1_mi270"]
 [ext_resource type="Texture2D" uid="uid://bj064owr3b45d" path="res://assets/cirno-game.png" id="2_a75m5"]
+[ext_resource type="Script" uid="uid://0nom2r2weapd" path="res://scenes/cream_raw.gd" id="3_a75m5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hf3yf"]
 texture = ExtResource("2_a75m5")
@@ -797,16 +798,7 @@ amount = 10
 lifetime = 5.0
 process_material = SubResource("ShaderMaterial_a75m5")
 
-[node name="CherryRaw" type="Sprite2D" parent="."]
-position = Vector2(569, 512)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="CherryRaw"]
-visible = false
-scale = Vector2(6, 6)
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 21, 0, 21, 0, 0, 0)
-tile_set = SubResource("TileSet_twdh5")
-
-[node name="Timer" type="Timer" parent="."]
+[node name="NozzleTimer" type="Timer" parent="."]
 process_callback = 0
 wait_time = 0.1
 autostart = true
@@ -815,36 +807,83 @@ autostart = true
 visible = false
 position = Vector2(834, 573)
 
-[node name="TileMapLayer2" type="TileMapLayer" parent="ConeSprite"]
-position = Vector2(-96.565186, -4.6328125)
-scale = Vector2(22.902683, 20.319597)
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 30, 0, 27, 0, 0, 0)
-tile_set = SubResource("TileSet_twdh5")
-
 [node name="StaticBody2D" type="StaticBody2D" parent="ConeSprite"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ConeSprite/StaticBody2D"]
-polygon = PackedVector2Array(17, 16, 2, -76, 20, -7, 39, 15, 41, 37, 61, 34, 64, 53, 131, 54, 134, 36, 154, 36, 156, 16, 174, -4, 197, -82, 178, 16, 100, 277)
+polygon = PackedVector2Array(17, 16, 2, -76, 1, -139, 6, -173, 8, -59, 20, -7, 39, 15, 41, 37, 61, 34, 64, 53, 131, 54, 134, 36, 154, 36, 156, 16, 174, -4, 188, -70, 185, -170, 191, -144, 197, -82, 178, 16, 100, 277)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="ConeSprite"]
+position = Vector2(-67.00049, -4.000122)
+scale = Vector2(20, 20)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 30, 0, 27, 0, 0, 0)
+tile_set = SubResource("TileSet_twdh5")
 
 [node name="CreamRaw" type="RigidBody2D" parent="."]
 visible = false
 position = Vector2(933.9999, 332)
 mass = 2.0
 freeze = true
+script = ExtResource("3_a75m5")
 
 [node name="Polygon2D" type="Polygon2D" parent="CreamRaw"]
 position = Vector2(-50.999886, -10.000016)
 scale = Vector2(109.72207, 104.46425)
-color = Color(0.9833252, 0.50549155, 0.6749618, 1)
 polygon = PackedVector2Array(0.46835423, 0.093333244, 0.556962, 0.17333317, 0.5822787, 0.2666669, 0.556962, 0.38666677, 0.46835423, 0.4666667, 0.3797469, 0.38666677, 0.3544302, 0.29333353, 0.3797469, 0.15999985)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CreamRaw"]
 scale = Vector2(101.49304, 100.69441)
 polygon = PackedVector2Array(0, 0, -0.11392403, 0.18666649, 0, 0.36000013, 0.11392403, 0.17333317)
 
+[node name="CherryRaw" type="RigidBody2D" parent="."]
+visible = false
+position = Vector2(-1, 0)
+freeze = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="CherryRaw"]
+position = Vector2(-5.000061, 1.0000019)
+scale = Vector2(6, 6)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 21, 0, 21, 0, 0, 0)
+tile_set = SubResource("TileSet_twdh5")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CherryRaw"]
+position = Vector2(7, -2)
+polygon = PackedVector2Array(20, 103, 58.742493, 96.71744, 94, 91, 77, 64, 26, 73)
+
+[node name="SprinklesRaw" type="RigidBody2D" parent="."]
+visible = false
+position = Vector2(-2, 0)
+collision_layer = 2
+collision_mask = 2
+freeze = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="SprinklesRaw"]
+position = Vector2(-5.000061, 1.0000019)
+scale = Vector2(6, 6)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 23, 0, 21, 0, 0, 0)
+tile_set = SubResource("TileSet_twdh5")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SprinklesRaw"]
+position = Vector2(7, -2)
+polygon = PackedVector2Array(20, 103, 58.742493, 96.71744, 94, 91, 77, 64, 26, 73)
+
+[node name="ClearEntities" type="Button" parent="."]
+offset_left = 117.0
+offset_top = 703.0
+offset_right = 245.0
+offset_bottom = 836.0
+text = "Clear Entities
+"
+
 [connection signal="button_down" from="Nozzle" to="." method="_on_nozzle_button_down"]
 [connection signal="button_up" from="Nozzle" to="." method="_on_nozzle_button_up"]
 [connection signal="button_down" from="ConeDispenser" to="." method="_on_cone_button_down"]
+[connection signal="pressed" from="Chocolate" to="." method="_on_chocolate_pressed"]
+[connection signal="pressed" from="Vanilla" to="." method="_on_vanilla_pressed"]
 [connection signal="button_down" from="Cherry" to="." method="_on_cherry_button_down"]
 [connection signal="button_up" from="Cherry" to="." method="_on_cherry_button_up"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="button_down" from="Sprinkles" to="." method="_on_sprinkles_button_down"]
+[connection signal="pressed" from="Strawberry" to="." method="_on_strawberry_pressed"]
+[connection signal="timeout" from="NozzleTimer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="ClearEntities" to="." method="_on_clear_entities_pressed"]
