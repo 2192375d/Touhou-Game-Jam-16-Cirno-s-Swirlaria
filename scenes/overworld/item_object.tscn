@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2nxjqp786ppc"]
+
+[ext_resource type="Script" uid="uid://dwurcaeais01q" path="res://scripts/overworld/item/object-interact-component.gd" id="1_2gyli"]
+[ext_resource type="Script" uid="uid://clnfeb1t6s7jo" path="res://scripts/overworld/item/item-object.gd" id="1_bev1n"]
+[ext_resource type="Resource" uid="uid://crnrqykb06qvm" path="res://inventory/Inventory.tres" id="5_tbvmv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7c603"]
+radius = 56.0
+
+[node name="item-object" type="Node2D" node_paths=PackedStringArray("object_interact_component", "icon")]
+z_index = 1
+script = ExtResource("1_bev1n")
+object_interact_component = NodePath("ObjectInteractComponent")
+inventory = ExtResource("5_tbvmv")
+icon = NodePath("Sprite2D")
+
+[node name="ObjectInteractComponent" type="Node" parent="." node_paths=PackedStringArray("area")]
+script = ExtResource("1_2gyli")
+area = NodePath("../Area2D")
+metadata/_custom_type_script = "uid://dwurcaeais01q"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_7c603")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4.5, 4.5)

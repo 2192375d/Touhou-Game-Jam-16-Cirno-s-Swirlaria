@@ -15,6 +15,10 @@ run/main_scene="uid://b5vmw5yaggpul"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalSignal="*res://scripts/singletons/global-signal.gd"
+
 [display]
 
 window/size/viewport_width=1920

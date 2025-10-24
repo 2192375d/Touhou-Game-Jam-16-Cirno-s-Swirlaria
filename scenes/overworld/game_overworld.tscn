@@ -1,6 +1,6 @@
-[gd_scene load_steps=32 format=4 uid="uid://b5vmw5yaggpul"]
+[gd_scene load_steps=31 format=4 uid="uid://b5vmw5yaggpul"]
 
-[ext_resource type="Script" uid="uid://cbtuiddnq12ki" path="res://scripts/overworld/game_overworld.gd" id="1_5fxal"]
+[ext_resource type="Script" uid="uid://cbtuiddnq12ki" path="res://scripts/overworld/game-overworld.gd" id="1_5fxal"]
 [ext_resource type="PackedScene" uid="uid://bwlta6mv2bg45" path="res://scenes/overworld/cirno.tscn" id="1_12nxy"]
 [ext_resource type="Texture2D" uid="uid://b2xtxyvb6ngh7" path="res://assets/tileset.png" id="2_5fxal"]
 [ext_resource type="Texture2D" uid="uid://nn0lhhorwjbk" path="res://assets/tileset2.png" id="3_3fiod"]
@@ -8,12 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://2745gj6i4xmq" path="res://scenes/overworld/tv.tscn" id="5_m3bv7"]
 [ext_resource type="PackedScene" uid="uid://bctpqqwul4t2y" path="res://scenes/overworld/table.tscn" id="6_5dcic"]
 [ext_resource type="PackedScene" uid="uid://dlrgcegmr2sgj" path="res://scenes/overworld/inventory_slot_ui.tscn" id="7_jx2ri"]
-[ext_resource type="Script" uid="uid://482a1jor3u2o" path="res://scripts/overworld/item-spawner.gd" id="9_5fxal"]
+[ext_resource type="Script" uid="uid://482a1jor3u2o" path="res://scripts/overworld/item/item-spawner.gd" id="9_5fxal"]
 [ext_resource type="Script" uid="uid://c6nqgxpv81pby" path="res://inventory/items/item.gd" id="10_5dcic"]
 [ext_resource type="Resource" uid="uid://igy4yb45c2x0" path="res://inventory/items/chocolate.tres" id="11_jx2ri"]
 [ext_resource type="Resource" uid="uid://dn8hgabwko4up" path="res://inventory/items/vanilla.tres" id="12_5kwjv"]
 [ext_resource type="Resource" uid="uid://cx8ktkfodwy7" path="res://inventory/items/strawberry.tres" id="13_mkpr1"]
-[ext_resource type="PackedScene" uid="uid://c2nxjqp786ppc" path="res://scenes/overworld/chocolate_object.tscn" id="14_jx2ri"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rnjyy"]
 texture = ExtResource("2_5fxal")
@@ -134,6 +133,7 @@ position = Vector2(0, 64)
 shape = SubResource("SegmentShape2D_rnjyy")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="invisible-wall"]
+position = Vector2(-69, -100)
 shape = SubResource("SegmentShape2D_4vge2")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="invisible-wall"]
@@ -207,23 +207,30 @@ scale = Vector2(4, 4)
 [node name="inventory-slot-ui" parent="inventory" instance=ExtResource("7_jx2ri")]
 offset_left = 1752.0
 offset_top = 136.0
-offset_right = 1815.68
-offset_bottom = 200.04001
+offset_right = 1839.68
+offset_bottom = 224.04001
+item = ExtResource("11_jx2ri")
 
 [node name="inventory-slot-ui2" parent="inventory" instance=ExtResource("7_jx2ri")]
 offset_left = 1752.0
-offset_top = 256.0
-offset_right = 1815.68
-offset_bottom = 328.04
+offset_top = 272.0
+offset_right = 1839.68
+offset_bottom = 360.04
+item = ExtResource("12_5kwjv")
+
+[node name="inventory-slot-ui3" parent="inventory" instance=ExtResource("7_jx2ri")]
+offset_left = 1752.0
+offset_top = 416.0
+offset_right = 1839.68
+offset_bottom = 504.04
+item = ExtResource("13_mkpr1")
 
 [node name="item-spawner" type="Node" parent="." node_paths=PackedStringArray("spawnTimer")]
 script = ExtResource("9_5fxal")
 spawnTimer = NodePath("Timer")
 items = Array[ExtResource("10_5dcic")]([ExtResource("11_jx2ri"), ExtResource("12_5kwjv"), ExtResource("13_mkpr1")])
+MAX_NUM_ITEM = 4
 
 [node name="Timer" type="Timer" parent="item-spawner"]
-
-[node name="chocolate-object" parent="." instance=ExtResource("14_jx2ri")]
-position = Vector2(1019, 825)
 
 [connection signal="timeout" from="item-spawner/Timer" to="item-spawner" method="_on_timer_timeout"]
