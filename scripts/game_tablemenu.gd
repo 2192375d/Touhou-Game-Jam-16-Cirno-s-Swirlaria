@@ -3,19 +3,45 @@ extends Node2D
 @onready var conesprite = get_node("ConeSprite")
 @onready var sprinklesspriteraw = get_node("SprinklesRaw")
 @onready var cherryspriteraw = get_node("CherryRaw")
+@onready var bananaraw = get_node("BananaRaw")
+@onready var crispraw = get_node("CrispRaw")
 @onready var creamraw = get_node("CreamRaw")
 @onready var nozzlebutton = get_node("Nozzle")
 @onready var vboxcontainer = get_node("Control/VBoxContainer")
 @onready var ordertemplate = get_node("Control/VBoxContainer/Order")
+@onready var orderingredienttemplate = get_node("Control/VBoxContainer/Order/HBoxContainer")
 @onready var flavortext = get_node("Control/CurrentFlavor/Flavor")
+@onready var inventorycontainer = get_node("Control/InventoryContainer")
+@onready var ingredientcontainertemplate = get_node("Control/InventoryContainer/IngredientContainer")
 
+signal send_ingredients(ingredientsdict : Dictionary[String, int])
+
+# Imported from other scene
 var orders : Dictionary[int, Order] = {
-	1 : Order.new(["Chocolate", "Vanilla"], ["Cherry"]),
-	2 : Order.new(["Chocolate"], ["Cherry", "Sprinkles"]),
-	3 : Order.new(["Strawberry"], ["Sprinkles"])
+	1 : Order.new({"Chocolate" : 10, "Vanilla" : 5, "Cherry" : 2}),
+	2 : Order.new({"Vanilla" : 5, "Sprinkles" : 3, "Crisp" : 1}),
+	3 : Order.new({"Strawberry" : 10, "Vanilla" : 5, "Crisp" : 2}),
 	}
-@export var inventory : Dictionary[String, int]
+#@export var inventory : Dictionary[String, int]	
+var inventory : Dictionary[String, int] = {
+	"Chocolate" : 20,
+	"Vanilla" : 20,
+	"Strawberry" : 20,
+	"Sprinkles" : 10,
+	"Cherry" : 10,
+	"Banana" : 10,
+	"Crisp" : 10,
+}
 
+# const
+const toppingpositions = {
+	"Cherry" : [Vector2i(0,0), Vector2i(0,1), Vector2i(1,0), Vector2i(1,1)],
+	"Sprinkles" : [Vector2i(2,0), Vector2i(3,0), Vector2i(2,1), Vector2i(3,1), Vector2i(2,2), Vector2i(3,2), Vector2i(2,3), Vector2i(3,3), Vector2i(3,5)],
+	"Banana" : [Vector2i(0,2), Vector2i(0,3), Vector2i(0,5)],
+	"Crisp" : [Vector2i(1,2), Vector2i(1,3)],
+}
+
+# bss
 var globalCone : Sprite2D = null
 var mousepos : Vector2
 var currentTopping : RigidBody2D = null
@@ -23,23 +49,47 @@ var clickingNozzle : bool
 var creamqueue : Array[RigidBody2D] = []
 var toppingqueue : Array[RigidBody2D] = []
 var currentcomposition : Dictionary[String, int]
-var currentFlavor : String
+var currentFlavor : String = "Vanilla"
+var inventoryhandles : Dictionary[String, PanelContainer]
 
 func displayOrders():
-	var numorder = 1
 	print("Displaying orders")
 	print(orders)
 	for key in orders:
 		var order = orders[key]
 		var newordercomponent : VBoxContainer = ordertemplate.duplicate()
 		newordercomponent.visible = true
-		newordercomponent.get_node("OrderNumberPanel").get_node("OrderNumber").text = "Order Number " + str(numorder)
-		numorder+=1
-		newordercomponent.get_node("OrderDetails").text = "Bases : " + str(order.base) + '\nToppings : ' + str(order.ingredients)
+		newordercomponent.ingredients = orders[key].ingredients
+		# iterate through the items within order
+		for k in orders[key].ingredients:
+			var newingredientcomponent : HBoxContainer = orderingredienttemplate.duplicate()
+			newingredientcomponent.visible = true
+			newingredientcomponent.get_node("Ingredient").text = k
+			newingredientcomponent.get_node("Amount").text = str(orders[key].ingredients[k])
+			newordercomponent.add_child(newingredientcomponent)
+		newordercomponent.get_node("OrderNumberPanel").get_node("OrderNumber").text = "Order #" + str(key)
+		newordercomponent.move_child(newordercomponent.get_node("Button"), newordercomponent.get_child_count() -1)
 		newordercomponent.ordernumber = key
-		print(newordercomponent)
 		vboxcontainer.add_child(newordercomponent)
+		
+func setup_inventory_display() -> void:
+	for key in inventory:
+		print(key)
+		var newingredientcomponent = ingredientcontainertemplate.duplicate()
+		newingredientcomponent.get_node("HBoxContainer").get_node("Ingredient").text = key
+		newingredientcomponent.get_node("HBoxContainer").get_node("Amount").text = str(inventory[key])
+		newingredientcomponent.visible = true
+		inventorycontainer.add_child(newingredientcomponent)
+		# save for later use
+		inventoryhandles[key] = newingredientcomponent
 
+func update_inventory(key : String, change : int) -> void:
+	inventory[key] += change
+	for k in inventory:
+		var newingredientcomponent = inventoryhandles[k]
+		newingredientcomponent.get_node("HBoxContainer").get_node("Ingredient").text = k
+		newingredientcomponent.get_node("HBoxContainer").get_node("Amount").text = str(inventory[k])
+	# check to see if any checkmarks are good
 
 func _ready():
 	conesprite.get_node("StaticBody2D").get_node("CollisionPolygon2D").disabled = true
@@ -47,10 +97,10 @@ func _ready():
 	cherryspriteraw.get_node("CollisionShape2D").disabled = true
 	sprinklesspriteraw.get_node("CollisionShape2D").disabled = true
 	displayOrders()
+	setup_inventory_display()
 	print("Hello World")
 
 func _on_order_orderfufilled(ordernumber : int) -> void:
-	print(orders)
 	orders.erase(ordernumber)
 	# cash out
 	
@@ -92,25 +142,45 @@ func _on_nozzle_button_down() -> void:
 	clickingNozzle = true
 func _on_nozzle_button_up() -> void:
 	clickingNozzle = false
+
+func add_topping(toppingname : String) -> void:
+	update_inventory(toppingname, -1)
+	match toppingname:
+		"Sprinkles":
+			currentTopping = sprinklesspriteraw.duplicate()
+		"Cherry":
+			currentTopping = cherryspriteraw.duplicate()
+		"Banana":
+			currentTopping = bananaraw.duplicate()
+		"Crisp":
+			currentTopping = crispraw.duplicate()
+	var tilemap : TileMapLayer = currentTopping.get_node("TileMapLayer") 
+	tilemap.set_cell(Vector2i(0,0),0,toppingpositions[toppingname].pick_random())
+	toppingqueue.append(currentTopping)
+	currentTopping.visible = true
+	currentTopping.freeze = true
+	currentTopping.get_node("CollisionShape2D").disabled = true
+	add_child(currentTopping)
+	
 	
 func _on_sprinkles_button_down() -> void:
-	currentTopping = sprinklesspriteraw.duplicate()
-	toppingqueue.append(currentTopping)
-	currentTopping.visible = true
-	currentTopping.freeze = true
-	currentTopping.get_node("CollisionShape2D").disabled = true
-	add_child(currentTopping)
+	add_topping("Sprinkles")
 	
 func _on_cherry_button_down() -> void:
-	currentTopping = cherryspriteraw.duplicate()
-	toppingqueue.append(currentTopping)
-	currentTopping.visible = true
-	currentTopping.freeze = true
-	currentTopping.get_node("CollisionShape2D").disabled = true
-	add_child(currentTopping)
+	add_topping("Cherry")
+	
+func _on_banana_button_down() -> void:
+	add_topping("Banana")
+
+
+func _on_crisp_button_down() -> void:
+	add_topping("Crisp")
+
+
 	
 func _on_timer_timeout() -> void:
-	if clickingNozzle:
+	if clickingNozzle and inventory[currentFlavor] > 0:
+		update_inventory(currentFlavor, -1)
 		var newcream = creamraw.duplicate()
 		creamqueue.append(newcream)
 		newcream.visible = true
