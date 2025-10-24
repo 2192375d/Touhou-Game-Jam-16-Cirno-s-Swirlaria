@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b468oxcelg53b"]
+[gd_scene load_steps=10 format=3 uid="uid://b468oxcelg53b"]
 
 [ext_resource type="Script" uid="uid://coqyk8dykhr6g" path="res://scripts/game_tablemenu.gd" id="1_mi270"]
 [ext_resource type="Texture2D" uid="uid://bj064owr3b45d" path="res://assets/cirno-game.png" id="2_a75m5"]
@@ -693,6 +693,9 @@ shader_parameter/gravity = Vector3(0, 98, 0)
 shader_parameter/collision_friction = 0.34
 shader_parameter/collision_bounce = 0.2
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_a75m5"]
+radius = 20.024984
+
 [node name="GameTablemenu" type="Node2D"]
 script = ExtResource("1_mi270")
 
@@ -847,12 +850,11 @@ scale = Vector2(6, 6)
 tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 21, 0, 21, 0, 0, 0)
 tile_set = SubResource("TileSet_twdh5")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CherryRaw"]
-position = Vector2(7, -2)
-polygon = PackedVector2Array(20, 103, 58.742493, 96.71744, 94, 91, 77, 64, 26, 73)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CherryRaw"]
+position = Vector2(58, 68)
+shape = SubResource("CircleShape2D_a75m5")
 
 [node name="SprinklesRaw" type="RigidBody2D" parent="."]
-visible = false
 position = Vector2(-2, 0)
 collision_layer = 2
 collision_mask = 2
@@ -864,9 +866,9 @@ scale = Vector2(6, 6)
 tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 23, 0, 21, 0, 0, 0)
 tile_set = SubResource("TileSet_twdh5")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SprinklesRaw"]
-position = Vector2(7, -2)
-polygon = PackedVector2Array(20, 103, 58.742493, 96.71744, 94, 91, 77, 64, 26, 73)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SprinklesRaw"]
+position = Vector2(58, 68)
+shape = SubResource("CircleShape2D_a75m5")
 
 [node name="ClearEntities" type="Button" parent="."]
 offset_left = 117.0

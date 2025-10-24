@@ -18,7 +18,8 @@ var toppingqueue : Array[RigidBody2D] = []
 func _ready():
 	conesprite.get_node("StaticBody2D").get_node("CollisionPolygon2D").disabled = true
 	creamraw.get_node("CollisionPolygon2D").disabled = true
-	cherryspriteraw.get_node("CollisionPolygon2D").disabled = true
+	cherryspriteraw.get_node("CollisionShape2D").disabled = true
+	sprinklesspriteraw.get_node("CollisionShape2D").disabled = true
 	print("Hello World")
 
 func _input(event):
@@ -30,7 +31,7 @@ func _input(event):
 			currentTopping.freeze = false;
 			currentTopping.linear_velocity = Vector2(0,0)
 			currentTopping.angular_velocity = 0
-			currentTopping.get_node("CollisionPolygon2D").disabled = false
+			currentTopping.get_node("CollisionShape2D").disabled = false
 			currentTopping = null;
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -65,7 +66,7 @@ func _on_sprinkles_button_down() -> void:
 	toppingqueue.append(currentTopping)
 	currentTopping.visible = true
 	currentTopping.freeze = true
-	currentTopping.get_node("CollisionPolygon2D").disabled = true
+	currentTopping.get_node("CollisionShape2D").disabled = true
 	add_child(currentTopping)
 	
 func _on_cherry_button_down() -> void:
@@ -73,7 +74,7 @@ func _on_cherry_button_down() -> void:
 	toppingqueue.append(currentTopping)
 	currentTopping.visible = true
 	currentTopping.freeze = true
-	currentTopping.get_node("CollisionPolygon2D").disabled = true
+	currentTopping.get_node("CollisionShape2D").disabled = true
 	add_child(currentTopping)
 	
 func _on_timer_timeout() -> void:
