@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bctpqqwul4t2y"]
+[gd_scene load_steps=6 format=3 uid="uid://bctpqqwul4t2y"]
 
 [ext_resource type="Texture2D" uid="uid://dhndm8ckrmmjv" path="res://assets/table.png" id="1_02ppr"]
+[ext_resource type="Script" uid="uid://im233yc4ckhv" path="res://scenes/overworld/table.gd" id="1_i3xft"]
 [ext_resource type="Script" uid="uid://dwurcaeais01q" path="res://scripts/overworld/item/object-interact-component.gd" id="2_eotx8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02ppr"]
@@ -11,6 +12,7 @@ radius = 16.0
 height = 64.0
 
 [node name="table" type="StaticBody2D"]
+script = ExtResource("1_i3xft")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_02ppr")
@@ -22,6 +24,7 @@ shape = SubResource("RectangleShape2D_02ppr")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 0)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_02ppr")
 debug_color = Color(0.99197274, 0, 0.26462436, 0.41960785)
@@ -29,3 +32,11 @@ debug_color = Color(0.99197274, 0, 0.26462436, 0.41960785)
 [node name="object-interact-component" type="Node" parent="." node_paths=PackedStringArray("area")]
 script = ExtResource("2_eotx8")
 area = NodePath("../Area2D")
+
+[node name="HoverSprite" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+z_index = -1
+position = Vector2(9.536743e-07, 0.49999958)
+scale = Vector2(1.0833333, 1.173913)
+texture = ExtResource("1_02ppr")

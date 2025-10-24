@@ -4,6 +4,7 @@ class_name ObjectInteractComponent
 
 @export var area: Area2D
 @onready var inArea: bool = false
+
 signal interacted()
 
 func _ready() -> void:

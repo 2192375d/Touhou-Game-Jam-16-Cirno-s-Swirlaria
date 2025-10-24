@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgpjxxqd7xhv4"]
+
+[ext_resource type="Script" uid="uid://dlaxf8vi2avf6" path="res://scripts/overworld/display/tooltips.gd" id="1_1fklc"]
+
+[node name="Tooltips" type="Node2D"]
+script = ExtResource("1_1fklc")
+
+[node name="GeneralText" type="PanelContainer" parent="."]
+z_index = 100
+z_as_relative = false
+offset_left = 713.0
+offset_top = 745.0
+offset_right = 1076.0
+offset_bottom = 829.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GeneralText"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "Space to Interact"
+horizontal_alignment = 1
+vertical_alignment = 1
