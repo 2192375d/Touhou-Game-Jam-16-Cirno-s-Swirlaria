@@ -1,17 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlrgcegmr2sgj"]
+[gd_scene load_steps=4 format=3 uid="uid://dlrgcegmr2sgj"]
 
+[ext_resource type="Script" uid="uid://mn84kowk5yby" path="res://scripts/overworld/display/inventory-slot-ui.gd" id="1_534gn"]
 [ext_resource type="Texture2D" uid="uid://btqt3rtc5p0xk" path="res://assets/inventory-slot.png" id="1_vra1j"]
+[ext_resource type="Resource" uid="uid://crnrqykb06qvm" path="res://inventory/Inventory.tres" id="2_mqbak"]
 
-[node name="inventory-slot-ui" type="Panel"]
+[node name="inventory-slot-ui" type="Panel" node_paths=PackedStringArray("item_display", "label")]
 anchors_preset = -1
 anchor_right = 0.021000002
 anchor_bottom = 0.037
-offset_right = -0.3200035
-offset_bottom = 0.040000916
+offset_right = 87.67999
+offset_bottom = 88.04
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_534gn")
+inventory = ExtResource("2_mqbak")
+item_display = NodePath("TextureRect/icon")
+label = NodePath("TextureRect/Label")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(40, 40)
@@ -22,3 +28,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_vra1j")
+
+[node name="icon" type="Sprite2D" parent="TextureRect"]
+position = Vector2(8, 8)
+scale = Vector2(7.5, 7.5)
+centered = false
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.82500005
+anchor_top = 0.748
+anchor_right = 1.075
+anchor_bottom = 1.325
+offset_top = 0.07999802
+text = "1"
