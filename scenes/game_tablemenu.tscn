@@ -703,13 +703,14 @@ script = ExtResource("1_mi270")
 
 [node name="Nozzle" type="Button" parent="."]
 offset_left = 660.00006
-offset_top = 131.99998
+offset_top = 135.0
 offset_right = 824.0
-offset_bottom = 318.0
+offset_bottom = 348.0
 
 [node name="TileMap" type="TileMapLayer" parent="Nozzle"]
+position = Vector2(4, 73.000015)
 scale = Vector2(10, 10)
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 29, 0, 27, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 29, 0, 27, 0, 0, 0, 0, 0, 255, 255, 1, 0, 29, 0, 26, 0, 0, 0)
 tile_set = SubResource("TileSet_twdh5")
 
 [node name="background" type="Sprite2D" parent="."]
