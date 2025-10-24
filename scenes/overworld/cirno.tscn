@@ -1,10 +1,10 @@
 [gd_scene load_steps=28 format=3 uid="uid://bwlta6mv2bg45"]
 
-[ext_resource type="Script" uid="uid://c2sn30movidck" path="res://scripts/cirno.gd" id="1_7scum"]
+[ext_resource type="Script" uid="uid://c2sn30movidck" path="res://scripts/overworld/cirno.gd" id="1_7scum"]
 [ext_resource type="Texture2D" uid="uid://dqa0vkh75kguf" path="res://assets/cirno-walk.png" id="1_mjcn1"]
 [ext_resource type="Resource" uid="uid://crnrqykb06qvm" path="res://inventory/Inventory.tres" id="2_qsjrn"]
-[ext_resource type="Script" uid="uid://781y04xhlelq" path="res://scripts/movement-component.gd" id="3_lm1go"]
-[ext_resource type="Script" uid="uid://bmuowhti2qy1o" path="res://scripts/animation-component.gd" id="4_a5a0l"]
+[ext_resource type="Script" uid="uid://781y04xhlelq" path="res://scripts/overworld/movement-component.gd" id="3_lm1go"]
+[ext_resource type="Script" uid="uid://bmuowhti2qy1o" path="res://scripts/overworld/animation-component.gd" id="4_a5a0l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ubwrc"]
 atlas = ExtResource("1_mjcn1")

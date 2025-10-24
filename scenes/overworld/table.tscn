@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bctpqqwul4t2y"]
+[gd_scene load_steps=5 format=3 uid="uid://bctpqqwul4t2y"]
 
 [ext_resource type="Texture2D" uid="uid://dhndm8ckrmmjv" path="res://assets/table.png" id="1_02ppr"]
+[ext_resource type="Script" uid="uid://dwurcaeais01q" path="res://scripts/overworld/object-interact-component.gd" id="2_eotx8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02ppr"]
 size = Vector2(48, 13)
@@ -24,3 +25,7 @@ shape = SubResource("RectangleShape2D_02ppr")
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_02ppr")
 debug_color = Color(0.99197274, 0, 0.26462436, 0.41960785)
+
+[node name="object-interact-component" type="Node" parent="." node_paths=PackedStringArray("area")]
+script = ExtResource("2_eotx8")
+area = NodePath("../Area2D")

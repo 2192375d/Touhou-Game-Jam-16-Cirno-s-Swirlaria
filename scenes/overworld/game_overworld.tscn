@@ -1,17 +1,22 @@
-[gd_scene load_steps=27 format=4 uid="uid://b5vmw5yaggpul"]
+[gd_scene load_steps=32 format=4 uid="uid://b5vmw5yaggpul"]
 
-[ext_resource type="PackedScene" uid="uid://bwlta6mv2bg45" path="res://scenes/cirno.tscn" id="1_6e84v"]
-[ext_resource type="Texture2D" uid="uid://b2xtxyvb6ngh7" path="res://assets/tileset.png" id="2_4dvvg"]
-[ext_resource type="Resource" uid="uid://crnrqykb06qvm" path="res://inventory/Inventory.tres" id="2_4vge2"]
-[ext_resource type="Texture2D" uid="uid://nn0lhhorwjbk" path="res://assets/tileset2.png" id="3_rnjyy"]
-[ext_resource type="Texture2D" uid="uid://b873vlmfq4ou0" path="res://assets/tileset3.png" id="4_hh0fu"]
-[ext_resource type="PackedScene" uid="uid://2745gj6i4xmq" path="res://scenes/tv.tscn" id="5_04qyp"]
-[ext_resource type="PackedScene" uid="uid://bctpqqwul4t2y" path="res://scenes/table.tscn" id="6_j7wrs"]
-[ext_resource type="PackedScene" uid="uid://dlrgcegmr2sgj" path="res://scenes/inventory_slot_ui.tscn" id="7_fws66"]
-[ext_resource type="PackedScene" uid="uid://bktuhkd126rxu" path="res://scenes/item_box_chocolate.tscn" id="9_3m5ht"]
+[ext_resource type="Script" uid="uid://cbtuiddnq12ki" path="res://scripts/overworld/game_overworld.gd" id="1_5fxal"]
+[ext_resource type="PackedScene" uid="uid://bwlta6mv2bg45" path="res://scenes/overworld/cirno.tscn" id="1_12nxy"]
+[ext_resource type="Texture2D" uid="uid://b2xtxyvb6ngh7" path="res://assets/tileset.png" id="2_5fxal"]
+[ext_resource type="Texture2D" uid="uid://nn0lhhorwjbk" path="res://assets/tileset2.png" id="3_3fiod"]
+[ext_resource type="Texture2D" uid="uid://b873vlmfq4ou0" path="res://assets/tileset3.png" id="4_tmduo"]
+[ext_resource type="PackedScene" uid="uid://2745gj6i4xmq" path="res://scenes/overworld/tv.tscn" id="5_m3bv7"]
+[ext_resource type="PackedScene" uid="uid://bctpqqwul4t2y" path="res://scenes/overworld/table.tscn" id="6_5dcic"]
+[ext_resource type="PackedScene" uid="uid://dlrgcegmr2sgj" path="res://scenes/overworld/inventory_slot_ui.tscn" id="7_jx2ri"]
+[ext_resource type="Script" uid="uid://482a1jor3u2o" path="res://scripts/overworld/item-spawner.gd" id="9_5fxal"]
+[ext_resource type="Script" uid="uid://c6nqgxpv81pby" path="res://inventory/items/item.gd" id="10_5dcic"]
+[ext_resource type="Resource" uid="uid://igy4yb45c2x0" path="res://inventory/items/chocolate.tres" id="11_jx2ri"]
+[ext_resource type="Resource" uid="uid://dn8hgabwko4up" path="res://inventory/items/vanilla.tres" id="12_5kwjv"]
+[ext_resource type="Resource" uid="uid://cx8ktkfodwy7" path="res://inventory/items/strawberry.tres" id="13_mkpr1"]
+[ext_resource type="PackedScene" uid="uid://c2nxjqp786ppc" path="res://scenes/overworld/chocolate_object.tscn" id="14_jx2ri"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rnjyy"]
-texture = ExtResource("2_4dvvg")
+texture = ExtResource("2_5fxal")
 0:0/0 = 0
 0:0/0/modulate = Color(0.7411765, 0.7411765, 0.7411765, 1)
 2:0/0 = 0
@@ -23,7 +28,7 @@ texture = ExtResource("2_4dvvg")
 0:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dubn7"]
-texture = ExtResource("3_rnjyy")
+texture = ExtResource("3_3fiod")
 4:0/0 = 0
 6:0/0 = 0
 4:2/0 = 0
@@ -48,7 +53,7 @@ sources/0 = SubResource("TileSetAtlasSource_rnjyy")
 sources/4 = SubResource("TileSetAtlasSource_dubn7")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hh0fu"]
-texture = ExtResource("4_hh0fu")
+texture = ExtResource("4_tmduo")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -104,11 +109,11 @@ b = Vector2(1792, 992)
 [sub_resource type="CanvasTexture" id="CanvasTexture_4dvvg"]
 
 [node name="game" type="Node2D"]
+script = ExtResource("1_5fxal")
 
-[node name="Cirno" parent="." instance=ExtResource("1_6e84v")]
-position = Vector2(344, 120)
+[node name="Cirno" parent="." instance=ExtResource("1_12nxy")]
+position = Vector2(345, 202)
 scale = Vector2(4, 4)
-inventory = ExtResource("2_4vge2")
 
 [node name="ground-tiles" type="TileMapLayer" parent="."]
 scale = Vector2(4, 4)
@@ -148,7 +153,7 @@ position = Vector2(24, -40)
 shape = SubResource("SegmentShape2D_hh0fu")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="invisible-wall"]
-position = Vector2(0, -96)
+position = Vector2(1, -97)
 shape = SubResource("SegmentShape2D_3m5ht")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="invisible-wall"]
@@ -187,30 +192,38 @@ scale = Vector2(1472, 952)
 texture = SubResource("CanvasTexture_4dvvg")
 centered = false
 
-[node name="tv" parent="." instance=ExtResource("5_04qyp")]
+[node name="tv" parent="." instance=ExtResource("5_m3bv7")]
 z_index = 99
 position = Vector2(288, 832.00006)
 scale = Vector2(6, 6)
 
-[node name="table" parent="." instance=ExtResource("6_j7wrs")]
+[node name="table" parent="." instance=ExtResource("6_5dcic")]
 z_index = 1
 position = Vector2(344, 88)
 scale = Vector2(4, 4)
 
 [node name="inventory" type="Node" parent="."]
 
-[node name="inventory-slot-ui" parent="inventory" instance=ExtResource("7_fws66")]
+[node name="inventory-slot-ui" parent="inventory" instance=ExtResource("7_jx2ri")]
 offset_left = 1752.0
 offset_top = 136.0
 offset_right = 1815.68
 offset_bottom = 200.04001
 
-[node name="inventory-slot-ui2" parent="inventory" instance=ExtResource("7_fws66")]
+[node name="inventory-slot-ui2" parent="inventory" instance=ExtResource("7_jx2ri")]
 offset_left = 1752.0
 offset_top = 256.0
 offset_right = 1815.68
 offset_bottom = 328.04
 
-[node name="item-box-chocolate" parent="." instance=ExtResource("9_3m5ht")]
-position = Vector2(1248, 416)
-scale = Vector2(4, 4)
+[node name="item-spawner" type="Node" parent="." node_paths=PackedStringArray("spawnTimer")]
+script = ExtResource("9_5fxal")
+spawnTimer = NodePath("Timer")
+items = Array[ExtResource("10_5dcic")]([ExtResource("11_jx2ri"), ExtResource("12_5kwjv"), ExtResource("13_mkpr1")])
+
+[node name="Timer" type="Timer" parent="item-spawner"]
+
+[node name="chocolate-object" parent="." instance=ExtResource("14_jx2ri")]
+position = Vector2(1019, 825)
+
+[connection signal="timeout" from="item-spawner/Timer" to="item-spawner" method="_on_timer_timeout"]
