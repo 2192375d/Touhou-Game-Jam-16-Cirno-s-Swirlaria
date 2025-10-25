@@ -11,13 +11,15 @@ config_version=5
 [application]
 
 config/name="cirno-project"
-run/main_scene="uid://b5vmw5yaggpul"
+run/main_scene="uid://cnpiteiv7r2qw"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GlobalSignal="*res://scripts/singletons/global-signal.gd"
+GlobalText="*res://scripts/singletons/global-text.gd"
+GlobalState="*res://scripts/singletons/global-state.gd"
 
 [display]
 

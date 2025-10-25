@@ -10,3 +10,10 @@ func check_fufilled(composition : Dictionary[String, int]) -> bool:
 		if composition[key] < ingredients[key]:
 			return false
 	return true
+
+func get_fufilled_list(composition : Dictionary[String, int]) -> Array[String]:
+	var retArray : Array[String] = []
+	for key in ingredients:
+		if composition[key] >= ingredients[key]:
+			retArray.append(key)
+	return retArray
