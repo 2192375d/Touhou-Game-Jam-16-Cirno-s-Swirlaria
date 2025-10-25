@@ -3,8 +3,8 @@ extends Node2D
 @onready var hearts = get_node("Hearts/TileMap")
 @onready var hboxhandle = get_node("Control/HBoxContainer")
 
-var numhearts : int = 5
-var score : int = 123
+var numhearts : int = GlobalState.hp
+var score : int = GlobalState.score
 
 var scoremappings : Dictionary[int, TileMap]
 
@@ -35,5 +35,12 @@ func _ready() -> void:
 	10 : hboxhandle.get_node("Score10/Sprite2D/TileMap"),
 	1 : hboxhandle.get_node("Score1/Sprite2D/TileMap")
 	}	
+	display_hearts()
+	display_score()
+	GlobalSignal.score_update.connect(_on_score_update)
+
+func _on_score_update() -> void:
+	numhearts = GlobalState.hp
+	score = GlobalState.score
 	display_hearts()
 	display_score()
