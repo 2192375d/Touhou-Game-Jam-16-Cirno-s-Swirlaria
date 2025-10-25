@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bctpqqwul4t2y"]
 
 [ext_resource type="Texture2D" uid="uid://dhndm8ckrmmjv" path="res://assets/table.png" id="1_02ppr"]
-[ext_resource type="Script" uid="uid://im233yc4ckhv" path="res://scenes/overworld/table.gd" id="1_i3xft"]
+[ext_resource type="Script" uid="uid://im233yc4ckhv" path="res://scripts/overworld/table.gd" id="1_i3xft"]
 [ext_resource type="Script" uid="uid://dwurcaeais01q" path="res://scripts/overworld/item/object-interact-component.gd" id="2_eotx8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02ppr"]
