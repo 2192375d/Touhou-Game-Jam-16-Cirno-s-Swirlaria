@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b468oxcelg53b"]
+[gd_scene load_steps=18 format=3 uid="uid://b468oxcelg53b"]
 
 [ext_resource type="Script" uid="uid://coqyk8dykhr6g" path="res://scripts/game_tablemenu.gd" id="1_mi270"]
 [ext_resource type="Texture2D" uid="uid://bj064owr3b45d" path="res://assets/cirno-game.png" id="2_a75m5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://0nom2r2weapd" path="res://scripts/cream_raw.gd" id="3_a75m5"]
 [ext_resource type="Texture2D" uid="uid://32n2a0ujd5hy" path="res://assets/tablebg.png" id="3_xfssl"]
 [ext_resource type="Script" uid="uid://bm0saqtui60nh" path="res://scripts/orderpanel.gd" id="5_hf3yf"]
+[ext_resource type="Texture2D" uid="uid://b63w3oldwl1id" path="res://assets/hands.png" id="7_kreb0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kreb0"]
 texture = ExtResource("2_twdh5")
@@ -732,6 +733,16 @@ radius = 20.024984
 TextPink/base_type = &"RichTextLabel"
 TextPink/colors/default_color = Color(0.9187019, 0.51058686, 0.87564236, 1)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_khkxo"]
+texture = ExtResource("7_kreb0")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_imbru"]
+sources/0 = SubResource("TileSetAtlasSource_khkxo")
+
 [node name="GameTablemenu" type="Node2D"]
 script = ExtResource("1_mi270")
 
@@ -1096,6 +1107,14 @@ tile_set = SubResource("TileSet_twdh5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BananaRaw"]
 position = Vector2(41, 52)
 shape = SubResource("CircleShape2D_a75m5")
+
+[node name="Cursor" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+
+[node name="Tilemap" type="TileMap" parent="Cursor"]
+tile_set = SubResource("TileSet_imbru")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 65536, 1)
 
 [connection signal="button_down" from="Nozzle" to="." method="_on_nozzle_button_down"]
 [connection signal="button_up" from="Nozzle" to="." method="_on_nozzle_button_up"]

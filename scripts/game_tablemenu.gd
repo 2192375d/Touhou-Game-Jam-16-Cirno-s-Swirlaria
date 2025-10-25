@@ -13,7 +13,8 @@ extends Node2D
 @onready var flavortext = get_node("Control/CurrentFlavor/Flavor")
 @onready var inventorycontainer = get_node("Control/InventoryContainer")
 @onready var ingredientcontainertemplate = get_node("Control/InventoryContainer/IngredientContainer")
-
+@onready var cursorup = load("res://assets/cursorup.png")
+@onready var cursordown = load("res://assets/cursordown.png")
 
 # Imported from other scene
 var orders : Dictionary[int, Order] = {
@@ -51,6 +52,8 @@ var currentcomposition : Dictionary[String, int]
 var currentFlavor : String = "Vanilla"
 var inventoryhandles : Dictionary[String, PanelContainer]
 var orderhandles : Dictionary # Dictionary[int, Dictionary[String, Container]]
+
+
 
 func reset_currentcomposition() -> void:
 	currentcomposition= {
@@ -127,6 +130,7 @@ func _ready():
 	setup_orders()
 	setup_inventory_display()
 	reset_currentcomposition()
+	Input.set_custom_mouse_cursor(cursorup)
 
 func _on_order_orderfufilled(ordernumber : int) -> void:
 	# check if current order is fine
@@ -139,9 +143,11 @@ func _on_order_orderfufilled(ordernumber : int) -> void:
 	
 func _input(event):
 	if event.is_action_pressed("mousedown"):
+		Input.set_custom_mouse_cursor(cursordown)
 		pass
 		
 	if event.is_action_released("mousedown"):
+		Input.set_custom_mouse_cursor(cursorup)
 		if (currentTopping != null):
 			currentTopping.freeze = false;
 			currentTopping.linear_velocity = Vector2(0,0)
@@ -152,6 +158,7 @@ func _input(event):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	mousepos = get_viewport().get_mouse_position()
+	#cursor.position = mousepos - Vector2(12,12)
 	if (currentTopping != null):
 		currentTopping.position.x = mousepos.x - 12
 		currentTopping.position.y = mousepos.y - 12
