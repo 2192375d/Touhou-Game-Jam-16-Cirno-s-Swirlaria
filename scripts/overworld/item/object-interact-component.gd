@@ -12,6 +12,8 @@ func _ready() -> void:
 	area.body_exited.connect(_on_body_exited)
 
 func _on_body_entered(body: Node):
+	GlobalState.score += 2
+	GlobalSignal.score_update.emit()
 	if body is Player:
 		inArea = true
 		#print("player entered")
