@@ -2,7 +2,7 @@ extends Node
 
 class_name MovementComponent
 
-@export var actor: CharacterBody2D
+@export var actor: CollisionObject2D
 @export var speed: float
 
 func handle_movement (move_intent: Vector2i) -> void:

@@ -1,8 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://bwlta6mv2bg45"]
+[gd_scene load_steps=29 format=3 uid="uid://bwlta6mv2bg45"]
 
 [ext_resource type="Script" uid="uid://c2sn30movidck" path="res://scripts/overworld/cirno.gd" id="1_7scum"]
 [ext_resource type="Texture2D" uid="uid://dqa0vkh75kguf" path="res://assets/cirno-walk.png" id="1_mjcn1"]
-[ext_resource type="Resource" uid="uid://crnrqykb06qvm" path="res://inventory/Inventory.tres" id="2_qsjrn"]
+[ext_resource type="Resource" uid="uid://crnrqykb06qvm" path="res://resources/Inventory.tres" id="2_qsjrn"]
 [ext_resource type="Script" uid="uid://781y04xhlelq" path="res://scripts/overworld/movement-component.gd" id="3_lm1go"]
 [ext_resource type="Script" uid="uid://bmuowhti2qy1o" path="res://scripts/overworld/animation-component.gd" id="4_a5a0l"]
 
@@ -192,9 +192,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5a0l"]
 size = Vector2(7.5, 10.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hy2v"]
+size = Vector2(2.5, 2.5)
+
 [node name="Cirno" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "animation_component")]
 modulate = Color(1.2237577, 1.175274, 1.175274, 1)
 z_index = 2
+collision_priority = 4.0
 script = ExtResource("1_7scum")
 movement_component = NodePath("MovementComponent")
 animation_component = NodePath("AnimationComponent")
@@ -204,9 +208,10 @@ inventory = ExtResource("2_qsjrn")
 position = Vector2(0, -9)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_lj8ml")
-animation = &"walk_left"
+animation = &"idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 512
 position = Vector2(0.25, 10.25)
 shape = SubResource("RectangleShape2D_a5a0l")
 debug_color = Color(0.89451784, 0.28257188, 0.39729515, 0.41960785)
@@ -219,3 +224,14 @@ speed = 600.0
 [node name="AnimationComponent" type="Node" parent="." node_paths=PackedStringArray("anim")]
 script = ExtResource("4_a5a0l")
 anim = NodePath("../AnimatedSprite2D")
+
+[node name="hitbox-dot" type="Area2D" parent="."]
+light_mask = 4
+visibility_layer = 2
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox-dot"]
+shape = SubResource("RectangleShape2D_3hy2v")
+debug_color = Color(0.98672384, 0, 0.32546666, 0.41960785)
+
+[connection signal="area_entered" from="hitbox-dot" to="." method="_on_hitbox_area_entered"]
