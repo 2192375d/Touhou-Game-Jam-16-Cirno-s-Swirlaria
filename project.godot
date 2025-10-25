@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalSignal="*res://scripts/singletons/global-signal.gd"
 GlobalText="*res://scripts/singletons/global-text.gd"
+GlobalState="*res://scripts/singletons/global-state.gd"
 
 [display]
 

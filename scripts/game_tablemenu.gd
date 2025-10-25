@@ -16,22 +16,8 @@ extends Node2D
 @onready var cursorup = load("res://assets/cursorup.png")
 @onready var cursordown = load("res://assets/cursordown.png")
 
-# Imported from other scene
-var orders : Dictionary[int, Order] = {
-	1 : Order.new({"Chocolate" : 10, "Vanilla" : 5, "Cherry" : 2}),
-	2 : Order.new({"Vanilla" : 5, "Sprinkles" : 3, "Crisp" : 1}),
-	3 : Order.new({"Strawberry" : 10, "Vanilla" : 5, "Crisp" : 2}),
-	}
-#@export var inventory : Dictionary[String, int]	
-var inventory : Dictionary[String, int] = {
-	"Chocolate" : 20,
-	"Vanilla" : 20,
-	"Strawberry" : 20,
-	"Sprinkles" : 10,
-	"Cherry" : 10,
-	"Banana" : 10,
-	"Crisp" : 10,
-}
+var orders : Dictionary[int, Order] = GlobalState.orders
+var inventory : Dictionary[String, int] = GlobalState.inventory
 
 # const
 const toppingpositions = {
@@ -121,7 +107,6 @@ func update_inventory(key : String, change : int) -> void:
 	# check to see if any checkmarks are good
 	
 	
-	
 func _ready():
 	conesprite.get_node("StaticBody2D").get_node("CollisionPolygon2D").disabled = true
 	creamraw.get_node("CollisionPolygon2D").disabled = true
@@ -130,7 +115,7 @@ func _ready():
 	setup_orders()
 	setup_inventory_display()
 	reset_currentcomposition()
-	Input.set_custom_mouse_cursor(cursorup)
+	Input.set_custom_mouse_cursor(cursorup)	
 
 func _on_order_orderfufilled(ordernumber : int) -> void:
 	# check if current order is fine
@@ -138,7 +123,6 @@ func _on_order_orderfufilled(ordernumber : int) -> void:
 		orders.erase(ordernumber)
 		orderhandles[ordernumber]["Origin"].queue_free()
 		orderhandles.erase(ordernumber)
-		
 		reset_state()
 	
 func _input(event):

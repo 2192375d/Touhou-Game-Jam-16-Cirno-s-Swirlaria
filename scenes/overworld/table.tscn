@@ -40,3 +40,5 @@ z_index = -1
 position = Vector2(9.536743e-07, 0.49999958)
 scale = Vector2(1.0833333, 1.173913)
 texture = ExtResource("1_02ppr")
+
+[connection signal="interacted" from="object-interact-component" to="." method="_on_objectinteractcomponent_interacted"]

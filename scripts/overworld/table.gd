@@ -22,3 +22,6 @@ func _on_body_exited(body: Node):
 		hoversprite.visible = false
 		print("player exited")
 		general_text.visible = false
+
+func _on_objectinteractcomponent_interacted() -> void:
+	get_tree().change_scene_to_file("res://scenes/game_tablemenu.tscn")

@@ -1,9 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://dgpjxxqd7xhv4"]
 
-[ext_resource type="Script" uid="uid://dlaxf8vi2avf6" path="res://scripts/lib_text.gd" id="1_1fklc"]
+[sub_resource type="GDScript" id="GDScript_qe7mj"]
+script/source = "extends Resource
+"
 
 [node name="Tooltips" type="Node2D"]
-script = ExtResource("1_1fklc")
+script = SubResource("GDScript_qe7mj")
 
 [node name="GeneralText" type="PanelContainer" parent="."]
 z_index = 100
