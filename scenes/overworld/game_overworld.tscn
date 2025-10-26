@@ -340,6 +340,16 @@ autostart = true
 [node name="Line" parent="." instance=ExtResource("20_vvc48")]
 position = Vector2(12, 220)
 
+[node name="PauseNode" type="Node" parent="."]
+script = ExtResource("22_2ar1r")
+
+[node name="Pausemenu" parent="PauseNode" instance=ExtResource("23_skbar")]
+visible = false
+offset_left = 447.0
+offset_top = 188.0
+offset_right = 447.0
+offset_bottom = 188.0
+
 [connection signal="area_exited" from="bullet-zone" to="." method="_on_bulletzone_area_exited"]
 [connection signal="timeout" from="item-spawner/Timer" to="item-spawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="line-spawner/Timer" to="line-spawner" method="_on_timer_timeout"]

@@ -18,6 +18,7 @@ icon = NodePath("Sprite2D")
 script = ExtResource("1_2gyli")
 area = NodePath("../Area2D")
 sprite = NodePath("../Sprite2D")
+collectable = true
 metadata/_custom_type_script = "uid://dwurcaeais01q"
 
 [node name="Area2D" type="Area2D" parent="."]
