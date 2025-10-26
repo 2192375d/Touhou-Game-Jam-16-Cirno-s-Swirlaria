@@ -11,5 +11,6 @@ func _process(delta: float) -> void:
 
 func _input(event):
 	if event.is_action_pressed("menuescape"):
+		print("PAUSED")
 		get_tree().paused = true
 		pause_menu.visible = true
