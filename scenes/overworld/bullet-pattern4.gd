@@ -9,8 +9,6 @@ extends Node
 @onready var my_turn: bool = false
 
 @onready var count: int = 0
-@onready var angle: float = 0
-@onready var moving_right: bool = true
 
 const BULLET_SCENE: PackedScene = preload("res://scenes/overworld/bullet.tscn")
 const BULLET_RESOURCE = preload("res://resources/bullet/arrow-head.tres")
@@ -18,8 +16,6 @@ const BULLET_RESOURCE = preload("res://resources/bullet/arrow-head.tres")
 func pattern_start():
 	my_turn = true
 	count = 0
-	angle = 0
-	moving_right = true
 	shot_timer.start(SHOT_COOLDOWN)
 
 func _on_shottimer_timeout() -> void:
@@ -33,19 +29,8 @@ func _on_shottimer_timeout() -> void:
 		bullet_node.global_position = actor.global_position
 		
 		bullet_node.bullet_resource = BULLET_RESOURCE
-		bullet_node.set_bullet(-(angle + i * PI/8), SHOT_SPEED)
+		bullet_node.set_bullet(-(PI + count * PI/16 + i * PI/8), SHOT_SPEED)
 		get_tree().current_scene.add_child.call_deferred(bullet_node)
-	
-	if angle < 0:
-		moving_right = true
-	
-	if angle > PI:
-		moving_right = false
-	
-	if moving_right == true:
-		angle += count * (randf_range(17 * PI/16, 15 * PI/16))
-	else:
-		angle -= count * (randf_range(17 * PI/16, 15 * PI/16))
 	
 	if count < NUM_SHOT:
 		shot_timer.start(SHOT_COOLDOWN)

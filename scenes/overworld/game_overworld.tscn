@@ -233,7 +233,7 @@ centered = false
 
 [node name="tv" parent="." instance=ExtResource("5_m3bv7")]
 z_index = 99
-position = Vector2(288, 832.00006)
+position = Vector2(240, 776.00006)
 scale = Vector2(6, 6)
 
 [node name="table" parent="." instance=ExtResource("6_5dcic")]
