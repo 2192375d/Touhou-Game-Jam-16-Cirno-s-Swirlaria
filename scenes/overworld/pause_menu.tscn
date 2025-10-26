@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bnf3jn0e4t8r1"]
 
-[ext_resource type="Script" uid="uid://d07gd3aioagxv" path="res://scenes/overworld/pausemenu.gd" id="1_rs3id"]
+[ext_resource type="Script" uid="uid://d07gd3aioagxv" path="res://scripts/overworld/pausemenu.gd" id="1_rs3id"]
 
 [node name="Pausemenu" type="Control"]
 layout_mode = 3
@@ -27,6 +27,7 @@ theme_override_font_sizes/normal_font_size = 60
 text = "Controls:
 - Arrow Keys Movement
 - Space to Interact
+- Shift to enter Slow Mode
 - ESC to open Pause Menu"
 horizontal_alignment = 1
 

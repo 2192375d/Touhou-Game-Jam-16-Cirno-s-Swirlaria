@@ -108,9 +108,9 @@ func update_inventory(key : String, change : int) -> void:
 	# check to see if any checkmarks are good
 
 func update_inventory_from_global_state() -> void:
-	for item : Item in GlobalState.inventory:
-		inventory[item.name] = GlobalState.inventory[item]
-	#print(inventory)
+	var globalinventory : Dictionary[Item, int] = load("res://resources/Inventory.tres").items
+	for item : Item in globalinventory:
+		inventory[item.name] = globalinventory[item]
 	
 func _ready():
 	#creamraw.notfirst = false
@@ -132,9 +132,10 @@ func _on_order_orderfufilled(ordernumber : int) -> void:
 	GlobalState.score += orders[ordernumber].get_score(currentcomposition)
 	GlobalSignal.score_update.emit()
 	# change inventory
-	for key : Item in GlobalState.inventory:
+	var globalinventory : Dictionary[Item, int] = load("res://resources/Inventory.tres").items
+	for key : Item in globalinventory:
 		if key.name in currentcomposition:
-			GlobalState.inventory[key] -= currentcomposition[key.name]
+			globalinventory[key] -= currentcomposition[key.name]
 	print("Global State Updated")
 	# remove the order
 	GlobalSignal.remove_order.emit(ordernumber)
