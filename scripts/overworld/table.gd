@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 @onready var area : Area2D = get_node("Area2D")
+@export var timer: Timer
 
 var general_text : RichTextLabel
 
@@ -20,4 +21,5 @@ func _on_body_exited(body: Node):
 		general_text.visible = false
 
 func _on_objectinteractcomponent_interacted() -> void:
+	GlobalState.time = timer.time_left
 	get_tree().change_scene_to_file("res://scenes/game_tablemenu.tscn")

@@ -262,10 +262,11 @@ z_index = 99
 position = Vector2(240, 776.00006)
 scale = Vector2(6, 6)
 
-[node name="table" parent="." instance=ExtResource("6_5dcic")]
+[node name="table" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("6_5dcic")]
 z_index = 1
 position = Vector2(275, 79)
 scale = Vector2(4, 4)
+timer = NodePath("../time-elapsed-timer")
 
 [node name="inventory" type="Node" parent="."]
 
