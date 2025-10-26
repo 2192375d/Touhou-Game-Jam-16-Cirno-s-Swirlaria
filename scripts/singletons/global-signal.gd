@@ -4,10 +4,21 @@ signal inventory_update()
 signal pattern_end()
 signal score_update()  # it gets its value from global-state
 signal hp_update()  # it gets its value from global-state
+signal add_order(orderno : int, order : Order)  
+signal remove_order(orderno : int)
 
 func _ready() -> void:
 	inventory_update.connect(_on_inventory_update)
+	add_order.connect(_on_add_order)
+	remove_order.connect(_on_remove_order)
 	
 func _on_inventory_update() -> void:
 	GlobalState.inventory = load("res://resources/Inventory.tres").items 
-	
+
+func _on_add_order(orderno : int, order : Order) -> void:
+	print("ADD ORDER SIGNAL RECV")
+	GlobalState.orders[orderno] = order
+
+func _on_remove_order(orderno : int) -> void:
+	print("REMOVE ORDER SIGNAL RECV")
+	GlobalState.orders.erase(orderno)

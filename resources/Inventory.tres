@@ -16,9 +16,9 @@ items = Dictionary[ExtResource("1_ydnw0"), int]({
 ExtResource("2_pbh6m"): 10,
 ExtResource("3_yg84m"): 10,
 ExtResource("4_uvqqu"): 10,
-ExtResource("5_igwl8"): 0,
-ExtResource("6_qjk11"): 0,
-ExtResource("7_6yiqp"): 0,
-ExtResource("8_4ovha"): 0
+ExtResource("5_igwl8"): 5,
+ExtResource("6_qjk11"): 5,
+ExtResource("7_6yiqp"): 5,
+ExtResource("8_4ovha"): 5
 })
 metadata/_custom_type_script = "uid://ddcr7jc2d436x"
