@@ -125,6 +125,7 @@ func _ready():
 func _on_order_orderfufilled(ordernumber : int) -> void:
 	# check if current order is fine
 	if orders[ordernumber].check_fufilled(currentcomposition):
+		GlobalSignal.remove_order.emit(ordernumber)
 		orders.erase(ordernumber)
 		orderhandles[ordernumber]["Origin"].queue_free()
 		orderhandles.erase(ordernumber)
@@ -170,8 +171,6 @@ func _on_nozzle_button_down() -> void:
 	clickingNozzle = true
 func _on_nozzle_button_up() -> void:
 	clickingNozzle = false
-
-
 
 func add_topping(toppingname : String) -> void:
 	if (not toppingname in inventory) or inventory[toppingname] <= 0:

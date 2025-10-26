@@ -7,7 +7,6 @@ var numItem: int
 
 # 12 x 10
 func _ready() -> void:
-	
 	spawnTimer.one_shot = true
 	spawnTimer.start(0)
 	GlobalSignal.inventory_update.connect(_on_inventory_update)

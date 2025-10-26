@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://b5vmw5yaggpul"]
+[gd_scene load_steps=41 format=4 uid="uid://b5vmw5yaggpul"]
 
 [ext_resource type="Script" uid="uid://dvs64trehf0im" path="res://scripts/overworld/game_overworld.gd" id="1_5fxal"]
 [ext_resource type="PackedScene" uid="uid://bwlta6mv2bg45" path="res://scenes/overworld/cirno.tscn" id="1_12nxy"]
@@ -19,6 +19,8 @@
 [ext_resource type="Resource" uid="uid://bssyiml8g6uq8" path="res://resources/items/crisp.tres" id="17_vvc48"]
 [ext_resource type="Resource" uid="uid://sbu2m5y5bsdw" path="res://resources/items/cherry.tres" id="18_xslf1"]
 [ext_resource type="Resource" uid="uid://hnwrcghoj2fv" path="res://resources/items/sprinkles.tres" id="19_2ar1r"]
+[ext_resource type="Script" uid="uid://c3oiv5yfswfdw" path="res://scripts/line_spawner.gd" id="19_vvc48"]
+[ext_resource type="PackedScene" uid="uid://b7h2nucft6ua5" path="res://scenes/overworld/line.tscn" id="20_vvc48"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rnjyy"]
 texture = ExtResource("2_5fxal")
@@ -301,10 +303,20 @@ debug_color = Color(0.94307303, 0.24077788, 0, 0.41960785)
 [node name="item-spawner" type="Node" parent="." node_paths=PackedStringArray("spawnTimer")]
 script = ExtResource("9_5fxal")
 spawnTimer = NodePath("Timer")
-items = Array[ExtResource("10_5dcic")]([ExtResource("11_jx2ri"), ExtResource("12_5kwjv"), ExtResource("13_mkpr1"), ExtResource("19_2ar1r"), ExtResource("18_xslf1"), ExtResource("17_vvc48"), ExtResource("16_ppds0")])
-MAX_NUM_ITEM = 4
+items = Array[ExtResource("10_5dcic")]([ExtResource("11_jx2ri"), ExtResource("12_5kwjv"), ExtResource("13_mkpr1"), ExtResource("17_vvc48"), ExtResource("16_ppds0"), ExtResource("18_xslf1"), ExtResource("19_2ar1r")])
 
 [node name="Timer" type="Timer" parent="item-spawner"]
 
+[node name="line-spawner" type="Node" parent="."]
+script = ExtResource("19_vvc48")
+
+[node name="Timer" type="Timer" parent="line-spawner"]
+wait_time = 15.0
+autostart = true
+
+[node name="Line" parent="." instance=ExtResource("20_vvc48")]
+position = Vector2(12, 220)
+
 [connection signal="area_exited" from="bullet-zone" to="." method="_on_bulletzone_area_exited"]
 [connection signal="timeout" from="item-spawner/Timer" to="item-spawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="line-spawner/Timer" to="line-spawner" method="_on_timer_timeout"]
