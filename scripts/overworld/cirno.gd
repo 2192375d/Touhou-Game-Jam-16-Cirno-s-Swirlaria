@@ -37,11 +37,12 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		invincible_timer.start(1) # start for one second
 		movement_component.can_move = false
 		
-		for i in range(3):
-			self.hide()
-			await get_tree().create_timer(0.1).timeout
-			self.show()
-			await get_tree().create_timer(0.1).timeout
+		if GlobalState.hp != 0:
+			for i in range(3):
+				self.hide()
+				await get_tree().create_timer(0.1).timeout
+				self.show()
+				await get_tree().create_timer(0.1).timeout
 		position = spawn_point
 		movement_component.can_move = true
 		print("you lost a HP! HP = ", GlobalState.hp)
