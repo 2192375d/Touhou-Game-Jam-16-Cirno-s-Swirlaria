@@ -7,12 +7,12 @@ extends Node2D
 @onready var crispraw = get_node("CrispRaw")
 @onready var creamraw = get_node("CreamRaw")
 @onready var nozzlebutton = get_node("Nozzle")
-@onready var vboxcontainer = get_node("Control/VBoxContainer")
-@onready var ordertemplate = get_node("Control/VBoxContainer/Order")
-@onready var orderingredienttemplate = get_node("Control/VBoxContainer/Order/HBoxContainer")
-@onready var flavortext = get_node("Control/CurrentFlavor/Flavor")
-@onready var inventorycontainer = get_node("Control/InventoryContainer")
-@onready var ingredientcontainertemplate = get_node("Control/InventoryContainer/IngredientContainer")
+@onready var vboxcontainer = get_node("Control/ScrollContainer/VBoxContainer")
+@onready var ordertemplate = get_node("Control/ScrollContainer/VBoxContainer/Order")
+@onready var orderingredienttemplate = get_node("Control/ScrollContainer/VBoxContainer/Order/HBoxContainer")
+@onready var flavortext = get_node("Control3/CurrentFlavor/Flavor")
+@onready var inventorycontainer = get_node("Control2/InventoryContainer")
+@onready var ingredientcontainertemplate = get_node("Control2/InventoryContainer/IngredientContainer")
 @onready var cursorup = load("res://assets/cursorup.png")
 @onready var cursordown = load("res://assets/cursordown.png")
 
@@ -23,7 +23,7 @@ var orders : Dictionary[int, Order] = GlobalState.orders
 const toppingpositions = {
 	"Cherry" : [Vector2i(0,0), Vector2i(0,1), Vector2i(1,0), Vector2i(1,1)],
 	"Sprinkles" : [Vector2i(2,0), Vector2i(3,0), Vector2i(2,1), Vector2i(3,1), Vector2i(2,2), Vector2i(3,2), Vector2i(2,3), Vector2i(3,3), Vector2i(3,5)],
-	"Banana" : [Vector2i(0,2), Vector2i(0,3), Vector2i(0,5)],
+	"Banana" : [Vector2i(0,2), Vector2i(0,3), Vector2i(0,4)],
 	"Crisp" : [Vector2i(1,2), Vector2i(1,3)],
 }
 
@@ -42,6 +42,8 @@ var inventory : Dictionary[String, int]
 
 
 func reset_currentcomposition() -> void:
+	# return the inventoru back to original
+	update_inventory_from_global_state()
 	currentcomposition= {
 	"Chocolate" : 0,
 	"Vanilla" : 0,
@@ -104,33 +106,45 @@ func update_inventory(key : String, change : int) -> void:
 		newingredientcomponent.get_node("HBoxContainer").get_node("Amount").text = str(inventory[k])
 	update_order_status()
 	# check to see if any checkmarks are good
-	
+
+func update_inventory_from_global_state() -> void:
+	for item : Item in GlobalState.inventory:
+		inventory[item.name] = GlobalState.inventory[item]
+	#print(inventory)
 	
 func _ready():
 	#creamraw.notfirst = false
-	for item : Item in GlobalState.inventory:
-		inventory[item.name] = GlobalState.inventory[item]
-	print(inventory)
-
+	update_inventory_from_global_state()
 	conesprite.get_node("StaticBody2D").get_node("CollisionPolygon2D").disabled = true
 	creamraw.get_node("CollisionPolygon2D").disabled = true
 	cherryspriteraw.get_node("CollisionShape2D").disabled = true
 	sprinklesspriteraw.get_node("CollisionShape2D").disabled = true
-	setup_orders()
-	setup_inventory_display()
 	reset_currentcomposition()
+	setup_orders()
+	setup_inventory_display()	
 	Input.set_custom_mouse_cursor(cursorup)
 	
 
 func _on_order_orderfufilled(ordernumber : int) -> void:
 	# check if current order is fine
+	print("checking if order fufilled")
 	if orders[ordernumber].check_fufilled(currentcomposition):
+		print("this order is fufilled")
+		# change the global database
+		for key : Item in GlobalState.inventory:
+			if key.name in currentcomposition:
+				GlobalState.inventory[key] -= currentcomposition[key.name]
+		print("Global State Updated")
+		GlobalSignal.remove_order.emit(ordernumber)
 		orders.erase(ordernumber)
 		orderhandles[ordernumber]["Origin"].queue_free()
 		orderhandles.erase(ordernumber)
 		reset_state()
 	
 func _input(event):
+	if event.is_action_pressed("menuescape"):
+		_on_return_pressed()
+
 	if event.is_action_pressed("mousedown"):
 		Input.set_custom_mouse_cursor(cursordown)
 		pass
@@ -154,7 +168,6 @@ func _process(delta):
 	elif (clickingNozzle):
 		nozzlebutton.position.x = mousepos.x - nozzlebutton.size.x/2
 		creamraw.position.x = mousepos.x
-	
 
 func _on_cone_button_down() -> void:
 	# check if existing cone
@@ -172,7 +185,7 @@ func _on_nozzle_button_up() -> void:
 	clickingNozzle = false
 
 func add_topping(toppingname : String) -> void:
-	if (not toppingname in inventory):
+	if (not toppingname in inventory) or inventory[toppingname] <= 0:
 		return
 	update_inventory(toppingname, 1)
 	match toppingname:
@@ -242,9 +255,10 @@ func _on_strawberry_pressed() -> void:
 	set_flavor("Strawberry")
 	
 func reset_state() -> void:
-	clear_entities()
 	reset_currentcomposition()
-	clear_button_checks()	
+	clear_entities()
+	clear_button_checks()
+	update_inventory("Strawberry", 0)
 
 func clear_entities() -> void:
 	if (globalCone != null):

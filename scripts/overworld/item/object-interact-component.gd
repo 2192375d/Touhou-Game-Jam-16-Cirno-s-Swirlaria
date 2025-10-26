@@ -17,14 +17,12 @@ func _on_body_entered(body: Node):
 	# GlobalSignal.score_update.emit()
 	if body is Player:
 		inArea = true
-		print("player entered")
 		if sprite:
 			sprite.modulate = Color(10, 10, 10, 1)
 
 func _on_body_exited(body: Node):
 	if body is Player:
 		inArea = false
-		print("player exited")
 		if sprite:
 			sprite.modulate = Color(1, 1, 1, 1)
 
