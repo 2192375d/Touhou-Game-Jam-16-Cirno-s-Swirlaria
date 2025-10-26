@@ -23,8 +23,7 @@ func _ready() -> void:
 func _on_actiontimer_timeout() -> void:
 	var selected_pattern: Node = bullet_patterns[randi() % bullet_patterns.size()]
 	selected_pattern.pattern_start()
-	
-	#bullet_patterns[2].pattern_start()
+
 
 func _on_pattern_end():
 	action_timer.start(randf_range(TIME_BETWEEN_ACTION_LOW, TIME_BETWEEN_ACTION_HIGH))
