@@ -119,7 +119,7 @@ func _ready():
 	#creamraw.notfirst = false
 	update_inventory_from_global_state()
 	conesprite.get_node("StaticBody2D").get_node("CollisionPolygon2D").disabled = true
-	creamraw.get_node("CollisionPolygon2D").disabled = true
+	creamraw.get_node("CollisionShape2D").disabled = true
 	cherryspriteraw.get_node("CollisionShape2D").disabled = true
 	sprinklesspriteraw.get_node("CollisionShape2D").disabled = true
 	reset_currentcomposition()
@@ -180,8 +180,10 @@ func _process(delta):
 		currentTopping.position.x = mousepos.x - 12
 		currentTopping.position.y = mousepos.y - 12
 	elif (clickingNozzle):
-		nozzlebutton.position.x = mousepos.x - nozzlebutton.size.x/2
-		creamraw.position.x = mousepos.x
+		print(mousepos.x)
+		if (mousepos.x >= 660 and mousepos.x <= 800):
+			nozzlebutton.position.x = mousepos.x - nozzlebutton.size.x/2
+			creamraw.position.x = mousepos.x
 
 func _on_cone_button_down() -> void:
 	# check if existing cone
@@ -189,6 +191,7 @@ func _on_cone_button_down() -> void:
 		globalCone.queue_free()
 	# generate new cone
 	globalCone = conesprite.duplicate()
+	globalCone.z_index = -2
 	globalCone.get_node("StaticBody2D").get_node("CollisionPolygon2D").disabled = false
 	globalCone.visible = true
 	add_child(globalCone)
@@ -243,7 +246,7 @@ func _on_timer_timeout() -> void:
 		creamqueue.append(newcream)
 		newcream.visible = true
 		newcream.freeze = false
-		newcream.get_node("CollisionPolygon2D").disabled = false
+		newcream.get_node("CollisionShape2D").disabled = false
 		newcream.gravity_scale = 1.0
 		add_child(newcream)
 	

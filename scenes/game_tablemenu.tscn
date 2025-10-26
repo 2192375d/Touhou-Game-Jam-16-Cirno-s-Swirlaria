@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://b468oxcelg53b"]
+[gd_scene load_steps=27 format=4 uid="uid://b468oxcelg53b"]
 
 [ext_resource type="Script" uid="uid://coqyk8dykhr6g" path="res://scripts/game_tablemenu.gd" id="1_mi270"]
 [ext_resource type="Texture2D" uid="uid://bj064owr3b45d" path="res://assets/cirno-game.png" id="2_a75m5"]
@@ -731,6 +731,10 @@ shader_parameter/gravity = Vector3(0, 98, 0)
 shader_parameter/collision_friction = 0.34
 shader_parameter/collision_bounce = 0.2
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gj0v0"]
+radius = 8.0
+height = 26.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_a75m5"]
 radius = 20.024984
 
@@ -896,25 +900,20 @@ collision_mask = 3
 polygon = PackedVector2Array(17, 16, 2, -76, 1, -139, 6, -173, 8, -59, 20, -7, 39, 15, 41, 37, 61, 34, 64, 53, 131, 54, 134, 36, 154, 36, 156, 16, 174, -4, 188, -70, 185, -170, 191, -144, 197, -82, 178, 16, 100, 277)
 
 [node name="CreamRaw" type="RigidBody2D" parent="."]
-visible = false
 position = Vector2(933.9999, 332)
 mass = 2.0
 freeze = true
 script = ExtResource("3_a75m5")
 
-[node name="Polygon2D" type="Polygon2D" parent="CreamRaw"]
-position = Vector2(-50.999886, -10.000016)
-scale = Vector2(109.72207, 104.46425)
-polygon = PackedVector2Array(0.46835423, 0.093333244, 0.556962, 0.17333317, 0.5822787, 0.2666669, 0.556962, 0.38666677, 0.46835423, 0.4666667, 0.3797469, 0.38666677, 0.3544302, 0.29333353, 0.3797469, 0.15999985)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CreamRaw"]
-scale = Vector2(101.49304, 100.69441)
-polygon = PackedVector2Array(0, 0, -0.11392403, 0.18666649, 0, 0.36000013, 0.11392403, 0.17333317)
-
 [node name="Sprite2D" type="Sprite2D" parent="CreamRaw"]
-position = Vector2(0, 22)
+position = Vector2(0.17521425, 17.794083)
 rotation = 1.5707964
+scale = Vector2(0.81380033, 0.76999015)
 texture = ExtResource("7_imbru")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CreamRaw"]
+position = Vector2(0.00012207031, 18)
+shape = SubResource("CapsuleShape2D_gj0v0")
 
 [node name="CherryRaw" type="RigidBody2D" parent="."]
 visible = false
