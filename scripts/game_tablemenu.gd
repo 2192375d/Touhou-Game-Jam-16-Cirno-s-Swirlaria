@@ -180,8 +180,10 @@ func _process(delta):
 		currentTopping.position.x = mousepos.x - 12
 		currentTopping.position.y = mousepos.y - 12
 	elif (clickingNozzle):
-		nozzlebutton.position.x = mousepos.x - nozzlebutton.size.x/2
-		creamraw.position.x = mousepos.x
+		print(mousepos.x)
+		if (mousepos.x >= 660 and mousepos.x <= 800):
+			nozzlebutton.position.x = mousepos.x - nozzlebutton.size.x/2
+			creamraw.position.x = mousepos.x
 
 func _on_cone_button_down() -> void:
 	# check if existing cone
