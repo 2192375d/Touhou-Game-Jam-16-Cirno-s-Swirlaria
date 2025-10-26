@@ -34,6 +34,7 @@ func add_visitor() -> MarginContainer:
 	
 func add_order() -> void:
 	print("NEW VISITOR WAS ADDDED")
+	
 	var newvisitor = add_visitor()
 	allvisitors.append(newvisitor)
 
