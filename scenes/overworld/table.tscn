@@ -29,16 +29,9 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_02ppr")
 debug_color = Color(0.99197274, 0, 0.26462436, 0.41960785)
 
-[node name="object-interact-component" type="Node" parent="." node_paths=PackedStringArray("area")]
+[node name="object-interact-component" type="Node" parent="." node_paths=PackedStringArray("area", "sprite")]
 script = ExtResource("2_eotx8")
 area = NodePath("../Area2D")
-
-[node name="HoverSprite" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(18.892157, 18.892157, 18.892157, 1)
-z_index = -1
-position = Vector2(9.536743e-07, 0.49999958)
-scale = Vector2(1.0833333, 1.173913)
-texture = ExtResource("1_02ppr")
+sprite = NodePath("../Sprite2D")
 
 [connection signal="interacted" from="object-interact-component" to="." method="_on_objectinteractcomponent_interacted"]
