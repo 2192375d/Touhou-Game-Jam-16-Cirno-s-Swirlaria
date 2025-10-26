@@ -728,11 +728,11 @@ shader_parameter/collision_bounce = 0.2
 [sub_resource type="CircleShape2D" id="CircleShape2D_a75m5"]
 radius = 20.024984
 
+[sub_resource type="Theme" id="Theme_a75m5"]
+
 [sub_resource type="Theme" id="Theme_hf3yf"]
 TextPink/base_type = &"RichTextLabel"
 TextPink/colors/default_color = Color(0.9187019, 0.51058686, 0.87564236, 1)
-
-[sub_resource type="Theme" id="Theme_a75m5"]
 
 [node name="GameTablemenu" type="Node2D"]
 script = ExtResource("1_mi270")
@@ -928,77 +928,16 @@ text = "Clear Entities
 clip_contents = true
 layout_mode = 3
 anchors_preset = 0
-offset_left = 104.0
+offset_left = 1451.0
 offset_top = 116.0
 offset_right = 1874.0
 offset_bottom = 735.0
 
-[node name="CurrentFlavor" type="Panel" parent="Control"]
-layout_mode = 0
-offset_left = 848.0
-offset_top = 5.0
-offset_right = 1238.0
-offset_bottom = 69.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/CurrentFlavor"]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 16.0
-offset_right = 189.0
-offset_bottom = 54.0
-theme_override_font_sizes/normal_font_size = 25
-text = "Current Flavor:
-"
-fit_content = true
-
-[node name="Flavor" type="RichTextLabel" parent="Control/CurrentFlavor"]
-layout_mode = 0
-offset_left = 199.0
-offset_top = 17.0
-offset_right = 346.0
-offset_bottom = 55.0
-theme = SubResource("Theme_hf3yf")
-theme_override_font_sizes/normal_font_size = 25
-text = "Vanilla"
-fit_content = true
-
-[node name="InventoryContainer" type="VBoxContainer" parent="Control"]
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 0
-offset_left = 15.0
-offset_top = -4.0
-offset_right = 384.0
-offset_bottom = -4.0
-
-[node name="IngredientContainer" type="PanelContainer" parent="Control/InventoryContainer"]
-visible = false
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/InventoryContainer/IngredientContainer"]
-clip_contents = true
-layout_mode = 2
-
-[node name="Ingredient" type="RichTextLabel" parent="Control/InventoryContainer/IngredientContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 30
-text = "Ingredient"
-fit_content = true
-
-[node name="Amount" type="RichTextLabel" parent="Control/InventoryContainer/IngredientContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 30
-text = "0/0
-"
-fit_content = true
-horizontal_alignment = 2
-
 [node name="ScrollContainer" type="ScrollContainer" parent="Control"]
 layout_mode = 0
-offset_left = 1379.0
+offset_left = 6.0
 offset_top = 18.0
-offset_right = 1704.0
+offset_right = 348.0
 offset_bottom = 625.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer"]
@@ -1060,7 +999,7 @@ scale = Vector2(6, 6)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Banana"]
 position = Vector2(-15, 1.1666656)
-tile_map_data = PackedByteArray(0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0)
 tile_set = SubResource("TileSet_twdh5")
 
 [node name="Crisp" type="Button" parent="."]
@@ -1114,6 +1053,81 @@ offset_bottom = 840.0
 theme_override_font_sizes/font_size = 30
 text = "Return to Overworld"
 
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 104.0
+offset_top = 116.0
+offset_right = 144.0
+offset_bottom = 156.0
+
+[node name="InventoryContainer" type="VBoxContainer" parent="Control2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 0
+offset_left = 15.0
+offset_top = -4.0
+offset_right = 384.0
+offset_bottom = -4.0
+
+[node name="IngredientContainer" type="PanelContainer" parent="Control2/InventoryContainer"]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control2/InventoryContainer/IngredientContainer"]
+clip_contents = true
+layout_mode = 2
+
+[node name="Ingredient" type="RichTextLabel" parent="Control2/InventoryContainer/IngredientContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 30
+text = "Ingredient"
+fit_content = true
+
+[node name="Amount" type="RichTextLabel" parent="Control2/InventoryContainer/IngredientContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 30
+text = "0/0
+"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="Control3" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CurrentFlavor" type="Panel" parent="Control3"]
+layout_mode = 0
+offset_left = 977.0
+offset_top = 131.0
+offset_right = 1367.0
+offset_bottom = 195.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control3/CurrentFlavor"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 16.0
+offset_right = 189.0
+offset_bottom = 54.0
+theme_override_font_sizes/normal_font_size = 25
+text = "Current Flavor:
+"
+fit_content = true
+
+[node name="Flavor" type="RichTextLabel" parent="Control3/CurrentFlavor"]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 17.0
+offset_right = 346.0
+offset_bottom = 55.0
+theme = SubResource("Theme_hf3yf")
+theme_override_font_sizes/normal_font_size = 25
+text = "Vanilla"
+fit_content = true
+
 [connection signal="button_down" from="Nozzle" to="." method="_on_nozzle_button_down"]
 [connection signal="button_up" from="Nozzle" to="." method="_on_nozzle_button_up"]
 [connection signal="button_down" from="ConeDispenser" to="." method="_on_cone_button_down"]
@@ -1125,6 +1139,7 @@ text = "Return to Overworld"
 [connection signal="pressed" from="Strawberry" to="." method="_on_strawberry_pressed"]
 [connection signal="timeout" from="NozzleTimer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="ClearEntities" to="." method="_on_clear_entities_pressed"]
+[connection signal="orderfufilled" from="Control/ScrollContainer/VBoxContainer/Order" to="." method="_on_order_orderfufilled"]
 [connection signal="pressed" from="Control/ScrollContainer/VBoxContainer/Order/Button" to="Control/ScrollContainer/VBoxContainer/Order" method="_on_button_pressed"]
 [connection signal="button_down" from="Banana" to="." method="_on_banana_button_down"]
 [connection signal="button_down" from="Crisp" to="." method="_on_crisp_button_down"]
