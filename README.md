@@ -7,6 +7,7 @@ In this game, you have to dodge the bullets from Reimu, while collecting resourc
 - <a href = "https://github.com/digitalyoshixi">Yoshixi</a>
 - <a href = "https://github.com/heptagonal7">Heptagonal</a>
 - <a href = "https://github.com/219237d">Lumiere</a>
+- some anonymous artist
 
 # credits
 - © <a href = "https://www16.big.or.jp/~zun/">Team Shanghai Alice</a>  
