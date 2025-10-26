@@ -22,7 +22,7 @@ var orders : Dictionary[int, Order] = GlobalState.orders
 # const
 const toppingpositions = {
 	"Cherry" : [Vector2i(0,0), Vector2i(0,1), Vector2i(1,0), Vector2i(1,1)],
-	"Sprinkles" : [Vector2i(2,0), Vector2i(3,0), Vector2i(2,1), Vector2i(3,1), Vector2i(2,2), Vector2i(3,2), Vector2i(2,3), Vector2i(3,3), Vector2i(3,5)],
+	"Sprinkles" : [Vector2i(2,0), Vector2i(3,0), Vector2i(2,1), Vector2i(3,1), Vector2i(2,2), Vector2i(3,2), Vector2i(2,3), Vector2i(3,3)],
 	"Banana" : [Vector2i(0,2), Vector2i(0,3), Vector2i(0,4)],
 	"Crisp" : [Vector2i(1,2), Vector2i(1,3)],
 }
@@ -128,6 +128,10 @@ func _ready():
 func _on_order_orderfufilled(ordernumber : int) -> void:
 	#if orders[ordernumber].check_fufilled(currentcomposition):
 	# modify global score depending on how close current composition is
+	if (orders[ordernumber].check_fufilled(currentcomposition)):
+		print("PLUS ONE LIFE")
+	GlobalState.hp = min(GlobalState.hp+2, 5)
+	GlobalSignal.hp_update.emit()
 	print("SCORE GOTTEN FROM THIS IS:" + str(orders[ordernumber].get_score(currentcomposition)))
 	GlobalState.score += orders[ordernumber].get_score(currentcomposition)
 	GlobalSignal.score_update.emit()
@@ -202,7 +206,9 @@ func add_topping(toppingname : String) -> void:
 		"Crisp":
 			currentTopping = crispraw.duplicate()
 	var tilemap : TileMapLayer = currentTopping.get_node("TileMapLayer") 
-	tilemap.set_cell(Vector2i(0,0),0,toppingpositions[toppingname].pick_random())
+	var randompos : Vector2i = toppingpositions[toppingname].pick_random()
+	print(randompos)
+	tilemap.set_cell(Vector2i(0,0),0,randompos)
 	toppingqueue.append(currentTopping)
 	currentTopping.visible = true
 	currentTopping.freeze = true

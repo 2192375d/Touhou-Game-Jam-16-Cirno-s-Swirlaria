@@ -13,9 +13,11 @@ func generate_order() -> Order:
 	var retdict : Dictionary[String, int]
 	var items = load("res://resources/Inventory.tres").items.keys()
 	for ingredient : Item in items:
-		var randomval : int = randi_range(0, 10)
-		if (randomval != 0):
-			retdict[ingredient.name] = randomval
+		var should_exist : int = randi_range(0, 1)
+		if (!should_exist):
+			continue
+		var randomval : int = randi_range(1, 15)
+		retdict[ingredient.name] = randomval
 	return Order.new(retdict)
 
 func _on_timer_timeout() -> void:
