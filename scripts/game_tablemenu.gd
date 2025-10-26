@@ -242,6 +242,8 @@ func reset_state() -> void:
 	clear_button_checks()	
 
 func clear_entities() -> void:
+	if (globalCone != null):
+		globalCone.queue_free()
 	for creamitem in creamqueue:
 		if (is_instance_valid(creamitem)):
 			creamitem.queue_free()
