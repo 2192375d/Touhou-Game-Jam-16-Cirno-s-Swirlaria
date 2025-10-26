@@ -263,7 +263,7 @@ scale = Vector2(6, 6)
 
 [node name="table" parent="." instance=ExtResource("6_5dcic")]
 z_index = 1
-position = Vector2(149, 252)
+position = Vector2(258, 79)
 scale = Vector2(4, 4)
 
 [node name="inventory" type="Node" parent="."]
@@ -341,7 +341,7 @@ wait_time = 15.0
 autostart = true
 
 [node name="Line" parent="." instance=ExtResource("20_vvc48")]
-position = Vector2(12, 220)
+position = Vector2(-4, 215)
 
 [node name="PauseNode" type="Node" parent="."]
 script = ExtResource("22_2ar1r")
