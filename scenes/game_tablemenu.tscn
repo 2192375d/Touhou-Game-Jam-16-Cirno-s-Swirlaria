@@ -1061,6 +1061,7 @@ scale = Vector2(3.0703123, 3.1875)
 texture = ExtResource("9_gj0v0")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer/Order"]
+visible = false
 layout_mode = 2
 
 [node name="Padding3" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Order/HBoxContainer"]
