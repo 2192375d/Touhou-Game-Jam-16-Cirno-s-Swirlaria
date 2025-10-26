@@ -222,7 +222,7 @@ func set_flavor(flavor : String):
 			targetcolor = Color(1.0, 1.0, 1.0, 1.0)
 		"Strawberry":
 			targetcolor = Color(0.977, 0.63, 0.761, 1.0)
-	creamraw.get_node("Polygon2D").color = targetcolor
+	creamraw.get_node("Sprite2D").modulate = targetcolor
 	flavortext.add_theme_color_override("default_color", targetcolor)
 	currentFlavor = flavor
 	flavortext.text = flavor
