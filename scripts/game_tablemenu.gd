@@ -94,8 +94,10 @@ func clear_button_checks() -> void:
 				orderhandles[key][k].button_pressed = false
 
 func update_inventory(key : String, change : int) -> void:
-	inventory[key] -= change
-	currentcomposition[key] += change
+	if (key in inventory):
+		inventory[key] -= change
+		currentcomposition[key] += change
+		
 	for k in inventory:
 		var newingredientcomponent = inventoryhandles[k]
 		newingredientcomponent.get_node("HBoxContainer").get_node("Ingredient").text = k
@@ -170,6 +172,8 @@ func _on_nozzle_button_up() -> void:
 	clickingNozzle = false
 
 func add_topping(toppingname : String) -> void:
+	if (not toppingname in inventory):
+		return
 	update_inventory(toppingname, 1)
 	match toppingname:
 		"Sprinkles":
