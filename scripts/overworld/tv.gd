@@ -38,9 +38,12 @@ func _ready() -> void:
 	display_hearts()
 	display_score()
 	GlobalSignal.score_update.connect(_on_score_update)
+	GlobalSignal.hp_update.connect(_on_hp_update)
 
 func _on_score_update() -> void:
-	numhearts = GlobalState.hp
 	score = GlobalState.score
-	display_hearts()
 	display_score()
+
+func _on_hp_update() -> void:
+	numhearts = GlobalState.hp
+	display_hearts()

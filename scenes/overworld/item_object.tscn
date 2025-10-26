@@ -14,9 +14,10 @@ object_interact_component = NodePath("ObjectInteractComponent")
 inventory = ExtResource("5_tbvmv")
 icon = NodePath("Sprite2D")
 
-[node name="ObjectInteractComponent" type="Node" parent="." node_paths=PackedStringArray("area")]
+[node name="ObjectInteractComponent" type="Node" parent="." node_paths=PackedStringArray("area", "sprite")]
 script = ExtResource("1_2gyli")
 area = NodePath("../Area2D")
+sprite = NodePath("../Sprite2D")
 metadata/_custom_type_script = "uid://dwurcaeais01q"
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -234,4 +234,7 @@ collision_layer = 2
 shape = SubResource("RectangleShape2D_3hy2v")
 debug_color = Color(0.98672384, 0, 0.32546666, 0.41960785)
 
+[node name="InvincibilityTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="area_entered" from="hitbox-dot" to="." method="_on_hitbox_area_entered"]
