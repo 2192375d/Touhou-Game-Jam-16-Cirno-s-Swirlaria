@@ -900,6 +900,7 @@ collision_mask = 3
 polygon = PackedVector2Array(17, 16, 2, -76, 1, -139, 6, -173, 8, -59, 20, -7, 39, 15, 41, 37, 61, 34, 64, 53, 131, 54, 134, 36, 154, 36, 156, 16, 174, -4, 188, -70, 185, -170, 191, -144, 197, -82, 178, 16, 100, 277)
 
 [node name="CreamRaw" type="RigidBody2D" parent="."]
+visible = false
 position = Vector2(933.9999, 332)
 mass = 2.0
 freeze = true
@@ -1272,7 +1273,6 @@ offset_right = 437.0
 offset_bottom = 410.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 z_index = -50
 scale = Vector2(20, 20)
 
