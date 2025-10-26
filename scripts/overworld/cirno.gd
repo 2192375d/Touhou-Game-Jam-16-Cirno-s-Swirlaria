@@ -6,7 +6,6 @@ class_name Player
 @export var animation_component: AnimationComponent
 
 @export var inventory: Inventory
-@export var HP: int = 3
 
 @export var spawn_point: Vector2 = Vector2.ZERO
 
@@ -26,6 +25,5 @@ func _process(_delta: float) -> void:
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area is Bullet:
-		HP -= 1
 		position = spawn_point
-		print("you lost a HP! HP = ", HP)
+		GlobalState.hp -= 1
