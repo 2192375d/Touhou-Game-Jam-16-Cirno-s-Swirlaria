@@ -126,20 +126,23 @@ func _ready():
 	
 
 func _on_order_orderfufilled(ordernumber : int) -> void:
-	# check if current order is fine
-	print("checking if order fufilled")
-	if orders[ordernumber].check_fufilled(currentcomposition):
-		print("this order is fufilled")
-		# change the global database
-		for key : Item in GlobalState.inventory:
-			if key.name in currentcomposition:
-				GlobalState.inventory[key] -= currentcomposition[key.name]
-		print("Global State Updated")
-		GlobalSignal.remove_order.emit(ordernumber)
-		orders.erase(ordernumber)
-		orderhandles[ordernumber]["Origin"].queue_free()
-		orderhandles.erase(ordernumber)
-		reset_state()
+	#if orders[ordernumber].check_fufilled(currentcomposition):
+	# modify global score depending on how close current composition is
+	print("SCORE GOTTEN FROM THIS IS:" + str(orders[ordernumber].get_score(currentcomposition)))
+	GlobalState.score += orders[ordernumber].get_score(currentcomposition)
+	GlobalSignal.score_update.emit()
+	# change inventory
+	for key : Item in GlobalState.inventory:
+		if key.name in currentcomposition:
+			GlobalState.inventory[key] -= currentcomposition[key.name]
+	print("Global State Updated")
+	# remove the order
+	GlobalSignal.remove_order.emit(ordernumber)
+	# modify local variables
+	orders.erase(ordernumber)
+	orderhandles[ordernumber]["Origin"].queue_free()
+	orderhandles.erase(ordernumber)
+	reset_state()
 	
 func _input(event):
 	if event.is_action_pressed("menuescape"):
