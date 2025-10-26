@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://b5vmw5yaggpul"]
+[gd_scene load_steps=43 format=4 uid="uid://b5vmw5yaggpul"]
 
 [ext_resource type="Script" uid="uid://dvs64trehf0im" path="res://scripts/overworld/game_overworld.gd" id="1_5fxal"]
 [ext_resource type="PackedScene" uid="uid://bwlta6mv2bg45" path="res://scenes/overworld/cirno.tscn" id="1_12nxy"]
