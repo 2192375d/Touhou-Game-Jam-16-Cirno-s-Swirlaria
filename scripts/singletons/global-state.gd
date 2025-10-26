@@ -11,7 +11,8 @@ static var orders : Dictionary[int, Order] = {
 	3 : Order.new({"Strawberry" : 10, "Vanilla" : 5, "Crisp" : 2}),
 	}
 	
-static var inventory : Dictionary[Item, int] = load("res://resources/Inventory.tres").items 
+
+static var inventory : Dictionary[Item, int] = load("res://resources/Inventory.tres").items
 
 #{
 	#"Chocolate" : 20,
