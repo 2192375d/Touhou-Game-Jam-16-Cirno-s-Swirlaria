@@ -108,6 +108,8 @@ func update_inventory(key : String, change : int) -> void:
 	
 	
 func _ready():
+	print("Starting")
+	#creamraw.notfirst = false
 	conesprite.get_node("StaticBody2D").get_node("CollisionPolygon2D").disabled = true
 	creamraw.get_node("CollisionPolygon2D").disabled = true
 	cherryspriteraw.get_node("CollisionShape2D").disabled = true

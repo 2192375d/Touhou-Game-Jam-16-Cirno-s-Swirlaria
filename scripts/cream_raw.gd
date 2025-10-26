@@ -1,9 +1,10 @@
 extends RigidBody2D
 
 var sumdelta = 0
-static var notfirst = false
+@export var notfirst = false
 
 func _ready():
+	#GlobalSignal..connect(_on_inventory_update)
 	self.freeze = false
 	if (not notfirst):
 		self.freeze = true
