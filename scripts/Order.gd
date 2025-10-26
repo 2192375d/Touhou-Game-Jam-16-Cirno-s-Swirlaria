@@ -9,7 +9,7 @@ func get_score(composition : Dictionary[String, int]) -> int:
 	var points : int = 0
 	for key in ingredients:
 		points += min(composition[key], ingredients[key])
-	return points
+	return points * 173
 	
 
 func check_fufilled(composition : Dictionary[String, int]) -> bool:
