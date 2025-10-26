@@ -14,6 +14,9 @@ func _ready() -> void:
 	object_interact_component.interacted.connect(_on_interact)
 
 func _on_interact() -> void:
-	inventory.items[item] += 1
+	if item.name == "Chocolate" || item.name == "Vanilla" || item.name == "Strawberry":
+		inventory.items[item] += 10
+	else:
+		inventory.items[item] += 1
 	GlobalSignal.inventory_update.emit()
 	self.queue_free()

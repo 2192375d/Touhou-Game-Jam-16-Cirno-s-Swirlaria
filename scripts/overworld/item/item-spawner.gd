@@ -3,6 +3,7 @@ extends Node
 @export var spawnTimer: Timer
 @export var items: Array[Item]
 @export var MAX_NUM_ITEM: int
+
 var numItem: int
 
 # 12 x 10
@@ -30,8 +31,8 @@ func _on_timer_timeout() -> void:
 	numItem += 1
 	
 	if numItem < MAX_NUM_ITEM:
-		spawnTimer.start(randf_range(2, 3))
+		spawnTimer.start(randf_range(0.5, 1.5))
 
 func _on_inventory_update():
 	numItem -= 1
-	spawnTimer.start(randf_range(2, 3))
+	spawnTimer.start(randf_range(0.5, 1.5))

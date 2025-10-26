@@ -8,27 +8,27 @@
 
 [node name="Node" type="Node" parent="."]
 
-[node name="danger-zone" type="Sprite2D" parent="Node"]
+[node name="title screen" type="Sprite2D" parent="Node"]
 modulate = Color(0.6700217, 0.498406, 0.2795993, 0.5019608)
 z_index = -2
-scale = Vector2(1400, 900)
+scale = Vector2(1920, 1079.9999)
 texture = SubResource("CanvasTexture_wvt07")
 centered = false
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Node"]
-offset_left = 473.0
-offset_top = 141.0
-offset_right = 949.0
-offset_bottom = 224.0
+offset_left = 720.0
+offset_top = 248.0
+offset_right = 1196.0
+offset_bottom = 331.0
 theme_override_font_sizes/normal_font_size = 60
 text = "Cirno's Swirlaria"
 fit_content = true
 
 [node name="Button" type="Button" parent="Node"]
-offset_left = 529.0
-offset_top = 434.0
-offset_right = 887.0
-offset_bottom = 577.0
+offset_left = 800.0
+offset_top = 576.0
+offset_right = 1158.0
+offset_bottom = 719.0
 theme_override_font_sizes/font_size = 50
 text = "Start Game"
 script = ExtResource("1_q0175")
