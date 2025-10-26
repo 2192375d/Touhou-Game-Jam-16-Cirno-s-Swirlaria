@@ -22,4 +22,4 @@ func set_bullet(new_dir: float, new_speed: float):
 	collision_shape.shape = bullet_resource.shape
 	sprite.texture = bullet_resource.texture
 	
-	rotate(-dir)
+	rotate(dir)
