@@ -7,4 +7,5 @@
 script = ExtResource("1_ly25h")
 name = "Sprinkles"
 texture = ExtResource("2_ly25h")
+maxorderrng = 5
 metadata/_custom_type_script = "uid://c6nqgxpv81pby"

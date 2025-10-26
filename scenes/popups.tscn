@@ -17,6 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PointsPopup" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -55,6 +56,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HeartsPopup" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_top = 188.0
 offset_right = 40.0

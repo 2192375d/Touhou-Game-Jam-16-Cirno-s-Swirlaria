@@ -16,7 +16,7 @@ func generate_order() -> Order:
 		var should_exist : int = randi_range(0, 1)
 		if (!should_exist):
 			continue
-		var randomval : int = randi_range(1, 15)
+		var randomval : int = randi_range(ingredient.minorderrng, ingredient.maxorderrng)
 		retdict[ingredient.name] = randomval
 	return Order.new(retdict)
 
