@@ -8,7 +8,6 @@ func _ready():
 	if (not notfirst):
 		self.freeze = true
 	notfirst = true
-	print("Hello World")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -17,8 +16,6 @@ func _process(delta):
 		#print(sumdelta)
 		if sumdelta >= 3:
 			self.freeze = true
-			print("freezed")
 	if (self.position.y >= 1200):
-		print("KMS")
 		queue_free()
 		
