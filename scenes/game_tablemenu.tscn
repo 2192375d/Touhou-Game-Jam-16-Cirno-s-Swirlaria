@@ -1224,13 +1224,26 @@ offset_top = 116.0
 offset_right = 144.0
 offset_bottom = 156.0
 
+[node name="PanelContainer" type="PanelContainer" parent="Control2"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = -23.0
+offset_right = 318.0
+offset_bottom = 34.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control2/PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+text = "INVENTORY"
+horizontal_alignment = 1
+
 [node name="InventoryContainer" type="VBoxContainer" parent="Control2"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 0
 offset_left = 15.0
-offset_top = -4.0
+offset_top = 37.0
 offset_right = 384.0
-offset_bottom = -4.0
+offset_bottom = 79.0
 
 [node name="IngredientContainer" type="PanelContainer" parent="Control2/InventoryContainer"]
 visible = false
