@@ -191,6 +191,7 @@ func _on_cone_button_down() -> void:
 		globalCone.queue_free()
 	# generate new cone
 	globalCone = conesprite.duplicate()
+	globalCone.z_index = -2
 	globalCone.get_node("StaticBody2D").get_node("CollisionPolygon2D").disabled = false
 	globalCone.visible = true
 	add_child(globalCone)
