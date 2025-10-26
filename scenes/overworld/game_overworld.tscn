@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=45 format=4 uid="uid://b5vmw5yaggpul"]
+=======
+[gd_scene load_steps=48 format=4 uid="uid://b5vmw5yaggpul"]
+>>>>>>> f256b2a8ed987172c6c1c3350ef3f3dde31b63e1
 
 [ext_resource type="Script" uid="uid://dvs64trehf0im" path="res://scripts/overworld/game_overworld.gd" id="1_5fxal"]
 [ext_resource type="PackedScene" uid="uid://bwlta6mv2bg45" path="res://scenes/overworld/cirno.tscn" id="1_12nxy"]
@@ -24,6 +28,12 @@
 [ext_resource type="PackedScene" uid="uid://b7h2nucft6ua5" path="res://scenes/overworld/line.tscn" id="20_vvc48"]
 [ext_resource type="Script" uid="uid://dfn3ugl0bk3eh" path="res://scripts/overworld/pausenode.gd" id="22_2ar1r"]
 [ext_resource type="PackedScene" uid="uid://bnf3jn0e4t8r1" path="res://scenes/overworld/pause_menu.tscn" id="23_skbar"]
+<<<<<<< HEAD
+=======
+[ext_resource type="Texture2D" uid="uid://dky077qa182uv" path="res://assets/icecreambanner.png" id="25_2hgjr"]
+[ext_resource type="Texture2D" uid="uid://defde8x4q7we0" path="res://assets/bannersidegreen.png" id="26_ntmse"]
+[ext_resource type="Texture2D" uid="uid://eue43dpo3x0a" path="res://assets/bannerside.png" id="27_da7d7"]
+>>>>>>> f256b2a8ed987172c6c1c3350ef3f3dde31b63e1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rnjyy"]
 texture = ExtResource("2_5fxal")
@@ -262,7 +272,7 @@ scale = Vector2(6, 6)
 
 [node name="table" parent="." instance=ExtResource("6_5dcic")]
 z_index = 1
-position = Vector2(149, 252)
+position = Vector2(275, 79)
 scale = Vector2(4, 4)
 
 [node name="inventory" type="Node" parent="."]
@@ -340,7 +350,7 @@ wait_time = 15.0
 autostart = true
 
 [node name="Line" parent="." instance=ExtResource("20_vvc48")]
-position = Vector2(12, 220)
+position = Vector2(54, 204)
 
 [node name="PauseNode" type="Node" parent="."]
 script = ExtResource("22_2ar1r")
@@ -352,8 +362,8 @@ offset_top = 188.0
 offset_right = 447.0
 offset_bottom = 188.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(385, 62)
+[node name="IceCreamMockup" type="Sprite2D" parent="."]
+position = Vector2(401, 62)
 scale = Vector2(2.0160627, 1.2187499)
 
 [node name="timeLabel" type="Label" parent="."]
@@ -365,6 +375,16 @@ scale = Vector2(4, 4)
 text = "time left: 0"
 
 [node name="time-elapsed-timer" type="Timer" parent="."]
+
+[node name="Banner" type="Sprite2D" parent="."]
+position = Vector2(166, 358)
+scale = Vector2(2.8913043, 2.328125)
+texture = ExtResource("26_ntmse")
+
+[node name="Banner2" type="Sprite2D" parent="."]
+position = Vector2(158, 99.99999)
+scale = Vector2(2.8913043, 2.328125)
+texture = ExtResource("27_da7d7")
 
 [connection signal="area_exited" from="bullet-zone" to="." method="_on_bulletzone_area_exited"]
 [connection signal="timeout" from="item-spawner/Timer" to="item-spawner" method="_on_timer_timeout"]

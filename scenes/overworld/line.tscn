@@ -1,7 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7h2nucft6ua5"]
+[gd_scene load_steps=6 format=3 uid="uid://b7h2nucft6ua5"]
 
 [ext_resource type="Script" uid="uid://dyk05iy0dyt2s" path="res://scripts/overworld/line.gd" id="1_6gjka"]
 [ext_resource type="Texture2D" uid="uid://1bbsm2063hbs" path="res://icon.svg" id="2_h2k2i"]
+[ext_resource type="Texture2D" uid="uid://b7v8kg6wpe4ii" path="res://assets/more_touhou_characters.png" id="3_h2k2i"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mo3oy"]
+texture = ExtResource("3_h2k2i")
+texture_region_size = Vector2i(16, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_s14fh"]
+sources/0 = SubResource("TileSetAtlasSource_mo3oy")
 
 [node name="Line" type="Node2D"]
 script = ExtResource("1_6gjka")
@@ -22,11 +42,16 @@ scale = Vector2(2, 2)
 [node name="Visitor" type="MarginContainer" parent="."]
 visible = false
 custom_minimum_size = Vector2(0, 30)
-offset_right = 40.0
-offset_bottom = 30.0
+offset_right = 48.666668
+offset_bottom = 36.5
 scale = Vector2(2, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="Visitor"]
+visible = false
 position = Vector2(16.499998, 12.5)
-scale = Vector2(0.2578125, 0.1953125)
+scale = Vector2(0.3, 0.227)
 texture = ExtResource("2_h2k2i")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Visitor"]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_s14fh")
