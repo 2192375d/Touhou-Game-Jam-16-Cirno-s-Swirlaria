@@ -17,7 +17,7 @@ extends Node2D
 @onready var cursordown = load("res://assets/cursordown.png")
 
 var orders : Dictionary[int, Order] = GlobalState.orders
-var inventory : Dictionary[String, int] = GlobalState.inventory
+
 
 # const
 const toppingpositions = {
@@ -38,7 +38,7 @@ var currentcomposition : Dictionary[String, int]
 var currentFlavor : String = "Vanilla"
 var inventoryhandles : Dictionary[String, PanelContainer]
 var orderhandles : Dictionary # Dictionary[int, Dictionary[String, Container]]
-
+var inventory : Dictionary[String, int] 
 
 
 func reset_currentcomposition() -> void:
@@ -52,8 +52,6 @@ func reset_currentcomposition() -> void:
 	"Crisp" : 0,}
 
 func setup_orders():
-	print("Displaying orders")
-	print(orders)
 	for key in orders:
 		var order = orders[key]
 		var newordercomponent : VBoxContainer = ordertemplate.duplicate()
@@ -72,7 +70,6 @@ func setup_orders():
 		newordercomponent.move_child(newordercomponent.get_node("Button"), newordercomponent.get_child_count() -1)
 		newordercomponent.ordernumber = key
 		vboxcontainer.add_child(newordercomponent)
-	print(orderhandles)
 	
 	
 func setup_inventory_display() -> void:
@@ -108,8 +105,11 @@ func update_inventory(key : String, change : int) -> void:
 	
 	
 func _ready():
-	print("Starting")
 	#creamraw.notfirst = false
+	for item : Item in GlobalState.inventory:
+		inventory[item.name] = GlobalState.inventory[item]
+	print(inventory)
+
 	conesprite.get_node("StaticBody2D").get_node("CollisionPolygon2D").disabled = true
 	creamraw.get_node("CollisionPolygon2D").disabled = true
 	cherryspriteraw.get_node("CollisionShape2D").disabled = true
@@ -117,7 +117,8 @@ func _ready():
 	setup_orders()
 	setup_inventory_display()
 	reset_currentcomposition()
-	Input.set_custom_mouse_cursor(cursorup)	
+	Input.set_custom_mouse_cursor(cursorup)
+	
 
 func _on_order_orderfufilled(ordernumber : int) -> void:
 	# check if current order is fine
