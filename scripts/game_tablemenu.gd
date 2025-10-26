@@ -119,7 +119,7 @@ func _ready():
 	#creamraw.notfirst = false
 	update_inventory_from_global_state()
 	conesprite.get_node("StaticBody2D").get_node("CollisionPolygon2D").disabled = true
-	creamraw.get_node("CollisionPolygon2D").disabled = true
+	creamraw.get_node("CollisionShape2D").disabled = true
 	cherryspriteraw.get_node("CollisionShape2D").disabled = true
 	sprinklesspriteraw.get_node("CollisionShape2D").disabled = true
 	reset_currentcomposition()
@@ -246,7 +246,7 @@ func _on_timer_timeout() -> void:
 		creamqueue.append(newcream)
 		newcream.visible = true
 		newcream.freeze = false
-		newcream.get_node("CollisionPolygon2D").disabled = false
+		newcream.get_node("CollisionShape2D").disabled = false
 		newcream.gravity_scale = 1.0
 		add_child(newcream)
 	
