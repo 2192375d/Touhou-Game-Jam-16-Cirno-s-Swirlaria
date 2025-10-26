@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://b5vmw5yaggpul"]
+[gd_scene load_steps=45 format=4 uid="uid://b5vmw5yaggpul"]
 
 [ext_resource type="Script" uid="uid://dvs64trehf0im" path="res://scripts/overworld/game_overworld.gd" id="1_5fxal"]
 [ext_resource type="PackedScene" uid="uid://bwlta6mv2bg45" path="res://scenes/overworld/cirno.tscn" id="1_12nxy"]
@@ -24,7 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://b7h2nucft6ua5" path="res://scenes/overworld/line.tscn" id="20_vvc48"]
 [ext_resource type="Script" uid="uid://dfn3ugl0bk3eh" path="res://scripts/overworld/pausenode.gd" id="22_2ar1r"]
 [ext_resource type="PackedScene" uid="uid://bnf3jn0e4t8r1" path="res://scenes/overworld/pause_menu.tscn" id="23_skbar"]
-[ext_resource type="Texture2D" uid="uid://dky077qa182uv" path="res://assets/icecreambanner.png" id="25_2hgjr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rnjyy"]
 texture = ExtResource("2_5fxal")
@@ -356,8 +355,18 @@ offset_bottom = 188.0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(385, 62)
 scale = Vector2(2.0160627, 1.2187499)
-texture = ExtResource("25_2hgjr")
+
+[node name="timeLabel" type="Label" parent="."]
+offset_left = 1211.0
+offset_top = 32.0
+offset_right = 1333.0
+offset_bottom = 56.25
+scale = Vector2(4, 4)
+text = "time left: 0"
+
+[node name="time-elapsed-timer" type="Timer" parent="."]
 
 [connection signal="area_exited" from="bullet-zone" to="." method="_on_bulletzone_area_exited"]
 [connection signal="timeout" from="item-spawner/Timer" to="item-spawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="line-spawner/Timer" to="line-spawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="time-elapsed-timer" to="." method="_on_timeelapsedtimer_timeout"]

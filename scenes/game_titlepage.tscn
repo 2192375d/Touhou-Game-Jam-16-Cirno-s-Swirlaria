@@ -16,10 +16,10 @@ texture = SubResource("CanvasTexture_wvt07")
 centered = false
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Node"]
-offset_left = 720.0
-offset_top = 248.0
-offset_right = 1196.0
-offset_bottom = 331.0
+offset_left = 751.0
+offset_top = 243.0
+offset_right = 1227.0
+offset_bottom = 326.0
 theme_override_font_sizes/normal_font_size = 60
 text = "Cirno's Swirlaria"
 fit_content = true
