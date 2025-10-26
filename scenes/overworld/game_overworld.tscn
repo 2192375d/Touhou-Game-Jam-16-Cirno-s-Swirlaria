@@ -343,7 +343,7 @@ wait_time = 15.0
 autostart = true
 
 [node name="Line" parent="." instance=ExtResource("20_vvc48")]
-position = Vector2(-4, 215)
+position = Vector2(54, 204)
 
 [node name="PauseNode" type="Node" parent="."]
 script = ExtResource("22_2ar1r")
