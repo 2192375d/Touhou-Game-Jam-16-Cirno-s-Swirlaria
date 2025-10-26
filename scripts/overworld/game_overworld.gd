@@ -6,7 +6,7 @@ extends Node2D
 func _ready() -> void:
 	randomize()
 	GlobalSignal.hp_update.connect(_on_hp_update)
-	time_elapsed_timer.start(180)
+	time_elapsed_timer.start(GlobalState.time)
 
 
 func _on_bulletzone_area_exited(area: Area2D) -> void:
