@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b468oxcelg53b"]
+[gd_scene load_steps=26 format=4 uid="uid://b468oxcelg53b"]
 
 [ext_resource type="Script" uid="uid://coqyk8dykhr6g" path="res://scripts/game_tablemenu.gd" id="1_mi270"]
 [ext_resource type="Texture2D" uid="uid://bj064owr3b45d" path="res://assets/cirno-game.png" id="2_a75m5"]
@@ -8,6 +8,12 @@
 [ext_resource type="Script" uid="uid://bm0saqtui60nh" path="res://scripts/orderpanel.gd" id="5_hf3yf"]
 [ext_resource type="Texture2D" uid="uid://dgnhenm28ax5t" path="res://assets/cone.png" id="5_khkxo"]
 [ext_resource type="Texture2D" uid="uid://d3x16qicq0heq" path="res://assets/poof.png" id="7_imbru"]
+[ext_resource type="Texture2D" uid="uid://cjwtggbxp24vp" path="res://assets/ingredientframe.png" id="9_8v45c"]
+[ext_resource type="Texture2D" uid="uid://cs5yfp67ee46v" path="res://assets/ordertop.png" id="9_gj0v0"]
+[ext_resource type="PackedScene" uid="uid://c6gg6bhmerwpx" path="res://scenes/popups.tscn" id="9_imbru"]
+[ext_resource type="Texture2D" uid="uid://vl40ypxklq8y" path="res://assets/ordermid.png" id="10_ektat"]
+[ext_resource type="Texture2D" uid="uid://nn0lhhorwjbk" path="res://assets/tileset2.png" id="10_u14es"]
+[ext_resource type="Texture2D" uid="uid://dbgfby2wqhh1s" path="res://assets/orderbottom.png" id="11_uu4ud"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kreb0"]
 texture = ExtResource("2_twdh5")
@@ -728,14 +734,40 @@ shader_parameter/collision_bounce = 0.2
 [sub_resource type="CircleShape2D" id="CircleShape2D_a75m5"]
 radius = 20.024984
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g46wl"]
+
 [sub_resource type="Theme" id="Theme_a75m5"]
 
 [sub_resource type="Theme" id="Theme_hf3yf"]
 TextPink/base_type = &"RichTextLabel"
 TextPink/colors/default_color = Color(0.9187019, 0.51058686, 0.87564236, 1)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8v45c"]
+texture = ExtResource("10_u14es")
+4:0/0 = 0
+6:0/0 = 0
+4:2/0 = 0
+6:2/0 = 0
+0:3/0 = 0
+2:3/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_wi8ca"]
+sources/0 = SubResource("TileSetAtlasSource_8v45c")
+
 [node name="GameTablemenu" type="Node2D"]
 script = ExtResource("1_mi270")
+metadata/_edit_horizontal_guides_ = [127.0]
 
 [node name="Nozzle" type="Button" parent="."]
 offset_left = 660.00006
@@ -746,7 +778,7 @@ offset_bottom = 348.0
 [node name="TileMap" type="TileMapLayer" parent="Nozzle"]
 position = Vector2(4, 73.000015)
 scale = Vector2(10, 10)
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 29, 0, 27, 0, 0, 0, 0, 0, 255, 255, 1, 0, 29, 0, 26, 0, 0, 0)
+tile_map_data = PackedByteArray("AAAAAAAAAQAdABsAAAAAAP//AQAdABoAAAA=")
 tile_set = SubResource("TileSet_twdh5")
 
 [node name="Tablebg" type="Sprite2D" parent="."]
@@ -775,7 +807,7 @@ scale = Vector2(6, 6)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Chocolate"]
 position = Vector2(-15, 1.0000014)
-tile_map_data = PackedByteArray(0, 0, 1, 0, 0, 0, 1, 0, 15, 0, 19, 0, 0, 0)
+tile_map_data = PackedByteArray("AAABAAAAAQAPABMAAAA=")
 tile_set = SubResource("TileSet_twdh5")
 
 [node name="Vanilla" type="Button" parent="."]
@@ -787,7 +819,7 @@ scale = Vector2(6, 6)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Vanilla"]
 position = Vector2(-15, 1.0000014)
-tile_map_data = PackedByteArray(0, 0, 1, 0, 0, 0, 1, 0, 17, 0, 19, 0, 0, 0)
+tile_map_data = PackedByteArray("AAABAAAAAQARABMAAAA=")
 tile_set = SubResource("TileSet_twdh5")
 
 [node name="Cherry" type="Button" parent="."]
@@ -800,7 +832,7 @@ scale = Vector2(6, 6)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Cherry"]
 position = Vector2(-15, 1.0000014)
-tile_map_data = PackedByteArray(0, 0, 1, 0, 0, 0, 1, 0, 21, 0, 21, 0, 0, 0)
+tile_map_data = PackedByteArray("AAABAAAAAQAVABUAAAA=")
 tile_set = SubResource("TileSet_twdh5")
 
 [node name="Sprinkles" type="Button" parent="."]
@@ -812,7 +844,7 @@ scale = Vector2(6, 6)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Sprinkles"]
 position = Vector2(-15, 1.0000014)
-tile_map_data = PackedByteArray(0, 0, 1, 0, 0, 0, 1, 0, 23, 0, 21, 0, 0, 0)
+tile_map_data = PackedByteArray("AAABAAAAAQAXABUAAAA=")
 tile_set = SubResource("TileSet_twdh5")
 
 [node name="Strawberry" type="Button" parent="."]
@@ -824,7 +856,7 @@ scale = Vector2(6, 6)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Strawberry"]
 position = Vector2(-14.666672, 1.1666675)
-tile_map_data = PackedByteArray(0, 0, 1, 0, 0, 0, 1, 0, 19, 0, 19, 0, 0, 0)
+tile_map_data = PackedByteArray("AAABAAAAAQATABMAAAA=")
 tile_set = SubResource("TileSet_twdh5")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
@@ -851,7 +883,7 @@ texture = ExtResource("5_khkxo")
 visible = false
 position = Vector2(-67.00049, -4.000122)
 scale = Vector2(20, 20)
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 30, 0, 27, 0, 0, 0)
+tile_map_data = PackedByteArray("AAAAAAAAAQAeABsAAAA=")
 tile_set = SubResource("TileSet_twdh5")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="ConeSprite"]
@@ -892,7 +924,7 @@ freeze = true
 [node name="TileMapLayer" type="TileMapLayer" parent="CherryRaw"]
 position = Vector2(-5.000061, 1.0000019)
 scale = Vector2(6, 6)
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_twdh5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CherryRaw"]
@@ -909,7 +941,7 @@ freeze = true
 [node name="TileMapLayer" type="TileMapLayer" parent="SprinklesRaw"]
 position = Vector2(-5.000061, 1.0000019)
 scale = Vector2(6, 6)
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 23, 0, 21, 0, 0, 0)
+tile_map_data = PackedByteArray("AAAAAAAAAQAXABUAAAA=")
 tile_set = SubResource("TileSet_twdh5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SprinklesRaw"]
@@ -937,12 +969,12 @@ offset_bottom = 735.0
 layout_mode = 0
 offset_left = 6.0
 offset_top = 18.0
-offset_right = 348.0
+offset_right = 414.0
 offset_bottom = 625.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer"]
 clip_children = 1
-custom_minimum_size = Vector2(300, 600)
+custom_minimum_size = Vector2(400, 600)
 layout_mode = 2
 
 [node name="Order" type="VBoxContainer" parent="Control/ScrollContainer/VBoxContainer"]
@@ -953,16 +985,59 @@ script = ExtResource("5_hf3yf")
 
 [node name="OrderNumberPanel" type="PanelContainer" parent="Control/ScrollContainer/VBoxContainer/Order"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_g46wl")
 
 [node name="OrderNumber" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Order/OrderNumberPanel"]
 layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 30
 text = "Order #1"
 fit_content = true
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer/Order/OrderNumberPanel"]
+show_behind_parent = true
+position = Vector2(197.49994, 23.5)
+scale = Vector2(3.0703123, 3.1875)
+texture = ExtResource("9_gj0v0")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer/Order"]
-visible = false
 layout_mode = 2
+
+[node name="Padding3" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Order/HBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+fit_content = true
+horizontal_alignment = 2
+
+[node name="Padding4" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Order/HBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+fit_content = true
+horizontal_alignment = 2
+
+[node name="Padding5" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Order/HBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+fit_content = true
+horizontal_alignment = 2
+
+[node name="Padding6" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Order/HBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+fit_content = true
+horizontal_alignment = 2
+
+[node name="Padding2" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Order/HBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+fit_content = true
+horizontal_alignment = 2
 
 [node name="CheckBox" type="CheckBox" parent="Control/ScrollContainer/VBoxContainer/Order/HBoxContainer"]
 layout_mode = 2
@@ -970,6 +1045,7 @@ layout_mode = 2
 [node name="Ingredient" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Order/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 25
 text = "Vanilla"
 fit_content = true
@@ -977,17 +1053,70 @@ fit_content = true
 [node name="Amount" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Order/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 25
 text = "20
 "
 fit_content = true
 horizontal_alignment = 2
 
+[node name="Padding" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Order/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "
+"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="Padding7" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Order/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "
+"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="Padding8" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Order/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "
+"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="Padding9" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Order/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "
+"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="Padding10" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Order/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "
+"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer/Order/HBoxContainer"]
+z_index = -1
+position = Vector2(203.00003, 25.250004)
+scale = Vector2(3.0000005, 3.2187505)
+texture = ExtResource("10_ektat")
+
 [node name="Button" type="Button" parent="Control/ScrollContainer/VBoxContainer/Order"]
 layout_mode = 2
 theme = SubResource("Theme_a75m5")
 theme_override_font_sizes/font_size = 20
 text = "Submit Order"
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer/Order/Button"]
+z_index = -1
+position = Vector2(203, 32.5)
+scale = Vector2(2.9921875, 4.6875)
+texture = ExtResource("11_uu4ud")
 
 [node name="Banana" type="Button" parent="."]
 top_level = true
@@ -999,7 +1128,7 @@ scale = Vector2(6, 6)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Banana"]
 position = Vector2(-15, 1.1666656)
-tile_map_data = PackedByteArray(0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0)
+tile_map_data = PackedByteArray("AAABAAAAAAAAAAQAAAA=")
 tile_set = SubResource("TileSet_twdh5")
 
 [node name="Crisp" type="Button" parent="."]
@@ -1012,7 +1141,7 @@ scale = Vector2(6, 6)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Crisp"]
 position = Vector2(-15, 1.0000014)
-tile_map_data = PackedByteArray(0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 2, 0, 0, 0)
+tile_map_data = PackedByteArray("AAABAAAAAAABAAIAAAA=")
 tile_set = SubResource("TileSet_twdh5")
 
 [node name="CrispRaw" type="RigidBody2D" parent="."]
@@ -1023,7 +1152,7 @@ freeze = true
 [node name="TileMapLayer" type="TileMapLayer" parent="CrispRaw"]
 position = Vector2(-5.000061, 1.0000019)
 scale = Vector2(6, 6)
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2, 0, 0, 0)
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAIAAAA=")
 tile_set = SubResource("TileSet_twdh5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CrispRaw"]
@@ -1038,7 +1167,7 @@ freeze = true
 [node name="TileMapLayer" type="TileMapLayer" parent="BananaRaw"]
 position = Vector2(-5.000061, 1.0000019)
 scale = Vector2(6, 6)
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAUAAAA=")
 tile_set = SubResource("TileSet_twdh5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BananaRaw"]
@@ -1071,15 +1200,18 @@ offset_bottom = -4.0
 
 [node name="IngredientContainer" type="PanelContainer" parent="Control2/InventoryContainer"]
 visible = false
+z_index = 1
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control2/InventoryContainer/IngredientContainer"]
+z_index = 2
 clip_contents = true
 layout_mode = 2
 
 [node name="Ingredient" type="RichTextLabel" parent="Control2/InventoryContainer/IngredientContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 30
 text = "Ingredient"
 fit_content = true
@@ -1087,11 +1219,17 @@ fit_content = true
 [node name="Amount" type="RichTextLabel" parent="Control2/InventoryContainer/IngredientContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 30
 text = "0/0
 "
 fit_content = true
 horizontal_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Control2/InventoryContainer/IngredientContainer"]
+position = Vector2(188, 21.000008)
+scale = Vector2(3.2187502, 1.5624999)
+texture = ExtResource("9_8v45c")
 
 [node name="Control3" type="Control" parent="."]
 layout_mode = 3
@@ -1127,6 +1265,21 @@ theme = SubResource("Theme_hf3yf")
 theme_override_font_sizes/normal_font_size = 25
 text = "Vanilla"
 fit_content = true
+
+[node name="Popups" parent="." instance=ExtResource("9_imbru")]
+offset_left = 437.0
+offset_top = 410.0
+offset_right = 437.0
+offset_bottom = 410.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+z_index = -50
+scale = Vector2(20, 20)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Sprite2D"]
+tile_map_data = PackedByteArray("AAAAAAEAAAAAAAMAAAABAAEAAAAAAAMAAAACAAIAAAAAAAMAAAACAAEAAAAFAAUAAAACAAAAAAAAAAMAAAABAAAAAAAAAAMAAAAAAAIAAAAAAAMAAAABAAIAAAAAAAMAAAADAAAAAAAAAAMAAAAEAAAAAAAAAAMAAAAFAAAAAAAAAAMAAAAFAAEAAAAAAAMAAAAFAAIAAAAAAAMAAAAEAAIAAAAAAAMAAAAEAAEAAAAAAAMAAAADAAEAAAAAAAMAAAADAAIAAAAAAAMAAAAAAAAAAAAAAAMAAAA=")
+tile_set = SubResource("TileSet_wi8ca")
 
 [connection signal="button_down" from="Nozzle" to="." method="_on_nozzle_button_down"]
 [connection signal="button_up" from="Nozzle" to="." method="_on_nozzle_button_up"]

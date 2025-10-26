@@ -13,8 +13,11 @@ extends Node2D
 @onready var flavortext = get_node("Control3/CurrentFlavor/Flavor")
 @onready var inventorycontainer = get_node("Control2/InventoryContainer")
 @onready var ingredientcontainertemplate = get_node("Control2/InventoryContainer/IngredientContainer")
+@onready var pointspopup = get_node("Popups/PointsPopup")
+@onready var heartspopup = get_node("Popups/HeartsPopup")
 @onready var cursorup = load("res://assets/cursorup.png")
 @onready var cursordown = load("res://assets/cursordown.png")
+
 
 var orders : Dictionary[int, Order] = GlobalState.orders
 
@@ -22,7 +25,7 @@ var orders : Dictionary[int, Order] = GlobalState.orders
 # const
 const toppingpositions = {
 	"Cherry" : [Vector2i(0,0), Vector2i(0,1), Vector2i(1,0), Vector2i(1,1)],
-	"Sprinkles" : [Vector2i(2,0), Vector2i(3,0), Vector2i(2,1), Vector2i(3,1), Vector2i(2,2), Vector2i(3,2), Vector2i(2,3), Vector2i(3,3), Vector2i(3,5)],
+	"Sprinkles" : [Vector2i(2,0), Vector2i(3,0), Vector2i(2,1), Vector2i(3,1), Vector2i(2,2), Vector2i(3,2), Vector2i(2,3), Vector2i(3,3)],
 	"Banana" : [Vector2i(0,2), Vector2i(0,3), Vector2i(0,4)],
 	"Crisp" : [Vector2i(1,2), Vector2i(1,3)],
 }
@@ -108,9 +111,9 @@ func update_inventory(key : String, change : int) -> void:
 	# check to see if any checkmarks are good
 
 func update_inventory_from_global_state() -> void:
-	for item : Item in GlobalState.inventory:
-		inventory[item.name] = GlobalState.inventory[item]
-	#print(inventory)
+	var globalinventory : Dictionary[Item, int] = load("res://resources/Inventory.tres").items
+	for item : Item in globalinventory:
+		inventory[item.name] = globalinventory[item]
 	
 func _ready():
 	#creamraw.notfirst = false
@@ -128,13 +131,21 @@ func _ready():
 func _on_order_orderfufilled(ordernumber : int) -> void:
 	#if orders[ordernumber].check_fufilled(currentcomposition):
 	# modify global score depending on how close current composition is
-	print("SCORE GOTTEN FROM THIS IS:" + str(orders[ordernumber].get_score(currentcomposition)))
+	if (orders[ordernumber].check_fufilled(currentcomposition)): 
+		heartspopup.show_popup("+ 2 HEARTS")
+	
+	GlobalState.hp = min(GlobalState.hp+2, 5)
+	GlobalSignal.hp_update.emit()
+	var totalpoints : String = str(orders[ordernumber].get_score(currentcomposition))
+	print("SCORE GOTTEN FROM THIS IS:" + totalpoints)
+	pointspopup.show_popup("+ " + totalpoints + " POINTS")
 	GlobalState.score += orders[ordernumber].get_score(currentcomposition)
 	GlobalSignal.score_update.emit()
 	# change inventory
-	for key : Item in GlobalState.inventory:
+	var globalinventory : Dictionary[Item, int] = load("res://resources/Inventory.tres").items
+	for key : Item in globalinventory:
 		if key.name in currentcomposition:
-			GlobalState.inventory[key] -= currentcomposition[key.name]
+			globalinventory[key] -= currentcomposition[key.name]
 	print("Global State Updated")
 	# remove the order
 	GlobalSignal.remove_order.emit(ordernumber)
@@ -201,7 +212,9 @@ func add_topping(toppingname : String) -> void:
 		"Crisp":
 			currentTopping = crispraw.duplicate()
 	var tilemap : TileMapLayer = currentTopping.get_node("TileMapLayer") 
-	tilemap.set_cell(Vector2i(0,0),0,toppingpositions[toppingname].pick_random())
+	var randompos : Vector2i = toppingpositions[toppingname].pick_random()
+	print(randompos)
+	tilemap.set_cell(Vector2i(0,0),0,randompos)
 	toppingqueue.append(currentTopping)
 	currentTopping.visible = true
 	currentTopping.freeze = true

@@ -7,4 +7,6 @@
 script = ExtResource("1_1uaha")
 name = "Strawberry"
 texture = ExtResource("2_pqayc")
+minorderrng = 10
+maxorderrng = 50
 metadata/_custom_type_script = "uid://c6nqgxpv81pby"
