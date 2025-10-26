@@ -12,10 +12,16 @@ func _process(delta: float) -> void:
 func generate_order() -> Order:
 	var retdict : Dictionary[String, int]
 	var items = load("res://resources/Inventory.tres").items.keys()
+	var index = 0
 	for ingredient : Item in items:
-		var randomval : int = randi_range(0, 10)
-		if (randomval != 0):
-			retdict[ingredient.name] = randomval
+		var ranLarge : int = randi_range(15, 25)
+		var ranSmall : int = randi_range(0, 10)
+		# ice cream base only
+		if index < 3 and ranLarge != 0:
+			retdict[ingredient.name] = ranLarge
+		elif index > 3 and ranSmall != 0:
+			retdict[ingredient.name] = ranSmall
+		index += 1
 	return Order.new(retdict)
 
 func _on_timer_timeout() -> void:

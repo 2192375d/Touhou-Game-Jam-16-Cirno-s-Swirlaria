@@ -11,8 +11,8 @@ extends Node2D
 @onready var ordertemplate = get_node("Control/ScrollContainer/VBoxContainer/Order")
 @onready var orderingredienttemplate = get_node("Control/ScrollContainer/VBoxContainer/Order/HBoxContainer")
 @onready var flavortext = get_node("Control3/CurrentFlavor/Flavor")
-@onready var inventorycontainer = get_node("Control2/InventoryContainer")
-@onready var ingredientcontainertemplate = get_node("Control2/InventoryContainer/IngredientContainer")
+@onready var inventorycontainer = get_node("InventoryList/InventoryContainer")
+@onready var ingredientcontainertemplate = get_node("InventoryList/InventoryContainer/IngredientContainer")
 @onready var cursorup = load("res://assets/cursorup.png")
 @onready var cursordown = load("res://assets/cursordown.png")
 
