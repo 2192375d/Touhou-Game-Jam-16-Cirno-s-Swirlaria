@@ -33,8 +33,8 @@ func add_visitor() -> MarginContainer:
 	return newvisitor
 	
 func add_order() -> void:
-	print("NEW VISITOR WAS ADDDED")
 	var newvisitor = add_visitor()
+	newvisitor.get_node("TileMapLayer").set_cell(Vector2i(0,0),0,Vector2i(randi_range(0,5),0))
 	allvisitors.append(newvisitor)
 
 func _on_add_order(orderno: int, order : Order) -> void:

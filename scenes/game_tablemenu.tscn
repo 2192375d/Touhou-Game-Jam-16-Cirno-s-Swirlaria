@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://b468oxcelg53b"]
+[gd_scene load_steps=32 format=4 uid="uid://b468oxcelg53b"]
 
 [ext_resource type="Script" uid="uid://coqyk8dykhr6g" path="res://scripts/game_tablemenu.gd" id="1_mi270"]
 [ext_resource type="Texture2D" uid="uid://bj064owr3b45d" path="res://assets/cirno-game.png" id="2_a75m5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://32n2a0ujd5hy" path="res://assets/tablebg.png" id="3_xfssl"]
 [ext_resource type="Script" uid="uid://bm0saqtui60nh" path="res://scripts/orderpanel.gd" id="5_hf3yf"]
 [ext_resource type="Texture2D" uid="uid://dgnhenm28ax5t" path="res://assets/cone.png" id="5_khkxo"]
+[ext_resource type="Texture2D" uid="uid://d16a25yarfj1t" path="res://assets/crate.png" id="6_ektat"]
 [ext_resource type="Texture2D" uid="uid://d3x16qicq0heq" path="res://assets/poof.png" id="7_imbru"]
 [ext_resource type="Texture2D" uid="uid://cjwtggbxp24vp" path="res://assets/ingredientframe.png" id="9_8v45c"]
 [ext_resource type="Texture2D" uid="uid://cs5yfp67ee46v" path="res://assets/ordertop.png" id="9_gj0v0"]
@@ -318,6 +319,22 @@ texture = ExtResource("2_a75m5")
 [sub_resource type="TileSet" id="TileSet_twdh5"]
 sources/1 = SubResource("TileSetAtlasSource_hf3yf")
 sources/0 = SubResource("TileSetAtlasSource_kreb0")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uu4ud"]
+atlas = ExtResource("2_twdh5")
+region = Rect2(0, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g46wl"]
+atlas = ExtResource("2_twdh5")
+region = Rect2(22, 22, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rjex"]
+atlas = ExtResource("2_twdh5")
+region = Rect2(0, 44, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyffr"]
+atlas = ExtResource("2_twdh5")
+region = Rect2(11, 33, 11, 11)
 
 [sub_resource type="Shader" id="Shader_mi270"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.5.stable's ParticleProcessMaterial.
@@ -826,31 +843,6 @@ position = Vector2(-15, 1.0000014)
 tile_map_data = PackedByteArray("AAABAAAAAQARABMAAAA=")
 tile_set = SubResource("TileSet_twdh5")
 
-[node name="Cherry" type="Button" parent="."]
-top_level = true
-offset_left = 1237.0
-offset_top = 739.0
-offset_right = 1256.0
-offset_bottom = 757.0
-scale = Vector2(6, 6)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="Cherry"]
-position = Vector2(-15, 1.0000014)
-tile_map_data = PackedByteArray("AAABAAAAAQAVABUAAAA=")
-tile_set = SubResource("TileSet_twdh5")
-
-[node name="Sprinkles" type="Button" parent="."]
-offset_left = 1099.0
-offset_top = 734.0
-offset_right = 1118.0
-offset_bottom = 753.6667
-scale = Vector2(6, 6)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="Sprinkles"]
-position = Vector2(-15, 1.0000014)
-tile_map_data = PackedByteArray("AAABAAAAAQAXABUAAAA=")
-tile_set = SubResource("TileSet_twdh5")
-
 [node name="Strawberry" type="Button" parent="."]
 offset_left = 1244.0
 offset_top = 216.00002
@@ -862,6 +854,73 @@ scale = Vector2(6, 6)
 position = Vector2(-14.666672, 1.1666675)
 tile_map_data = PackedByteArray("AAABAAAAAQATABMAAAA=")
 tile_set = SubResource("TileSet_twdh5")
+
+[node name="Cherry" type="Button" parent="."]
+top_level = true
+offset_left = 1242.0
+offset_top = 731.0
+offset_right = 1261.0
+offset_bottom = 749.1667
+scale = Vector2(6, 6)
+flat = true
+
+[node name="Crate" type="Sprite2D" parent="Cherry"]
+position = Vector2(9.5, 9.166664)
+texture = ExtResource("6_ektat")
+
+[node name="ItemSprite" type="Sprite2D" parent="Cherry"]
+position = Vector2(9.166668, 5.8333335)
+texture = SubResource("AtlasTexture_uu4ud")
+
+[node name="Sprinkles" type="Button" parent="."]
+offset_left = 1106.0
+offset_top = 732.0
+offset_right = 1125.0
+offset_bottom = 750.1667
+scale = Vector2(6, 6)
+flat = true
+
+[node name="Crate" type="Sprite2D" parent="Sprinkles"]
+position = Vector2(9.5, 8.999997)
+texture = ExtResource("6_ektat")
+
+[node name="ItemSprite" type="Sprite2D" parent="Sprinkles"]
+position = Vector2(9.333335, 6.8333335)
+texture = SubResource("AtlasTexture_g46wl")
+
+[node name="Banana" type="Button" parent="."]
+top_level = true
+offset_left = 1105.0
+offset_top = 604.0
+offset_right = 1124.0
+offset_bottom = 622.0
+scale = Vector2(6, 6)
+flat = true
+
+[node name="Crate" type="Sprite2D" parent="Banana"]
+position = Vector2(9.5, 9.166664)
+texture = ExtResource("6_ektat")
+
+[node name="ItemSprite" type="Sprite2D" parent="Banana"]
+position = Vector2(9.333335, 6.8333335)
+texture = SubResource("AtlasTexture_6rjex")
+
+[node name="Crisp" type="Button" parent="."]
+top_level = true
+offset_left = 1242.0
+offset_top = 604.0
+offset_right = 1261.0
+offset_bottom = 622.0
+scale = Vector2(6, 6)
+flat = true
+
+[node name="Crate" type="Sprite2D" parent="Crisp"]
+position = Vector2(9.5, 9.166664)
+texture = ExtResource("6_ektat")
+
+[node name="ItemSprite" type="Sprite2D" parent="Crisp"]
+position = Vector2(10.166668, 6)
+texture = SubResource("AtlasTexture_eyffr")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 visible = false
@@ -1002,6 +1061,7 @@ scale = Vector2(3.0703123, 3.1875)
 texture = ExtResource("9_gj0v0")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer/Order"]
+visible = false
 layout_mode = 2
 
 [node name="Padding3" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Order/HBoxContainer"]
@@ -1118,32 +1178,6 @@ position = Vector2(203, 32.5)
 scale = Vector2(2.9921875, 4.6875)
 texture = ExtResource("11_uu4ud")
 
-[node name="Banana" type="Button" parent="."]
-top_level = true
-offset_left = 967.0
-offset_top = 739.0
-offset_right = 986.0
-offset_bottom = 757.0
-scale = Vector2(6, 6)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="Banana"]
-position = Vector2(-15, 1.1666656)
-tile_map_data = PackedByteArray("AAABAAAAAAAAAAQAAAA=")
-tile_set = SubResource("TileSet_twdh5")
-
-[node name="Crisp" type="Button" parent="."]
-top_level = true
-offset_left = 967.0
-offset_top = 620.0
-offset_right = 986.0
-offset_bottom = 638.0
-scale = Vector2(6, 6)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="Crisp"]
-position = Vector2(-15, 1.0000014)
-tile_map_data = PackedByteArray("AAABAAAAAAABAAIAAAA=")
-tile_set = SubResource("TileSet_twdh5")
-
 [node name="CrispRaw" type="RigidBody2D" parent="."]
 visible = false
 position = Vector2(-2, 0)
@@ -1234,22 +1268,24 @@ texture = ExtResource("9_8v45c")
 [node name="Control3" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 962.0
+offset_top = 144.0
+offset_right = 1002.0
+offset_bottom = 184.0
 
 [node name="CurrentFlavor" type="Panel" parent="Control3"]
 layout_mode = 0
-offset_left = 977.0
-offset_top = 131.0
-offset_right = 1367.0
-offset_bottom = 195.0
+offset_left = 3.0
+offset_top = 13.0
+offset_right = 393.0
+offset_bottom = 58.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control3/CurrentFlavor"]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 16.0
-offset_right = 189.0
-offset_bottom = 54.0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 192.0
+offset_bottom = 43.0
 theme_override_font_sizes/normal_font_size = 25
 text = "Current Flavor:
 "
@@ -1257,10 +1293,10 @@ fit_content = true
 
 [node name="Flavor" type="RichTextLabel" parent="Control3/CurrentFlavor"]
 layout_mode = 0
-offset_left = 199.0
-offset_top = 17.0
-offset_right = 346.0
-offset_bottom = 55.0
+offset_left = 202.0
+offset_top = 5.0
+offset_right = 349.0
+offset_bottom = 43.0
 theme = SubResource("Theme_hf3yf")
 theme_override_font_sizes/normal_font_size = 25
 text = "Vanilla"
@@ -1272,11 +1308,12 @@ offset_top = 410.0
 offset_right = 437.0
 offset_bottom = 410.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="bg" type="Sprite2D" parent="."]
+visible = false
 z_index = -50
 scale = Vector2(20, 20)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Sprite2D"]
+[node name="TileMapLayer" type="TileMapLayer" parent="bg"]
 tile_map_data = PackedByteArray("AAAAAAEAAAAAAAMAAAABAAEAAAAAAAMAAAACAAIAAAAAAAMAAAACAAEAAAAFAAUAAAACAAAAAAAAAAMAAAABAAAAAAAAAAMAAAAAAAIAAAAAAAMAAAABAAIAAAAAAAMAAAADAAAAAAAAAAMAAAAEAAAAAAAAAAMAAAAFAAAAAAAAAAMAAAAFAAEAAAAAAAMAAAAFAAIAAAAAAAMAAAAEAAIAAAAAAAMAAAAEAAEAAAAAAAMAAAADAAEAAAAAAAMAAAADAAIAAAAAAAMAAAAAAAAAAAAAAAMAAAA=")
 tile_set = SubResource("TileSet_wi8ca")
 
@@ -1285,14 +1322,14 @@ tile_set = SubResource("TileSet_wi8ca")
 [connection signal="button_down" from="ConeDispenser" to="." method="_on_cone_button_down"]
 [connection signal="pressed" from="Chocolate" to="." method="_on_chocolate_pressed"]
 [connection signal="pressed" from="Vanilla" to="." method="_on_vanilla_pressed"]
+[connection signal="pressed" from="Strawberry" to="." method="_on_strawberry_pressed"]
 [connection signal="button_down" from="Cherry" to="." method="_on_cherry_button_down"]
 [connection signal="button_up" from="Cherry" to="." method="_on_cherry_button_up"]
 [connection signal="button_down" from="Sprinkles" to="." method="_on_sprinkles_button_down"]
-[connection signal="pressed" from="Strawberry" to="." method="_on_strawberry_pressed"]
+[connection signal="button_down" from="Banana" to="." method="_on_banana_button_down"]
+[connection signal="button_down" from="Crisp" to="." method="_on_crisp_button_down"]
 [connection signal="timeout" from="NozzleTimer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="ClearEntities" to="." method="_on_clear_entities_pressed"]
 [connection signal="orderfufilled" from="Control/ScrollContainer/VBoxContainer/Order" to="." method="_on_order_orderfufilled"]
 [connection signal="pressed" from="Control/ScrollContainer/VBoxContainer/Order/Button" to="Control/ScrollContainer/VBoxContainer/Order" method="_on_button_pressed"]
-[connection signal="button_down" from="Banana" to="." method="_on_banana_button_down"]
-[connection signal="button_down" from="Crisp" to="." method="_on_crisp_button_down"]
 [connection signal="pressed" from="Return" to="." method="_on_return_pressed"]
