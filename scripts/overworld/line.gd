@@ -8,12 +8,20 @@ static var allvisitors : Array[MarginContainer]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print("HELLO I AM STARTED")
 	# hydrate the list of orders first
 	for a in GlobalState.orders.keys():
 		add_order()
-	GlobalSignal.add_order.connect(add_visitor, CONNECT_DEFERRED)
-	GlobalSignal.remove_order.connect(remove_visitor, CONNECT_DEFERRED)
-	
+	# Make sure the connection happens
+	call_deferred("_connect_signals")
+
+func _connect_signals() -> void:
+	if not GlobalSignal.add_order.is_connected(_on_add_order):
+		GlobalSignal.add_order.connect(_on_add_order)
+	if not GlobalSignal.add_order.is_connected(remove_visitor):
+		GlobalSignal.remove_order.connect(remove_visitor)
+	print("Signal connected in SecondFile") # Debug line
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
