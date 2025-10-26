@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b468oxcelg53b"]
+[gd_scene load_steps=18 format=3 uid="uid://b468oxcelg53b"]
 
 [ext_resource type="Script" uid="uid://coqyk8dykhr6g" path="res://scripts/game_tablemenu.gd" id="1_mi270"]
 [ext_resource type="Texture2D" uid="uid://bj064owr3b45d" path="res://assets/cirno-game.png" id="2_a75m5"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bm0saqtui60nh" path="res://scripts/orderpanel.gd" id="5_hf3yf"]
 [ext_resource type="Texture2D" uid="uid://dgnhenm28ax5t" path="res://assets/cone.png" id="5_khkxo"]
 [ext_resource type="Texture2D" uid="uid://d3x16qicq0heq" path="res://assets/poof.png" id="7_imbru"]
+[ext_resource type="PackedScene" uid="uid://c6gg6bhmerwpx" path="res://scenes/popups.tscn" id="9_imbru"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kreb0"]
 texture = ExtResource("2_twdh5")
@@ -1127,6 +1128,12 @@ theme = SubResource("Theme_hf3yf")
 theme_override_font_sizes/normal_font_size = 25
 text = "Vanilla"
 fit_content = true
+
+[node name="Popups" parent="." instance=ExtResource("9_imbru")]
+offset_left = 437.0
+offset_top = 410.0
+offset_right = 437.0
+offset_bottom = 410.0
 
 [connection signal="button_down" from="Nozzle" to="." method="_on_nozzle_button_down"]
 [connection signal="button_up" from="Nozzle" to="." method="_on_nozzle_button_up"]

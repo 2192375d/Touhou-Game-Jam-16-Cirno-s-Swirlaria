@@ -13,8 +13,11 @@ extends Node2D
 @onready var flavortext = get_node("Control3/CurrentFlavor/Flavor")
 @onready var inventorycontainer = get_node("Control2/InventoryContainer")
 @onready var ingredientcontainertemplate = get_node("Control2/InventoryContainer/IngredientContainer")
+@onready var pointspopup = get_node("Popups/PointsPopup")
+@onready var heartspopup = get_node("Popups/HeartsPopup")
 @onready var cursorup = load("res://assets/cursorup.png")
 @onready var cursordown = load("res://assets/cursordown.png")
+
 
 var orders : Dictionary[int, Order] = GlobalState.orders
 
@@ -128,11 +131,14 @@ func _ready():
 func _on_order_orderfufilled(ordernumber : int) -> void:
 	#if orders[ordernumber].check_fufilled(currentcomposition):
 	# modify global score depending on how close current composition is
-	if (orders[ordernumber].check_fufilled(currentcomposition)):
-		print("PLUS ONE LIFE")
+	if (orders[ordernumber].check_fufilled(currentcomposition)): 
+		heartspopup.show_popup("+ 2 HEARTS")
+	
 	GlobalState.hp = min(GlobalState.hp+2, 5)
 	GlobalSignal.hp_update.emit()
-	print("SCORE GOTTEN FROM THIS IS:" + str(orders[ordernumber].get_score(currentcomposition)))
+	var totalpoints : String = str(orders[ordernumber].get_score(currentcomposition))
+	print("SCORE GOTTEN FROM THIS IS:" + totalpoints)
+	pointspopup.show_popup("+ " + totalpoints + " POINTS")
 	GlobalState.score += orders[ordernumber].get_score(currentcomposition)
 	GlobalSignal.score_update.emit()
 	# change inventory

@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6gg6bhmerwpx"]
+
+[ext_resource type="Script" uid="uid://ben4ogyexfh0x" path="res://scenes/points_popup.gd" id="1_201id"]
+[ext_resource type="Texture2D" uid="uid://cmxhqqcbrrdpf" path="res://assets/point.png" id="1_fk52g"]
+[ext_resource type="Texture2D" uid="uid://dojheh4cju84r" path="res://assets/heart.png" id="3_jha0h"]
+
+[sub_resource type="Curve" id="Curve_201id"]
+_data = [Vector2(0, 0.14396894), 0.0, 0.0, 0, 0, Vector2(1, 0.455253), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Popups" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PointsPopup" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_201id")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="PointsPopup"]
+z_index = 2
+position = Vector2(299, 78)
+emitting = false
+amount = 30
+texture = ExtResource("1_fk52g")
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.9
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_201id")
+
+[node name="PanelContainer" type="PanelContainer" parent="PointsPopup"]
+layout_mode = 0
+offset_right = 646.0
+offset_bottom = 153.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PointsPopup/PanelContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.9646837, 0.23996487, 0.3890368, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/normal_font_size = 80
+text = "+20 Points"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HeartsPopup" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 188.0
+offset_right = 40.0
+offset_bottom = 228.0
+script = ExtResource("1_201id")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="HeartsPopup"]
+z_index = 2
+position = Vector2(299, 78)
+emitting = false
+amount = 30
+texture = ExtResource("3_jha0h")
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.9
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+scale_amount_min = 20.0
+scale_amount_max = 30.0
+scale_amount_curve = SubResource("Curve_201id")
+
+[node name="PanelContainer" type="PanelContainer" parent="HeartsPopup"]
+layout_mode = 0
+offset_right = 646.0
+offset_bottom = 153.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HeartsPopup/PanelContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.48609447, 0.4851358, 0.98185843, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/normal_font_size = 80
+text = "+2 Hearts"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="finished" from="PointsPopup/CPUParticles2D" to="PointsPopup" method="_on_cpu_particles_2d_finished"]
+[connection signal="finished" from="HeartsPopup/CPUParticles2D" to="HeartsPopup" method="_on_cpu_particles_2d_finished"]
