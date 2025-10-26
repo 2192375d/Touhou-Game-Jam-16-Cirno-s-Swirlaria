@@ -25,7 +25,7 @@ func _on_timer_timeout() -> void:
 	var item_scene = preload("res://scenes/overworld/item_object.tscn")
 	var item_node = item_scene.instantiate()
 	item_node.position = item_position
-	item_node.item = items[randi() % 3]
+	item_node.item = items[randi() % items.size()]
 	get_tree().current_scene.add_child.call_deferred(item_node)
 	numItem += 1
 	

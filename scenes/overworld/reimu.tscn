@@ -118,7 +118,7 @@ script = ExtResource("3_ikra4")
 actor = NodePath("..")
 shot_timer = NodePath("../shot-timer")
 NUM_SHOT = 20
-SHOT_SPEED = 500.0
+SHOT_SPEED = 400.0
 SHOT_COOLDOWN = 0.3
 
 [node name="bullet-pattern2" type="Node" parent="." node_paths=PackedStringArray("actor", "shot_timer")]
@@ -126,7 +126,7 @@ script = ExtResource("4_3k51f")
 actor = NodePath("..")
 shot_timer = NodePath("../shot-timer")
 NUM_SHOT = 40
-SHOT_SPEED = 700.0
+SHOT_SPEED = 500.0
 SHOT_COOLDOWN = 0.1
 
 [connection signal="timeout" from="action-timer" to="AIComponent" method="_on_actiontimer_timeout"]

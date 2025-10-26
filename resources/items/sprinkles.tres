@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://hnwrcghoj2fv"]
+
+[ext_resource type="Script" uid="uid://c6nqgxpv81pby" path="res://scripts/overworld/item/item.gd" id="1_ly25h"]
+[ext_resource type="Texture2D" uid="uid://47bx8rnar0r" path="res://assets/items/sprinkles.png" id="2_ly25h"]
+
+[resource]
+script = ExtResource("1_ly25h")
+name = "Sprinkles"
+texture = ExtResource("2_ly25h")
+metadata/_custom_type_script = "uid://c6nqgxpv81pby"

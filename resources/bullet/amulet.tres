@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="BulletResource" load_steps=4 format=3 uid="uid://d3fcmgw33x17u"]
 
 [ext_resource type="Script" uid="uid://hxqhnawyaf5f" path="res://scripts/overworld/reimu/bullet-resource.gd" id="1_rugsj"]
-[ext_resource type="Texture2D" uid="uid://b3h8ms0d76x1q" path="res://assets/bullets/amulet.png" id="2_myggh"]
+[ext_resource type="Texture2D" uid="uid://c5w3wchjdsb3v" path="res://assets/bullets/amulet.png" id="2_myggh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4pirj"]
-size = Vector2(12, 14)
+size = Vector2(14, 12)
 
 [resource]
 script = ExtResource("1_rugsj")
