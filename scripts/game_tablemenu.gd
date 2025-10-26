@@ -171,8 +171,10 @@ func _on_nozzle_button_down() -> void:
 func _on_nozzle_button_up() -> void:
 	clickingNozzle = false
 
+
+
 func add_topping(toppingname : String) -> void:
-	if (not toppingname in inventory):
+	if (not toppingname in inventory) or inventory[toppingname] <= 0:
 		return
 	update_inventory(toppingname, 1)
 	match toppingname:
