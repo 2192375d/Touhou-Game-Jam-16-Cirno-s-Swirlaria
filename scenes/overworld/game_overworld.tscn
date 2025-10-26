@@ -358,7 +358,26 @@ offset_bottom = 188.0
 [node name="IceCreamMockup" type="Sprite2D" parent="."]
 position = Vector2(401, 62)
 scale = Vector2(2.0160627, 1.2187499)
-texture = ExtResource("25_2hgjr")
+
+[node name="timeLabel" type="Label" parent="."]
+offset_left = 1211.0
+offset_top = 32.0
+offset_right = 1333.0
+offset_bottom = 56.25
+scale = Vector2(4, 4)
+text = "time left: 0"
+
+[node name="time-elapsed-timer" type="Timer" parent="."]
+
+[node name="Banner" type="Sprite2D" parent="."]
+position = Vector2(166, 358)
+scale = Vector2(2.8913043, 2.328125)
+texture = ExtResource("26_ntmse")
+
+[node name="Banner2" type="Sprite2D" parent="."]
+position = Vector2(158, 99.99999)
+scale = Vector2(2.8913043, 2.328125)
+texture = ExtResource("27_da7d7")
 
 [node name="Banner" type="Sprite2D" parent="."]
 position = Vector2(166, 358)
@@ -373,3 +392,4 @@ texture = ExtResource("27_da7d7")
 [connection signal="area_exited" from="bullet-zone" to="." method="_on_bulletzone_area_exited"]
 [connection signal="timeout" from="item-spawner/Timer" to="item-spawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="line-spawner/Timer" to="line-spawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="time-elapsed-timer" to="." method="_on_timeelapsedtimer_timeout"]

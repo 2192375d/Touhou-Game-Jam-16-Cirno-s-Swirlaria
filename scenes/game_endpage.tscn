@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://betrmg3cayw6h"]
+
+[ext_resource type="Script" uid="uid://xjckwsafmmdb" path="res://scripts/game_endpage.gd" id="1_7he1b"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_f4r6u"]
+
+[node name="game-endpage" type="Control" node_paths=PackedStringArray("score")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7he1b")
+score = NodePath("score")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0.7438113, 0.39576024, 1)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("CanvasTexture_f4r6u")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -494.9999
+offset_top = 109.00001
+offset_right = -198.99994
+offset_bottom = 176.0
+scale = Vector2(10, 10)
+text = "Game Over!!!!- - - -
+Your score: "
+horizontal_alignment = 1
+
+[node name="score" type="Label" parent="."]
+modulate = Color(0.80027014, 0, 0.06994041, 1)
+layout_mode = 0
+offset_left = 755.00006
+offset_top = 660.0
+offset_right = 795.00006
+offset_bottom = 683.0
+scale = Vector2(10, 10)
