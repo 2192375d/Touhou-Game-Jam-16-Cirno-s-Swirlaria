@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://byuksjlsqih0o"]
+[gd_scene load_steps=17 format=3 uid="uid://byuksjlsqih0o"]
 
 [ext_resource type="Texture2D" uid="uid://xe3lorvdrig2" path="res://assets/reimu-walk.png" id="1_oof7u"]
 [ext_resource type="Script" uid="uid://ddurtalsyv6gy" path="res://scripts/overworld/reimu/ai-component.gd" id="2_e51o0"]
 [ext_resource type="Script" uid="uid://cwp0s08jcp44h" path="res://scripts/overworld/reimu/bullet-pattern1.gd" id="3_ikra4"]
 [ext_resource type="Script" uid="uid://4jweqgcgu8xs" path="res://scripts/overworld/reimu/bullet-pattern2.gd" id="4_3k51f"]
+[ext_resource type="Script" uid="uid://ofrxy6435gqh" path="res://scenes/overworld/bullet-pattern3.gd" id="5_4fhbe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e51o0"]
 atlas = ExtResource("1_oof7u")
@@ -107,10 +108,11 @@ debug_color = Color(0.89451784, 0.28257188, 0.39729515, 0.41960785)
 [node name="AIComponent" type="Node" parent="." node_paths=PackedStringArray("ai_character", "bullet_patterns", "action_timer", "shot_timer")]
 script = ExtResource("2_e51o0")
 ai_character = NodePath("..")
-bullet_patterns = [NodePath("../bullet-pattern1"), NodePath("../bullet-pattern2")]
+bullet_patterns = [NodePath("../bullet-pattern1"), NodePath("../bullet-pattern2"), NodePath("../bullet-pattern3")]
 action_timer = NodePath("../action-timer")
 shot_timer = NodePath("../shot-timer")
-TIME_BETWEEN_ACTION = 2.0
+TIME_BETWEEN_ACTION_HIGH = 2.0
+TIME_BETWEEN_ACTION_LOW = 1.0
 metadata/_custom_type_script = "uid://ddurtalsyv6gy"
 
 [node name="bullet-pattern1" type="Node" parent="." node_paths=PackedStringArray("actor", "shot_timer")]
@@ -125,10 +127,19 @@ SHOT_COOLDOWN = 0.3
 script = ExtResource("4_3k51f")
 actor = NodePath("..")
 shot_timer = NodePath("../shot-timer")
-NUM_SHOT = 40
-SHOT_SPEED = 500.0
-SHOT_COOLDOWN = 0.1
+NUM_SHOT = 30
+SHOT_SPEED = 350.0
+SHOT_COOLDOWN = 0.2
+
+[node name="bullet-pattern3" type="Node" parent="." node_paths=PackedStringArray("actor", "shot_timer")]
+script = ExtResource("5_4fhbe")
+actor = NodePath("..")
+shot_timer = NodePath("../shot-timer")
+NUM_SHOT = 100
+SHOT_SPEED = 600.0
+SHOT_COOLDOWN = 0.05
 
 [connection signal="timeout" from="action-timer" to="AIComponent" method="_on_actiontimer_timeout"]
 [connection signal="timeout" from="shot-timer" to="bullet-pattern1" method="_on_shottimer_timeout"]
 [connection signal="timeout" from="shot-timer" to="bullet-pattern2" method="_on_shottimer_timeout"]
+[connection signal="timeout" from="shot-timer" to="bullet-pattern3" method="_on_shottimer_timeout"]

@@ -16,7 +16,6 @@ func pattern_start():
 	count = 0
 	switch = 0
 	shot_timer.start(SHOT_COOLDOWN)
-	print("pattern: 1 starts")
 
 func _on_shottimer_timeout() -> void:
 	if my_turn == false:
@@ -25,7 +24,7 @@ func _on_shottimer_timeout() -> void:
 	var bullet_scene = preload("res://scenes/overworld/bullet.tscn")
 	var bullet_node: Bullet
 	
-	for i in range (-2, 2):
+	for i in range (-2, 3):
 		bullet_node = bullet_scene.instantiate()
 		bullet_node.position = actor.position
 		
