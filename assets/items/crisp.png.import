@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5w3wchjdsb3v"
-path="res://.godot/imported/amulet.png-ee91d1141f5eb981a33e5c2bf5de4459.ctex"
+uid="uid://dqh6cvmy2asja"
+path="res://.godot/imported/crisp.png-a95c38f60836531320cf63ca2f1c0cdf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bullets/amulet.png"
-dest_files=["res://.godot/imported/amulet.png-ee91d1141f5eb981a33e5c2bf5de4459.ctex"]
+source_file="res://assets/items/crisp.png"
+dest_files=["res://.godot/imported/crisp.png-a95c38f60836531320cf63ca2f1c0cdf.ctex"]
 
 [params]
 

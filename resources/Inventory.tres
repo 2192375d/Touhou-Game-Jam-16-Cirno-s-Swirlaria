@@ -1,10 +1,14 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=6 format=3 uid="uid://crnrqykb06qvm"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=10 format=3 uid="uid://crnrqykb06qvm"]
 
 [ext_resource type="Script" uid="uid://c6nqgxpv81pby" path="res://scripts/overworld/item/item.gd" id="1_ydnw0"]
 [ext_resource type="Resource" uid="uid://igy4yb45c2x0" path="res://resources/items/chocolate.tres" id="2_pbh6m"]
 [ext_resource type="Resource" uid="uid://dn8hgabwko4up" path="res://resources/items/vanilla.tres" id="3_yg84m"]
 [ext_resource type="Resource" uid="uid://cx8ktkfodwy7" path="res://resources/items/strawberry.tres" id="4_uvqqu"]
+[ext_resource type="Resource" uid="uid://bssyiml8g6uq8" path="res://resources/items/crisp.tres" id="5_igwl8"]
 [ext_resource type="Script" uid="uid://ddcr7jc2d436x" path="res://scripts/overworld/item/inventory.gd" id="5_svsv2"]
+[ext_resource type="Resource" uid="uid://cgbi23d3ugqie" path="res://resources/items/banana.tres" id="6_qjk11"]
+[ext_resource type="Resource" uid="uid://sbu2m5y5bsdw" path="res://resources/items/cherry.tres" id="7_6yiqp"]
+[ext_resource type="Resource" uid="uid://hnwrcghoj2fv" path="res://resources/items/sprinkles.tres" id="8_4ovha"]
 
 [resource]
 script = ExtResource("5_svsv2")
@@ -12,5 +16,10 @@ items = Dictionary[ExtResource("1_ydnw0"), int]({
 ExtResource("2_pbh6m"): 10,
 ExtResource("3_yg84m"): 10,
 ExtResource("4_uvqqu"): 10
+ExtResource("5_igwl8"): 0,
+ExtResource("6_qjk11"): 0,
+ExtResource("7_6yiqp"): 0,
+ExtResource("8_4ovha"): 0
+
 })
 metadata/_custom_type_script = "uid://ddcr7jc2d436x"
