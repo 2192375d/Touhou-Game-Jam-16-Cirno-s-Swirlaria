@@ -17,7 +17,7 @@ extends Node2D
 @onready var cursordown = load("res://assets/cursordown.png")
 
 var orders : Dictionary[int, Order] = GlobalState.orders
-var inventory : Dictionary[String, int] = GlobalState.inventory
+
 
 # const
 const toppingpositions = {
@@ -38,7 +38,7 @@ var currentcomposition : Dictionary[String, int]
 var currentFlavor : String = "Vanilla"
 var inventoryhandles : Dictionary[String, PanelContainer]
 var orderhandles : Dictionary # Dictionary[int, Dictionary[String, Container]]
-
+var inventory : Dictionary[String, int] 
 
 
 func reset_currentcomposition() -> void:
@@ -52,8 +52,6 @@ func reset_currentcomposition() -> void:
 	"Crisp" : 0,}
 
 func setup_orders():
-	print("Displaying orders")
-	print(orders)
 	for key in orders:
 		var order = orders[key]
 		var newordercomponent : VBoxContainer = ordertemplate.duplicate()
@@ -72,7 +70,6 @@ func setup_orders():
 		newordercomponent.move_child(newordercomponent.get_node("Button"), newordercomponent.get_child_count() -1)
 		newordercomponent.ordernumber = key
 		vboxcontainer.add_child(newordercomponent)
-	print(orderhandles)
 	
 	
 func setup_inventory_display() -> void:
@@ -97,8 +94,10 @@ func clear_button_checks() -> void:
 				orderhandles[key][k].button_pressed = false
 
 func update_inventory(key : String, change : int) -> void:
-	inventory[key] -= change
-	currentcomposition[key] += change
+	if (key in inventory):
+		inventory[key] -= change
+		currentcomposition[key] += change
+		
 	for k in inventory:
 		var newingredientcomponent = inventoryhandles[k]
 		newingredientcomponent.get_node("HBoxContainer").get_node("Ingredient").text = k
@@ -108,8 +107,11 @@ func update_inventory(key : String, change : int) -> void:
 	
 	
 func _ready():
-	print("Starting")
 	#creamraw.notfirst = false
+	for item : Item in GlobalState.inventory:
+		inventory[item.name] = GlobalState.inventory[item]
+	print(inventory)
+
 	conesprite.get_node("StaticBody2D").get_node("CollisionPolygon2D").disabled = true
 	creamraw.get_node("CollisionPolygon2D").disabled = true
 	cherryspriteraw.get_node("CollisionShape2D").disabled = true
@@ -117,7 +119,8 @@ func _ready():
 	setup_orders()
 	setup_inventory_display()
 	reset_currentcomposition()
-	Input.set_custom_mouse_cursor(cursorup)	
+	Input.set_custom_mouse_cursor(cursorup)
+	
 
 func _on_order_orderfufilled(ordernumber : int) -> void:
 	# check if current order is fine
@@ -169,6 +172,8 @@ func _on_nozzle_button_up() -> void:
 	clickingNozzle = false
 
 func add_topping(toppingname : String) -> void:
+	if (not toppingname in inventory):
+		return
 	update_inventory(toppingname, 1)
 	match toppingname:
 		"Sprinkles":
@@ -222,7 +227,7 @@ func set_flavor(flavor : String):
 			targetcolor = Color(1.0, 1.0, 1.0, 1.0)
 		"Strawberry":
 			targetcolor = Color(0.977, 0.63, 0.761, 1.0)
-	creamraw.get_node("Polygon2D").color = targetcolor
+	creamraw.get_node("Sprite2D").modulate = targetcolor
 	flavortext.add_theme_color_override("default_color", targetcolor)
 	currentFlavor = flavor
 	flavortext.text = flavor
@@ -242,6 +247,8 @@ func reset_state() -> void:
 	clear_button_checks()	
 
 func clear_entities() -> void:
+	if (globalCone != null):
+		globalCone.queue_free()
 	for creamitem in creamqueue:
 		if (is_instance_valid(creamitem)):
 			creamitem.queue_free()

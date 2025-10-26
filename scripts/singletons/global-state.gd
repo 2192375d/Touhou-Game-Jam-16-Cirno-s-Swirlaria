@@ -11,12 +11,14 @@ static var orders : Dictionary[int, Order] = {
 	3 : Order.new({"Strawberry" : 10, "Vanilla" : 5, "Crisp" : 2}),
 	}
 	
-static var inventory : Dictionary[String, int] = {
-	"Chocolate" : 20,
-	"Vanilla" : 20,
-	"Strawberry" : 20,
-	"Sprinkles" : 10,
-	"Cherry" : 10,
-	"Banana" : 10,
-	"Crisp" : 10,
-}
+static var inventory : Dictionary[Item, int] = load("res://resources/Inventory.tres").items 
+
+#{
+	#"Chocolate" : 20,
+	#"Vanilla" : 20,
+	#"Strawberry" : 20,
+	#"Sprinkles" : 10,
+	#"Cherry" : 10,
+	#"Banana" : 10,
+	#"Crisp" : 10,
+#}
