@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2nxjqp786ppc"]
+[gd_scene load_steps=6 format=3 uid="uid://c2nxjqp786ppc"]
 
 [ext_resource type="Script" uid="uid://dwurcaeais01q" path="res://scripts/overworld/item/object-interact-component.gd" id="1_2gyli"]
 [ext_resource type="Script" uid="uid://clnfeb1t6s7jo" path="res://scripts/overworld/item/item-object.gd" id="1_bev1n"]
+[ext_resource type="Texture2D" uid="uid://d3x16qicq0heq" path="res://assets/poof.png" id="4_xu4jp"]
 [ext_resource type="Resource" uid="uid://crnrqykb06qvm" path="res://resources/Inventory.tres" id="5_tbvmv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7c603"]
@@ -31,3 +32,17 @@ debug_color = Color(1.973361e-06, 0.63602924, 0.4138503, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4.5, 4.5)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 10
+texture = ExtResource("4_xu4jp")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.9
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+scale_amount_min = 0.2
+scale_amount_max = 0.3
