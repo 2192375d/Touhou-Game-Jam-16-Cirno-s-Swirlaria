@@ -36,4 +36,4 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		GlobalSignal.hp_update.emit()
 		position = spawn_point
 		print("you lost a HP! HP = ", GlobalState.hp)
-		invincible_timer.start(1) # start for one second
+		invincible_timer.start(3.0) # start for one second
