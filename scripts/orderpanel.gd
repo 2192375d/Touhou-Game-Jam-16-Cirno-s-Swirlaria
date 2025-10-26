@@ -12,7 +12,6 @@ func _input(event):
 func _process(delta):
 	pass
 
-
 func _on_button_pressed() -> void:
 	orderfufilled.emit(ordernumber)
 	#queue_free()

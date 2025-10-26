@@ -16,9 +16,7 @@ func _on_inventory_update() -> void:
 	GlobalState.inventory = load("res://resources/Inventory.tres").items 
 
 func _on_add_order(orderno : int, order : Order) -> void:
-	print("ADD ORDER SIGNAL RECV")
 	GlobalState.orders[orderno] = order
 
 func _on_remove_order(orderno : int) -> void:
-	print("REMOVE ORDER SIGNAL RECV")
 	GlobalState.orders.erase(orderno)

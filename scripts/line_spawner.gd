@@ -16,7 +16,6 @@ func generate_order() -> Order:
 		var randomval : int = randi_range(0, 10)
 		if (randomval != 0):
 			retdict[ingredient.name] = randomval
-	print(retdict)
 	return Order.new(retdict)
 
 func _on_timer_timeout() -> void:
