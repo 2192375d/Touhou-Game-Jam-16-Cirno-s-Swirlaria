@@ -20,10 +20,8 @@
 [ext_resource type="Resource" uid="uid://bssyiml8g6uq8" path="res://resources/items/crisp.tres" id="17_vvc48"]
 [ext_resource type="Resource" uid="uid://sbu2m5y5bsdw" path="res://resources/items/cherry.tres" id="18_xslf1"]
 [ext_resource type="Resource" uid="uid://hnwrcghoj2fv" path="res://resources/items/sprinkles.tres" id="19_2ar1r"]
-[ext_resource type="Script" uid="uid://c3oiv5yfswfdw" path="res://scripts/line_spawner.gd" id="19_vvc48"]
+[ext_resource type="Script" path="res://scripts/line_spawner.gd" id="19_vvc48"]
 [ext_resource type="PackedScene" uid="uid://b7h2nucft6ua5" path="res://scenes/overworld/line.tscn" id="20_vvc48"]
-[ext_resource type="Script" uid="uid://dfn3ugl0bk3eh" path="res://scripts/overworld/pausenode.gd" id="22_2ar1r"]
-[ext_resource type="PackedScene" uid="uid://bnf3jn0e4t8r1" path="res://scenes/overworld/pause_menu.tscn" id="23_skbar"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rnjyy"]
 texture = ExtResource("2_5fxal")
@@ -168,7 +166,7 @@ size = Vector2(1282, 978)
 script = ExtResource("1_5fxal")
 
 [node name="Cirno" parent="." instance=ExtResource("1_12nxy")]
-position = Vector2(256, 256)
+position = Vector2(269, 255)
 scale = Vector2(4, 4)
 
 [node name="Reimu" parent="." instance=ExtResource("3_jx2ri")]

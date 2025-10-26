@@ -19,7 +19,7 @@ func _ready() -> void:
 
 func _on_interact() -> void:
 	if item.name == "Chocolate" || item.name == "Vanilla" || item.name == "Strawberry":
-		inventory.items[item] += 20
+		inventory.items[item] += 10
 	else:
 		inventory.items[item] += 1
 	GlobalSignal.inventory_update.emit()
