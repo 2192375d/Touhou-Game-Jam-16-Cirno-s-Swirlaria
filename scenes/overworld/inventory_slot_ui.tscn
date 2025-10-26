@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://mn84kowk5yby" path="res://scripts/overworld/display/inventory-slot-ui.gd" id="1_534gn"]
 [ext_resource type="Texture2D" uid="uid://btqt3rtc5p0xk" path="res://assets/inventory-slot.png" id="1_vra1j"]
-[ext_resource type="Resource" uid="uid://crnrqykb06qvm" path="res://inventory/Inventory.tres" id="2_mqbak"]
+[ext_resource type="Resource" uid="uid://crnrqykb06qvm" path="res://resources/Inventory.tres" id="2_mqbak"]
 
 [node name="inventory-slot-ui" type="Panel" node_paths=PackedStringArray("item_display", "label")]
 anchors_preset = -1

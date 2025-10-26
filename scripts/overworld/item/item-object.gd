@@ -6,7 +6,7 @@ extends Node2D
 @export var icon: Sprite2D
 
 func _ready() -> void:
-	inventory = load("res://inventory/Inventory.tres")
+	inventory = load("res://resources/Inventory.tres")
 	object_interact_component = $ObjectInteractComponent
 	icon = $Sprite2D
 	

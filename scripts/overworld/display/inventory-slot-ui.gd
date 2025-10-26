@@ -1,7 +1,7 @@
 extends Panel
 
 @export var item: Item
-@export var inventory: Inventory = load("res://inventory/Inventory.tres")
+@export var inventory: Inventory = load("res://resources/Inventory.tres")
 @export var item_display: Sprite2D
 @export var label: Label
 
