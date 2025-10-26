@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7h2nucft6ua5"]
+
+[ext_resource type="Script" uid="uid://dyk05iy0dyt2s" path="res://scripts/overworld/line.gd" id="1_6gjka"]
+[ext_resource type="Texture2D" uid="uid://1bbsm2063hbs" path="res://icon.svg" id="2_h2k2i"]
+
+[node name="Line" type="Node2D"]
+script = ExtResource("1_6gjka")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 149.0
+scale = Vector2(2, 2)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 128.0
+scale = Vector2(2, 2)
+
+[node name="Visitor" type="MarginContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 30)
+offset_right = 40.0
+offset_bottom = 30.0
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visitor"]
+position = Vector2(16.499998, 12.5)
+scale = Vector2(0.2578125, 0.1953125)
+texture = ExtResource("2_h2k2i")
