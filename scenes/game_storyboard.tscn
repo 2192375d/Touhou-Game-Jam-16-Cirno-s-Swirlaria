@@ -204,6 +204,72 @@ position = Vector2(957.5001, 537)
 scale = Vector2(3.7402346, 2.0976563)
 texture = ExtResource("2_s1dcr")
 
+[node name="Scene10" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 40.0
+scale = Vector2(0.95, 0.95)
+
+[node name="Button" type="Button" parent="Scene10"]
+layout_mode = 0
+offset_left = 1644.0
+offset_top = 918.0
+offset_right = 1916.0
+offset_bottom = 1080.0
+theme_override_font_sizes/font_size = 50
+text = "Continue >"
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene10"]
+position = Vector2(957.5001, 537)
+scale = Vector2(3.7402346, 2.0976563)
+texture = ExtResource("2_s1dcr")
+
+[node name="Scene11" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 40.0
+scale = Vector2(0.95, 0.95)
+
+[node name="Button" type="Button" parent="Scene11"]
+layout_mode = 0
+offset_left = 1644.0
+offset_top = 918.0
+offset_right = 1916.0
+offset_bottom = 1080.0
+theme_override_font_sizes/font_size = 50
+text = "Continue >"
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene11"]
+position = Vector2(957.5001, 537)
+scale = Vector2(3.7402346, 2.0976563)
+texture = ExtResource("2_s1dcr")
+
+[node name="Scene12" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 40.0
+scale = Vector2(0.95, 0.95)
+
+[node name="Button" type="Button" parent="Scene12"]
+layout_mode = 0
+offset_left = 1644.0
+offset_top = 918.0
+offset_right = 1916.0
+offset_bottom = 1080.0
+theme_override_font_sizes/font_size = 50
+text = "Continue >"
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene12"]
+position = Vector2(957.5001, 537)
+scale = Vector2(3.7402346, 2.0976563)
+texture = ExtResource("2_s1dcr")
+
 [connection signal="pressed" from="Scene1/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Scene2/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Scene3/Button" to="." method="_on_button_pressed"]
@@ -213,3 +279,6 @@ texture = ExtResource("2_s1dcr")
 [connection signal="pressed" from="Scene7/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Scene8/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Scene9/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Scene10/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Scene11/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Scene12/Button" to="." method="_on_button_pressed"]

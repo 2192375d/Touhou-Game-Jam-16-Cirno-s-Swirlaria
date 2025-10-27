@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://b468oxcelg53b"]
+[gd_scene load_steps=35 format=4 uid="uid://b468oxcelg53b"]
 
 [ext_resource type="Script" uid="uid://coqyk8dykhr6g" path="res://scripts/game_tablemenu.gd" id="1_mi270"]
 [ext_resource type="Texture2D" uid="uid://bj064owr3b45d" path="res://assets/cirno-game.png" id="2_a75m5"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://vl40ypxklq8y" path="res://assets/ordermid.png" id="10_ektat"]
 [ext_resource type="Texture2D" uid="uid://nn0lhhorwjbk" path="res://assets/tileset2.png" id="10_u14es"]
 [ext_resource type="Texture2D" uid="uid://dbgfby2wqhh1s" path="res://assets/orderbottom.png" id="11_uu4ud"]
+[ext_resource type="Script" uid="uid://cljdxxlqgmbbs" path="res://scenes/table_item_res.gd" id="13_g46wl"]
+[ext_resource type="Script" uid="uid://j4pc47uhlihn" path="res://scenes/killer.gd" id="16_uu4ud"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kreb0"]
 texture = ExtResource("2_twdh5")
@@ -786,6 +788,10 @@ texture = ExtResource("10_u14es")
 [sub_resource type="TileSet" id="TileSet_wi8ca"]
 sources/0 = SubResource("TileSetAtlasSource_8v45c")
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g46wl"]
+radius = 11.0
+height = 682.00006
+
 [node name="GameTablemenu" type="Node2D"]
 script = ExtResource("1_mi270")
 metadata/_edit_horizontal_guides_ = [127.0]
@@ -964,6 +970,7 @@ position = Vector2(933.9999, 332)
 mass = 2.0
 freeze = true
 script = ExtResource("3_a75m5")
+itemname = "Vanilla"
 
 [node name="Sprite2D" type="Sprite2D" parent="CreamRaw"]
 position = Vector2(0.17521425, 17.794083)
@@ -979,6 +986,8 @@ shape = SubResource("CapsuleShape2D_gj0v0")
 visible = false
 position = Vector2(-1, 0)
 freeze = true
+script = ExtResource("13_g46wl")
+itemname = "Cherry"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="CherryRaw"]
 position = Vector2(-5.000061, 1.0000019)
@@ -996,6 +1005,8 @@ position = Vector2(-2, 0)
 collision_layer = 2
 collision_mask = 2
 freeze = true
+script = ExtResource("13_g46wl")
+itemname = "Sprinkles"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="SprinklesRaw"]
 position = Vector2(-5.000061, 1.0000019)
@@ -1182,6 +1193,8 @@ texture = ExtResource("11_uu4ud")
 visible = false
 position = Vector2(-2, 0)
 freeze = true
+script = ExtResource("13_g46wl")
+itemname = "Crisp"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="CrispRaw"]
 position = Vector2(-5.000061, 1.0000019)
@@ -1197,6 +1210,8 @@ shape = SubResource("CircleShape2D_a75m5")
 visible = false
 position = Vector2(-2, 0)
 freeze = true
+script = ExtResource("13_g46wl")
+itemname = "Banana"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="BananaRaw"]
 position = Vector2(-5.000061, 1.0000019)
@@ -1330,6 +1345,17 @@ scale = Vector2(20, 20)
 tile_map_data = PackedByteArray("AAAAAAEAAAAAAAMAAAABAAEAAAAAAAMAAAACAAIAAAAAAAMAAAACAAEAAAAFAAUAAAACAAAAAAAAAAMAAAABAAAAAAAAAAMAAAAAAAIAAAAAAAMAAAABAAIAAAAAAAMAAAADAAAAAAAAAAMAAAAEAAAAAAAAAAMAAAAFAAAAAAAAAAMAAAAFAAEAAAAAAAMAAAAFAAIAAAAAAAMAAAAEAAIAAAAAAAMAAAAEAAEAAAAAAAMAAAADAAEAAAAAAAMAAAADAAIAAAAAAAMAAAAAAAAAAAAAAAMAAAA=")
 tile_set = SubResource("TileSet_wi8ca")
 
+[node name="Killer" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("16_uu4ud")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killer"]
+position = Vector2(773, 920)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_g46wl")
+debug_color = Color(0.99197274, 0, 0.26462436, 0.41960785)
+
 [connection signal="button_down" from="Nozzle" to="." method="_on_nozzle_button_down"]
 [connection signal="button_up" from="Nozzle" to="." method="_on_nozzle_button_up"]
 [connection signal="button_down" from="ConeDispenser" to="." method="_on_cone_button_down"]
@@ -1346,3 +1372,5 @@ tile_set = SubResource("TileSet_wi8ca")
 [connection signal="orderfufilled" from="Control/ScrollContainer/VBoxContainer/Order" to="." method="_on_order_orderfufilled"]
 [connection signal="pressed" from="Control/ScrollContainer/VBoxContainer/Order/Button" to="Control/ScrollContainer/VBoxContainer/Order" method="_on_button_pressed"]
 [connection signal="pressed" from="Return" to="." method="_on_return_pressed"]
+[connection signal="body_entered" from="Killer" to="Killer" method="_on_body_entered"]
+[connection signal="kill_item" from="Killer" to="." method="_on_killer_kill_item"]
