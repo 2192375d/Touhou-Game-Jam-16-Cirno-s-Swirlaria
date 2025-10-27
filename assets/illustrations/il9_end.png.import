@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b38sfbv6s6rgi"
-valid=false
+uid="uid://p2ee3s6q417f"
+path="res://.godot/imported/il9_end.png-8833e1a4fa38316c1d05c952c9ba4861.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/illustrations/illustration7.png"
+source_file="res://assets/illustrations/il9_end.png"
+dest_files=["res://.godot/imported/il9_end.png-8833e1a4fa38316c1d05c952c9ba4861.ctex"]
 
 [params]
 

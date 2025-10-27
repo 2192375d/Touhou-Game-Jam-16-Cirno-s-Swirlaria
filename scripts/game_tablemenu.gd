@@ -25,7 +25,7 @@ var orders : Dictionary[int, Order] = GlobalState.orders
 # const
 const toppingpositions = {
 	"Cherry" : [Vector2i(0,0), Vector2i(0,1), Vector2i(1,0), Vector2i(1,1)],
-	"Sprinkles" : [Vector2i(2,0), Vector2i(3,0), Vector2i(2,1), Vector2i(3,1), Vector2i(2,2), Vector2i(3,2), Vector2i(2,3), Vector2i(3,3)],
+	"Sprinkles" : [Vector2i(2,0), Vector2i(3,0), Vector2i(2,1), Vector2i(3,1), Vector2i(2,2), Vector2i(3,2), Vector2i(3,3)],
 	"Banana" : [Vector2i(0,2), Vector2i(0,3), Vector2i(0,4)],
 	"Crisp" : [Vector2i(1,2), Vector2i(1,3)],
 }
@@ -91,6 +91,7 @@ func update_order_status() -> void:
 	for key : int in orders:
 		for k in orders[key].get_fufilled_list(currentcomposition):
 			orderhandles[key][k].button_pressed = true
+
 
 func clear_button_checks() -> void:
 	for key : int in orderhandles:
@@ -238,11 +239,11 @@ func _on_banana_button_down() -> void:
 func _on_crisp_button_down() -> void:
 	add_topping("Crisp")
 
-	
 func _on_timer_timeout() -> void:
 	if clickingNozzle and inventory[currentFlavor] > 0:
 		update_inventory(currentFlavor, 1)
 		var newcream = creamraw.duplicate()
+		newcream.itemname = currentFlavor
 		creamqueue.append(newcream)
 		newcream.visible = true
 		newcream.freeze = false
@@ -297,3 +298,11 @@ func _on_clear_entities_pressed() -> void:
 func _on_return_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/overworld/game_overworld.tscn")
 	
+
+
+func _on_killer_kill_item(itemname: String) -> void:
+	print("KILL KILL" + str(itemname))
+	#currentcomposition[itemname] -= 1
+	update_inventory(itemname, -1)
+	update_order_status()
+	pass # Replace with function body.

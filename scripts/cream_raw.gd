@@ -2,6 +2,7 @@ extends RigidBody2D
 
 var sumdelta = 0
 @export var notfirst = false
+@export var itemname : String = ""
 
 func _ready():
 	#GlobalSignal..connect(_on_inventory_update)
@@ -17,6 +18,4 @@ func _process(delta):
 		#print(sumdelta)
 		if sumdelta >= 3:
 			self.freeze = true
-	if (self.position.y >= 1200):
-		queue_free()
 		

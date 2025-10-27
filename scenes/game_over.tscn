@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://cldpepakshj2q"]
+
+[ext_resource type="Texture2D" uid="uid://crxmufr5wi57t" path="res://assets/illustrations/game_lost.png" id="1_xeevv"]
+[ext_resource type="Script" uid="uid://dube8g0rqkf4h" path="res://scenes/button.gd" id="2_wqhvx"]
+
+[node name="GameOver" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(962, 547.5)
+scale = Vector2(1.3232044, 1.4651475)
+texture = ExtResource("1_xeevv")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 877.0
+offset_top = 802.0
+offset_right = 1091.0
+offset_bottom = 920.0
+theme_override_font_sizes/font_size = 80
+text = "Retry"
+script = ExtResource("2_wqhvx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 518.0
+offset_top = 204.0
+offset_right = 1448.0
+offset_bottom = 478.0
+theme_override_font_sizes/normal_font_size = 150
+text = "GAME OVER"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 288.0
+offset_top = 466.0
+offset_right = 1636.0
+offset_bottom = 740.0
+theme_override_font_sizes/normal_font_size = 100
+text = "You need over 10,000 score before the timer ends!"
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

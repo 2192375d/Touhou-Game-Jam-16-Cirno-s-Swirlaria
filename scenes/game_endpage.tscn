@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://betrmg3cayw6h"]
+[gd_scene load_steps=7 format=3 uid="uid://betrmg3cayw6h"]
 
 [ext_resource type="Script" uid="uid://xjckwsafmmdb" path="res://scripts/game_endpage.gd" id="1_7he1b"]
+[ext_resource type="Texture2D" uid="uid://bsc2v7jo835tl" path="res://assets/illustrations/il6.png" id="2_n4orw"]
+[ext_resource type="Texture2D" uid="uid://cd6t7gc6mg8b1" path="res://assets/illustrations/il7.png" id="3_3w3ly"]
+[ext_resource type="Texture2D" uid="uid://5ykoyge7eu3b" path="res://assets/illustrations/il8.png" id="4_y7lwe"]
+[ext_resource type="Texture2D" uid="uid://p2ee3s6q417f" path="res://assets/illustrations/il9_end.png" id="5_3w3ly"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_f4r6u"]
 
@@ -12,27 +16,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7he1b")
-score = NodePath("score")
+score = NodePath("Control/score")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
 modulate = Color(0, 0.7438113, 0.39576024, 1)
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = SubResource("CanvasTexture_f4r6u")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = -494.9999
 offset_top = 109.00001
 offset_right = -198.99994
 offset_bottom = 176.0
 scale = Vector2(10, 10)
-text = "Game Over!!!!- - - -
+text = "YOU WIN!!!!- - - -
 Your score: "
 horizontal_alignment = 1
 
-[node name="score" type="Label" parent="."]
+[node name="score" type="Label" parent="Control"]
 modulate = Color(0.80027014, 0, 0.06994041, 1)
 layout_mode = 0
 offset_left = 755.00006
@@ -40,3 +49,39 @@ offset_top = 660.0
 offset_right = 795.00006
 offset_bottom = 683.0
 scale = Vector2(10, 10)
+
+[node name="Scene1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(957.5, 535.5)
+scale = Vector2(1.3266574, 1.4490616)
+texture = ExtResource("2_n4orw")
+
+[node name="Scene2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(957.5, 535.5)
+scale = Vector2(1.3266574, 1.4490616)
+texture = ExtResource("3_3w3ly")
+
+[node name="Scene3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(957.5, 535.5)
+scale = Vector2(1.3266574, 1.4490616)
+texture = ExtResource("4_y7lwe")
+
+[node name="Scene4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(957.5, 535.5)
+scale = Vector2(1.3266574, 1.4490616)
+texture = ExtResource("5_3w3ly")
+
+[node name="Button" type="Button" parent="."]
+z_index = 100
+layout_mode = 0
+offset_left = 1702.0
+offset_top = 732.0
+offset_right = 1899.0
+offset_bottom = 917.0
+theme_override_font_sizes/font_size = 50
+text = "Next"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

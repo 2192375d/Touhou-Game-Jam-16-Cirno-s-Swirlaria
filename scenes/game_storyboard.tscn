@@ -1,0 +1,144 @@
+[gd_scene load_steps=10 format=3 uid="uid://comlo8gt6va42"]
+
+[ext_resource type="Script" uid="uid://bk76j5et5gqqr" path="res://scenes/game_storyboard.gd" id="1_3wso2"]
+[ext_resource type="Texture2D" uid="uid://c1kn7tociuuxj" path="res://assets/illustrations/il1.png" id="2_d4sfg"]
+[ext_resource type="Texture2D" uid="uid://c2nk5gv4gt7al" path="res://assets/illustrations/il2.png" id="3_mwtg1"]
+[ext_resource type="Texture2D" uid="uid://cgt7cqap4brle" path="res://assets/illustrations/il3.png" id="4_noadc"]
+[ext_resource type="Texture2D" uid="uid://0krningw48h7" path="res://assets/illustrations/il4.png" id="5_hxr5l"]
+[ext_resource type="Texture2D" uid="uid://cralaokvb1y" path="res://assets/illustrations/il5.png" id="6_qehw7"]
+[ext_resource type="Texture2D" uid="uid://b0tms2kgx5b6k" path="res://assets/illustrations/controls.png" id="7_oavct"]
+[ext_resource type="Texture2D" uid="uid://ckoyveacmnxit" path="res://assets/illustrations/how to play (overworld).png" id="8_ts60x"]
+[ext_resource type="Texture2D" uid="uid://dadm4nt0ann0w" path="res://assets/illustrations/how to play (table).png" id="9_t4kv7"]
+
+[node name="GameStoryboard" type="Node2D"]
+script = ExtResource("1_3wso2")
+
+[node name="Button" type="Button" parent="."]
+top_level = true
+z_index = 100
+offset_left = 1644.7999
+offset_top = 779.1
+offset_right = 1916.7999
+offset_bottom = 941.1
+theme_override_font_sizes/font_size = 50
+text = "Next"
+
+[node name="Scene1" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 40.0
+scale = Vector2(0.95, 0.95)
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene1"]
+position = Vector2(961.0527, 570.2632)
+scale = Vector2(1.4030242, 1.510512)
+texture = ExtResource("2_d4sfg")
+
+[node name="Scene2" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 40.0
+scale = Vector2(0.95, 0.95)
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene2"]
+position = Vector2(966.8422, 559.4737)
+scale = Vector2(1.3906658, 1.5196842)
+texture = ExtResource("3_mwtg1")
+
+[node name="Scene3" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 40.0
+scale = Vector2(0.95, 0.95)
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene3"]
+position = Vector2(966.8422, 559.4737)
+scale = Vector2(1.3906658, 1.5196842)
+texture = ExtResource("4_noadc")
+
+[node name="Scene4" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 40.0
+scale = Vector2(0.95, 0.95)
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene4"]
+position = Vector2(966.8422, 559.4737)
+scale = Vector2(1.3906658, 1.5196842)
+texture = ExtResource("5_hxr5l")
+
+[node name="Scene5" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 40.0
+scale = Vector2(0.95, 0.95)
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene5"]
+position = Vector2(966.8422, 559.4737)
+scale = Vector2(1.3906658, 1.5196842)
+texture = ExtResource("6_qehw7")
+
+[node name="Scene6" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 40.0
+scale = Vector2(0.95, 0.95)
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene6"]
+position = Vector2(997.3684, 588.9473)
+scale = Vector2(0.5794956, 0.58497804)
+texture = ExtResource("7_oavct")
+
+[node name="Scene7" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 40.0
+scale = Vector2(0.95, 0.95)
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene7"]
+position = Vector2(1017.3684, 577.89484)
+scale = Vector2(0.30586463, 0.3451356)
+texture = ExtResource("8_ts60x")
+
+[node name="Scene8" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 40.0
+scale = Vector2(0.95, 0.95)
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene8"]
+position = Vector2(1043.6842, 569.4737)
+scale = Vector2(0.3118797, 0.34066987)
+texture = ExtResource("9_t4kv7")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

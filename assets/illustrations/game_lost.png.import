@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0dih8kplld72"
-valid=false
+uid="uid://crxmufr5wi57t"
+path="res://.godot/imported/game_lost.png-35e7b80397e5399242606243ee4ea958.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/illustrations/illustration8.png"
+source_file="res://assets/illustrations/game_lost.png"
+dest_files=["res://.godot/imported/game_lost.png-35e7b80397e5399242606243ee4ea958.ctex"]
 
 [params]
 
