@@ -9,10 +9,6 @@ extends Node2D
 	get_node("Scene6"),
 	get_node("Scene7"),
 	get_node("Scene8"),
-	get_node("Scene9"),
-	get_node("Scene10"),
-	get_node("Scene11"),
-	get_node("Scene12"),
 ]
 
 var index = 0
@@ -28,7 +24,9 @@ func _process(delta: float) -> void:
 
 func display_image() -> void:
 	print("index is" + str(index))
-	if (index == 12):
+	if (index >= 1):
+		titlescreenstates[index-1].visible = false
+	if (index == 8):
 		get_tree().change_scene_to_file("res://scenes/overworld/game_overworld.tscn")	
 	else:
 		# display the image
