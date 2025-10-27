@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://cnpiteiv7r2qw"]
 
-[ext_resource type="Script" uid="uid://idrfykkq6kqu" path="res://scripts/button.gd" id="1_q0175"]
+[ext_resource type="Script" uid="uid://xtpcgnt775k" path="res://scenes/game_titlepage.gd" id="1_wvt07"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_wvt07"]
 
 [node name="Mainmenu" type="Node2D"]
+script = ExtResource("1_wvt07")
 
 [node name="Node" type="Node" parent="."]
 
@@ -31,6 +32,5 @@ offset_right = 1158.0
 offset_bottom = 719.0
 theme_override_font_sizes/font_size = 50
 text = "Start Game"
-script = ExtResource("1_q0175")
 
-[connection signal="pressed" from="Node/Button" to="Node/Button" method="_on_pressed"]
+[connection signal="pressed" from="Node/Button" to="." method="_on_button_pressed"]

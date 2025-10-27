@@ -1,0 +1,215 @@
+[gd_scene load_steps=3 format=3 uid="uid://comlo8gt6va42"]
+
+[ext_resource type="Script" uid="uid://bk76j5et5gqqr" path="res://scenes/game_storyboard.gd" id="1_3wso2"]
+[ext_resource type="Texture2D" uid="uid://bj064owr3b45d" path="res://assets/cirno-game.png" id="2_s1dcr"]
+
+[node name="GameStoryboard" type="Node2D"]
+script = ExtResource("1_3wso2")
+
+[node name="Scene1" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 40.0
+scale = Vector2(0.95, 0.95)
+
+[node name="Button" type="Button" parent="Scene1"]
+layout_mode = 0
+offset_left = 1644.0
+offset_top = 918.0
+offset_right = 1916.0
+offset_bottom = 1080.0
+theme_override_font_sizes/font_size = 50
+text = "Continue >"
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene1"]
+position = Vector2(957.5001, 537)
+scale = Vector2(3.7402346, 2.0976563)
+texture = ExtResource("2_s1dcr")
+
+[node name="Scene2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 40.0
+scale = Vector2(0.95, 0.95)
+
+[node name="Button" type="Button" parent="Scene2"]
+layout_mode = 0
+offset_left = 1644.0
+offset_top = 918.0
+offset_right = 1916.0
+offset_bottom = 1080.0
+theme_override_font_sizes/font_size = 50
+text = "Continue >"
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene2"]
+position = Vector2(957.5001, 537)
+scale = Vector2(3.7402346, 2.0976563)
+texture = ExtResource("2_s1dcr")
+
+[node name="Scene3" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 40.0
+scale = Vector2(0.95, 0.95)
+
+[node name="Button" type="Button" parent="Scene3"]
+layout_mode = 0
+offset_left = 1644.0
+offset_top = 918.0
+offset_right = 1916.0
+offset_bottom = 1080.0
+theme_override_font_sizes/font_size = 50
+text = "Continue >"
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene3"]
+position = Vector2(957.5001, 537)
+scale = Vector2(3.7402346, 2.0976563)
+texture = ExtResource("2_s1dcr")
+
+[node name="Scene4" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 40.0
+scale = Vector2(0.95, 0.95)
+
+[node name="Button" type="Button" parent="Scene4"]
+layout_mode = 0
+offset_left = 1644.0
+offset_top = 918.0
+offset_right = 1916.0
+offset_bottom = 1080.0
+theme_override_font_sizes/font_size = 50
+text = "Continue >"
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene4"]
+position = Vector2(957.5001, 537)
+scale = Vector2(3.7402346, 2.0976563)
+texture = ExtResource("2_s1dcr")
+
+[node name="Scene5" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 40.0
+scale = Vector2(0.95, 0.95)
+
+[node name="Button" type="Button" parent="Scene5"]
+layout_mode = 0
+offset_left = 1644.0
+offset_top = 918.0
+offset_right = 1916.0
+offset_bottom = 1080.0
+theme_override_font_sizes/font_size = 50
+text = "Continue >"
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene5"]
+position = Vector2(957.5001, 537)
+scale = Vector2(3.7402346, 2.0976563)
+texture = ExtResource("2_s1dcr")
+
+[node name="Scene6" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 40.0
+scale = Vector2(0.95, 0.95)
+
+[node name="Button" type="Button" parent="Scene6"]
+layout_mode = 0
+offset_left = 1644.0
+offset_top = 918.0
+offset_right = 1916.0
+offset_bottom = 1080.0
+theme_override_font_sizes/font_size = 50
+text = "Continue >"
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene6"]
+position = Vector2(957.5001, 537)
+scale = Vector2(3.7402346, 2.0976563)
+texture = ExtResource("2_s1dcr")
+
+[node name="Scene7" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 40.0
+scale = Vector2(0.95, 0.95)
+
+[node name="Button" type="Button" parent="Scene7"]
+layout_mode = 0
+offset_left = 1644.0
+offset_top = 918.0
+offset_right = 1916.0
+offset_bottom = 1080.0
+theme_override_font_sizes/font_size = 50
+text = "Continue >"
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene7"]
+position = Vector2(957.5001, 537)
+scale = Vector2(3.7402346, 2.0976563)
+texture = ExtResource("2_s1dcr")
+
+[node name="Scene8" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 40.0
+scale = Vector2(0.95, 0.95)
+
+[node name="Button" type="Button" parent="Scene8"]
+layout_mode = 0
+offset_left = 1644.0
+offset_top = 918.0
+offset_right = 1916.0
+offset_bottom = 1080.0
+theme_override_font_sizes/font_size = 50
+text = "Continue >"
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene8"]
+position = Vector2(957.5001, 537)
+scale = Vector2(3.7402346, 2.0976563)
+texture = ExtResource("2_s1dcr")
+
+[node name="Scene9" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 40.0
+scale = Vector2(0.95, 0.95)
+
+[node name="Button" type="Button" parent="Scene9"]
+layout_mode = 0
+offset_left = 1644.0
+offset_top = 918.0
+offset_right = 1916.0
+offset_bottom = 1080.0
+theme_override_font_sizes/font_size = 50
+text = "Continue >"
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene9"]
+position = Vector2(957.5001, 537)
+scale = Vector2(3.7402346, 2.0976563)
+texture = ExtResource("2_s1dcr")
+
+[connection signal="pressed" from="Scene1/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Scene2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Scene3/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Scene4/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Scene5/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Scene6/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Scene7/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Scene8/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Scene9/Button" to="." method="_on_button_pressed"]
