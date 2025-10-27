@@ -108,7 +108,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Scene6"]
 position = Vector2(997.3684, 588.9473)
-scale = Vector2(0.5794956, 0.58497804)
+scale = Vector2(0.54, 0.546)
 texture = ExtResource("7_oavct")
 
 [node name="Scene7" type="Control" parent="."]

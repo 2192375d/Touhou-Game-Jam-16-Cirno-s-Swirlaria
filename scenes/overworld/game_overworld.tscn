@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://b5vmw5yaggpul"]
+[gd_scene load_steps=48 format=4 uid="uid://b5vmw5yaggpul"]
 
 [ext_resource type="Script" uid="uid://dvs64trehf0im" path="res://scripts/overworld/game_overworld.gd" id="1_5fxal"]
 [ext_resource type="PackedScene" uid="uid://bwlta6mv2bg45" path="res://scenes/overworld/cirno.tscn" id="1_12nxy"]
@@ -165,6 +165,8 @@ b = Vector2(1792, 992)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jx2ri"]
 size = Vector2(1282, 978)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ntmse"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_5fxal")
@@ -342,8 +344,12 @@ script = ExtResource("19_vvc48")
 wait_time = 15.0
 autostart = true
 
-[node name="Line" parent="." instance=ExtResource("20_vvc48")]
+[node name="Line" parent="." node_paths=PackedStringArray("order_popout", "popout_timer") instance=ExtResource("20_vvc48")]
 position = Vector2(54, 204)
+order_popout = NodePath("../order popout")
+popout_timer = NodePath("popout timer")
+
+[node name="popout timer" type="Timer" parent="Line"]
 
 [node name="PauseNode" type="Node" parent="."]
 script = ExtResource("22_2ar1r")
@@ -389,7 +395,31 @@ position = Vector2(158, 99.99999)
 scale = Vector2(2.8913043, 2.328125)
 texture = ExtResource("27_da7d7")
 
+[node name="order popout" type="Panel" parent="."]
+offset_left = 504.0
+offset_top = 17.0
+offset_right = 938.0
+offset_bottom = 123.0
+
+[node name="TextureRect" type="TextureRect" parent="order popout"]
+modulate = Color(0.6619902, 0, 0.25930738, 1)
+layout_mode = 0
+offset_right = 444.0
+offset_bottom = 117.0
+texture = SubResource("CanvasTexture_ntmse")
+
+[node name="Label" type="RichTextLabel" parent="order popout"]
+layout_mode = 0
+offset_left = 10.999992
+offset_top = 4.0
+offset_right = 270.37497
+offset_bottom = 73.99999
+scale = Vector2(1.6, 1.6)
+text = "A ORDER ARRIVED!!! - - - (interact with the table on the left to start ice creaming!)"
+horizontal_alignment = 1
+
 [connection signal="area_exited" from="bullet-zone" to="." method="_on_bulletzone_area_exited"]
 [connection signal="timeout" from="item-spawner/Timer" to="item-spawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="line-spawner/Timer" to="line-spawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="Line/popout timer" to="Line" method="_on_popout_timer_timeout"]
 [connection signal="timeout" from="time-elapsed-timer" to="." method="_on_timeelapsedtimer_timeout"]
