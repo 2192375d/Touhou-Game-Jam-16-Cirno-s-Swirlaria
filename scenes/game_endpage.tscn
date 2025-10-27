@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://betrmg3cayw6h"]
+[gd_scene load_steps=7 format=3 uid="uid://betrmg3cayw6h"]
 
 [ext_resource type="Script" uid="uid://xjckwsafmmdb" path="res://scripts/game_endpage.gd" id="1_7he1b"]
 [ext_resource type="Texture2D" uid="uid://bsc2v7jo835tl" path="res://assets/illustrations/il6.png" id="2_n4orw"]
 [ext_resource type="Texture2D" uid="uid://cd6t7gc6mg8b1" path="res://assets/illustrations/il7.png" id="3_3w3ly"]
 [ext_resource type="Texture2D" uid="uid://5ykoyge7eu3b" path="res://assets/illustrations/il8.png" id="4_y7lwe"]
+[ext_resource type="Texture2D" uid="uid://p2ee3s6q417f" path="res://assets/illustrations/il9_end.png" id="5_3w3ly"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_f4r6u"]
 
@@ -66,6 +67,12 @@ visible = false
 position = Vector2(957.5, 535.5)
 scale = Vector2(1.3266574, 1.4490616)
 texture = ExtResource("4_y7lwe")
+
+[node name="Scene4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(957.5, 535.5)
+scale = Vector2(1.3266574, 1.4490616)
+texture = ExtResource("5_3w3ly")
 
 [node name="Button" type="Button" parent="."]
 z_index = 100

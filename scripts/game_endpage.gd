@@ -5,7 +5,8 @@ extends Control
 @onready var scenes : Array[Sprite2D] = [
 	get_node("Scene1"),
 	get_node("Scene2"),
-	get_node("Scene3")
+	get_node("Scene3"),
+	get_node("Scene4")
 ]
 var index : int = 0
 
@@ -16,7 +17,7 @@ func display_image() -> void:
 	print("index is" + str(index))
 	if (index >= 1):
 		scenes[index-1].visible = false
-	if (index == 3):
+	if (index == 4):
 		get_tree().change_scene_to_file("res://scenes/game_titlepage.tscn")	
 	else:
 		# display the image
