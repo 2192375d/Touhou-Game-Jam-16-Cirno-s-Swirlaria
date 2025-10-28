@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c6gg6bhmerwpx"]
 
-[ext_resource type="Script" uid="uid://ben4ogyexfh0x" path="res://scenes/points_popup.gd" id="1_201id"]
+[ext_resource type="Script" uid="uid://ben4ogyexfh0x" path="res://scripts/points_popup.gd" id="1_201id"]
 [ext_resource type="Texture2D" uid="uid://cmxhqqcbrrdpf" path="res://assets/point.png" id="1_fk52g"]
 [ext_resource type="Texture2D" uid="uid://dojheh4cju84r" path="res://assets/heart.png" id="3_jha0h"]
 

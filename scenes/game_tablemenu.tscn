@@ -15,8 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://vl40ypxklq8y" path="res://assets/ordermid.png" id="10_ektat"]
 [ext_resource type="Texture2D" uid="uid://nn0lhhorwjbk" path="res://assets/tileset2.png" id="10_u14es"]
 [ext_resource type="Texture2D" uid="uid://dbgfby2wqhh1s" path="res://assets/orderbottom.png" id="11_uu4ud"]
-[ext_resource type="Script" uid="uid://cljdxxlqgmbbs" path="res://scenes/table_item_res.gd" id="13_g46wl"]
-[ext_resource type="Script" uid="uid://j4pc47uhlihn" path="res://scenes/killer.gd" id="16_uu4ud"]
+[ext_resource type="Script" uid="uid://cljdxxlqgmbbs" path="res://scripts/table_item_res.gd" id="13_g46wl"]
+[ext_resource type="Script" uid="uid://j4pc47uhlihn" path="res://scripts/killer.gd" id="16_uu4ud"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kreb0"]
 texture = ExtResource("2_twdh5")
