@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cnpiteiv7r2qw"]
 
-[ext_resource type="Script" uid="uid://xtpcgnt775k" path="res://scenes/game_titlepage.gd" id="1_wvt07"]
+[ext_resource type="Script" uid="uid://xtpcgnt775k" path="res://scripts/game_titlepage.gd" id="1_wvt07"]
 [ext_resource type="Texture2D" uid="uid://dmdycmsaj2v46" path="res://assets/illustrations/title-screen.png" id="2_wvt07"]
 
 [node name="Mainmenu" type="Node2D"]

@@ -12,12 +12,16 @@ func _process(delta: float) -> void:
 func generate_order() -> Order:
 	var retdict : Dictionary[String, int]
 	var items = load("res://resources/Inventory.tres").items.keys()
+	
 	for ingredient : Item in items:
 		var should_exist : int = randi_range(0, 1)
 		if (!should_exist):
 			continue
 		var randomval : int = randi_range(ingredient.minorderrng, ingredient.maxorderrng)
 		retdict[ingredient.name] = randomval
+	# set a guaranteed item
+	var guaranteeditem : Item = items[randi_range(0,len(items)-1)]
+	retdict[guaranteeditem.name] = randi_range(guaranteeditem.minorderrng, guaranteeditem.maxorderrng)
 	return Order.new(retdict)
 
 func _on_timer_timeout() -> void:
