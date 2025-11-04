@@ -10,7 +10,7 @@ In this game, you have to dodge the bullets from Reimu, while collecting resourc
 - <a href = "https://amai-ichigo.itch.io/">Ichigo</a>
 
 # link to the game
-- https://itch.io/jam/touhou-jam-16/rate/3989974
+- https://2635266513.itch.io/cirnos-swirlaria
 
 # credits
 - © <a href = "https://www16.big.or.jp/~zun/">Team Shanghai Alice</a>  
