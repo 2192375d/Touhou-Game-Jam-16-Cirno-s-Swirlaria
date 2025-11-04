@@ -9,6 +9,9 @@ In this game, you have to dodge the bullets from Reimu, while collecting resourc
 - <a href = "https://github.com/2192375d">Lumiere</a>
 - <a href = "https://amai-ichigo.itch.io/">Ichigo</a>
 
+# link to the game
+- https://itch.io/jam/touhou-jam-16/rate/3989974
+
 # credits
 - © <a href = "https://www16.big.or.jp/~zun/">Team Shanghai Alice</a>  
 All rights reserved.  
