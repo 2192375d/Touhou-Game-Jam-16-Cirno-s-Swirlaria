@@ -1,4 +1,4 @@
-(This is a fan-made Touhou game dedicated for <a href="https://2635266513.itch.io/cirnos-swirlaria">Touhou Game Jam 16</a>
+(This is a fan-made Touhou game dedicated for <a href="https://2635266513.itch.io/cirnos-swirlaria">Touhou Game Jam 16</a>)
 
 # Cirno's Swirlaria
 The ice fairy living in misty lake, Cirno, who just angered the scary red shrine maiden decided to go sell ice cream!
