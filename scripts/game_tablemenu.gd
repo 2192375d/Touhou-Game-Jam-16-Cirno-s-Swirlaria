@@ -71,8 +71,9 @@ func setup_orders():
 			# check if has
 			newingredientcomponent.get_node("Amount").text = str(orders[key].ingredients[k])
 			if (inventory[k] < orders[key].ingredients[k]):
-				newingredientcomponent.get_node("Ingredient").modulate(Color(1.0, 0.245, 0.188, 1.0))
-				newingredientcomponent.get_node("Amount").modulate(Color(1.0, 0.245, 0.188, 1.0))
+				newingredientcomponent.get_node("Ingredient").add_theme_color_override("default_color", Color(1.0, 0.245, 0.188, 1.0))
+				newingredientcomponent.get_node("Amount").add_theme_color_override("default_color", Color(1.0, 0.245, 0.188, 1.0))
+				
 			newordercomponent.add_child(newingredientcomponent)
 		newordercomponent.get_node("OrderNumberPanel").get_node("OrderNumber").text = "Order #" + str(key)
 		newordercomponent.move_child(newordercomponent.get_node("Button"), newordercomponent.get_child_count() -1)

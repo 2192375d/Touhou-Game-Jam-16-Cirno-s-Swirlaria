@@ -33,6 +33,6 @@ offset_top = 466.0
 offset_right = 1682.0
 offset_bottom = 740.0
 theme_override_font_sizes/normal_font_size = 100
-text = "You need over 100,000 score before the timer ends!"
+text = "You need over 30,000 score before the timer ends!"
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
