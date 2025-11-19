@@ -20,7 +20,7 @@ func _process(_delta: float) -> void:
 	time_label.text = "time left: " + str(int(time_elapsed_timer.time_left))
 
 func _on_timeelapsedtimer_timeout() -> void:
-	if (GlobalState.score >= 100000):
+	if (GlobalState.score >= 30000):
 		get_tree().change_scene_to_file("res://scenes/game_endpage.tscn")
 	else:
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")

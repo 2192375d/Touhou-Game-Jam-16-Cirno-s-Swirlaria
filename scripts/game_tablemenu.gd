@@ -43,7 +43,6 @@ var inventoryhandles : Dictionary[String, PanelContainer]
 var orderhandles : Dictionary # Dictionary[int, Dictionary[String, Container]]
 var inventory : Dictionary[String, int] 
 
-
 func reset_currentcomposition() -> void:
 	# return the inventoru back to original
 	update_inventory_from_global_state()
@@ -69,7 +68,11 @@ func setup_orders():
 			orderhandles[key][k] = newingredientcomponent.get_node("CheckBox")
 			newingredientcomponent.visible = true
 			newingredientcomponent.get_node("Ingredient").text = k
+			# check if has
 			newingredientcomponent.get_node("Amount").text = str(orders[key].ingredients[k])
+			if (inventory[k] < orders[key].ingredients[k]):
+				newingredientcomponent.get_node("Ingredient").modulate(Color(1.0, 0.245, 0.188, 1.0))
+				newingredientcomponent.get_node("Amount").modulate(Color(1.0, 0.245, 0.188, 1.0))
 			newordercomponent.add_child(newingredientcomponent)
 		newordercomponent.get_node("OrderNumberPanel").get_node("OrderNumber").text = "Order #" + str(key)
 		newordercomponent.move_child(newordercomponent.get_node("Button"), newordercomponent.get_child_count() -1)

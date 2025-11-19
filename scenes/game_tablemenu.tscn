@@ -751,8 +751,8 @@ shader_parameter/collision_friction = 0.34
 shader_parameter/collision_bounce = 0.2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gj0v0"]
-radius = 8.0
-height = 26.0
+radius = 7.0
+height = 22.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a75m5"]
 radius = 20.024984
@@ -973,9 +973,9 @@ script = ExtResource("3_a75m5")
 itemname = "Vanilla"
 
 [node name="Sprite2D" type="Sprite2D" parent="CreamRaw"]
-position = Vector2(0.17521425, 17.794083)
+position = Vector2(-0.31530297, 17.71232)
 rotation = 1.5707964
-scale = Vector2(0.81380033, 0.76999015)
+scale = Vector2(0.73460144, 0.65757847)
 texture = ExtResource("7_imbru")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CreamRaw"]
